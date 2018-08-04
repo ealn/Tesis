@@ -1,19 +1,17 @@
 %% ##############################################################################################
-%% Plantilla estándar (en el caso de que exista algo parecido a un estándar) para el documento de tesis para la maestría en ciencias computacionales del INAOEP.
-%% Fecha última modificación: 23 de agosto de 2010
-%% Editada por: R. Omar Chávez G.
-%% Nota: Cualquier mejora o modificación favor de comentarla y distribuirla.
-%% ----------------------------------------------------------------------------------------------
-%% Registro de modificaciones
-%%
+%% Plantilla estandar para el documento de tesis para la maestri�a en ciencias computacionales
+%% en la UAG.
+%% Fecha ultima modificacion: 04 de agosto de 2018
+%% Editada por: Efrain Adrian Luna Nevarez
 %% ##############################################################################################
 
 \documentclass[12pt,letterpaper,spanish]{book}
 %\spanishdecimal{.}
-% para emcabezados y pies de página
+
+% Encabezados y pies de pagina
 \usepackage{fancyhdr}
 
-% para usar de manera natural los acentos, tildes y así -- además del respectivo diccionario de español
+% para usar de manera natural los acentos, tildes y �, ademas del respectivo diccionario de espa�ol
 %\usepackage[utf8]{inputenc}
 \usepackage[latin1]{inputenc}
 \usepackage[spanish,activeacute]{babel}
@@ -23,30 +21,29 @@
 \usepackage{amsthm}
 \usepackage{algorithmic}
 \usepackage{algorithm}
-%\usepackage{amsmath}
-%\usepackage{amssymb}
-\usepackage{cool} %pa sumatorias cool
+\usepackage{cool} %Sumatorias cool
 
-% para tablas que se pasan de lanza, digo, de largas
+% para tablas largas
 \usepackage{longtable}
 \usepackage{array}
 
-% para incluir los apéndices
+% para incluir los apendices
 \usepackage{appendix}
 
-% para incluir gráficas y subgráficas dentro de las gráficas etc., etc.
+% para incluir graficas y subgraficas dentro de las gr�ficas etc., etc.
 \usepackage{graphicx}
 \usepackage{subfigure}
 \usepackage{wrapfig}
 \usepackage{float}
 \usepackage{caption}
 %\usepackage{subcaption}
+\graphicspath{{imagenes/}}
 
 %\usepackage{subfig}%%%%%
 %\usepackage{float}   %%%%% tambien nuevo
 %\usepackage[hKV-listi]{subfig} %%%% nuevo
 
-% para definir algunos márgenes personalizados
+% para definir algunos margenes personalizados
 \usepackage{anysize}
 \marginsize{1.5in}{1in}{1in}{1in}
 \usepackage[nottoc]{tocbibind}
@@ -63,22 +60,22 @@
 \usepackage{color}
 \usepackage{colortbl}
 
-% para el estilo natbib de bibliografías (sino lo usan no va)
+% para el estilo natbib de bibliografi�as (sino lo usan no va)
 \usepackage{cite}
 
 \usepackage{titlesec}
 
-% para incluir páginas de un archivo pdf
+% para incluir paginas de un archivo pdf
 \usepackage{pdfpages}
 
 %##############################################################################
-% para renombrar algunos títulos
-\renewcommand{\appendixname}{Apéndices}
-\renewcommand{\appendixtocname}{Apéndices}
-\renewcommand{\appendixpagename}{Apéndices}
+% para renombrar algunos ti�tulos
+\renewcommand{\appendixname}{Apendices}
+\renewcommand{\appendixtocname}{Apendices}
+\renewcommand{\appendixpagename}{Apendices}
 
 %##############################################################################
-% incluimos información personalizada para algunos valores de la plantilla
+% incluimos informacion personalizada para algunos valores de la plantilla
 \newcommand{\tstamp}{\small [\thepage]}
 \newcommand{\Escuela}{\scshape \scriptsize}
 \newcommand{\Uni}{\scshape \scriptsize Universidad Aut�noma de Guadalajara}
@@ -109,7 +106,7 @@
 }
 
 %##############################################################################
-% renombramos algunas constantes para entornos matemáticos
+% renombramos algunas constantes para entornos matematicos
 \def\sen{{\rm sen \ }}
 \def\cos{{\rm cos \ }}
 
@@ -141,7 +138,7 @@
 \def\sen{{\rm sen \ }}
 
 %################################################################################
-% rebombramos las etiquetas para retuilizar la información antes ingresada
+% rebombramos las etiquetas para retuilizar la informaci�n antes ingresada
 \renewcommand{\labelenumi}{\textbf{\theenumi}.-}
 \renewcommand{\labelenumii}{\textbf{\theenumi}.-}
 \renewcommand{\labelenumiii}{\textbf{\theenumi}.-}
@@ -150,7 +147,7 @@
 
 
 %#################################################################################
-% especificamos casos extraodinarios para la división de palabras
+% especificamos casos extraodinarios para la divisi�n de palabras
 \hyphenation{es-pe-cia-li-dad} \hyphenation{ob-te-ner}
 \hyphenation{des-ple-gar}
 \hyphenation{original}
@@ -169,7 +166,7 @@
 % espaciado : 1 y 1/2
 \onehalfspacing
 
-% establecemos la enumeración para las equaciones y figuras
+% establecemos la enumeraci�n para las equaciones y figuras
 \numberwithin{equation}{section}
 \renewcommand{\thefigure}{\thechapter.\arabic{figure}}
 
@@ -179,7 +176,7 @@
 \sloppy
 \frenchspacing
 
-% redefinimos el comando para incrustar dos páginas vacías
+% redefinimos el comando para incrustar dos p�ginas vac��as
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
 
 
@@ -187,13 +184,12 @@
 % inicio del documento
 \begin{document}
 
-% incluimos el pdf con la portada (sólo la página 1) (la azul fea) como primera página de este documento
-% nota: debes modificar y compilar de manera separada el archivo portada.tex, luego compilar este documento para que incluya la versión modificada del PDF (portada.pdf)
-%\includepdf[pages={1}]{portada.pdf}
-\includepdf[pages=1]{PORTADA.pdf}
+% incluimos el pdf con la portada como primera p�gina de este documento
+% nota: debes modificar y compilar de manera separada el archivo portada.tex, luego compilar este documento para que incluya la versi�n modificada del PDF (portada.pdf)
+\includepdf[pages=1]{portada.pdf}
 \clearemptydoublepage
 
-% incluimos el .tex que tiene la información para la contraportada (puede llamarse como desees, pero recuerda poner el nombre sin extensión)
+% incluimos el .tex que tiene la informaci�n para la contraportada (puede llamarse como desees, pero recuerda poner el nombre sin extensi�n)
 \include{contraportada}                  %%%%%%%%
 \clearemptydoublepage
 
@@ -204,7 +200,7 @@
 
 
 %###############################################################################33
-% redefinimos los márgenes para el documento
+% redefinimos los m�rgenes para el documento
 \setlength{\topmargin}{0.0cm}
 \setlength{\headsep}{0.5cm}
 \setlength{\headheight}{0.5cm}
@@ -232,7 +228,7 @@
 
 
 %###################################################################################
-% especificamos el nombre en español para cada sección estándar de la tesis
+% especificamos el nombre en espa�ol para cada secci�n est�ndar de la tesis
 \def\contentsname{\'{I}ndice General}
 \def\contentsname{Tabla de Contenido}
 \def\listfigurename{Lista de Figuras}
@@ -246,13 +242,10 @@
 \def\appendixname{Ap\'{e}ndice}
 \def\abstractname{Resumen}
 
-
-% presentación de título y capítulo
+% presentaci�n de titulo y capitulo
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-% número y título de sección
+% Numero y titulo de seccion
 \renewcommand{\sectionmark}[1]{\markright{\thesection~~ #1}}
-
-
 
 
 \lhead[\fancyplain{}{\small \thepage}]{\fancyplain{}{\scshape
@@ -268,7 +261,7 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{\headrulewidth}
 
-% cambiar el formato para los títulos
+% cambiar el formato para los ti�tulos
 \newcommand{\bigrule}{\titlerule[0.5mm]}
 
 \titleformat{\chapter}[display]
@@ -279,16 +272,17 @@
 {0mm} {\filleft}
  [\vspace{0.5mm}\bigrule]
 
+%###################################################################################
 
-% incluimos los .tex de cada uno de las secciones previas al verdadero documento (recuerda: sólo debe ir el nombre del .tex)
-% los puntos .tex van sin preámbulo, es decir que sólo va el texto correspondiente y las instrucciones para definir título, secciones, subsecciones, tablas, etc.
+% incluimos los .tex de cada uno de las secciones previas al verdadero documento.
+% los puntos .tex van sin preambulo, instrucciones para definir ti�tulo, secciones, subsecciones, tablas, etc.
 \include{dedicatoria}
 \include{agradecimientos}
-\include{resumen_1}
-\include{abstract_2}
+\include{resumen}
+\include{abstracto}
 
 
-% por si quieres incuir hasta un tercer nivel en la tabal de contenidos
+% por si quieres incuir hasta un tercer nivel en la tabla de contenidos
 %\setcounter{tocdepth}{3}
 
 % creamos la tabla de contenidos y las listas de figuras y tablas
@@ -300,8 +294,8 @@
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter.~~#1}{}}
 
 %########################################################################################
-% ahora si incluimos cada uno  de los .tex correspondientes a los capítulos de la tesis. Es más claro dividir los capítulos en .tex aunque puedes poner tooodo el texto aquí.
-% los puntos .tex van sin preámbulo, es decir que sólo va el texto correspondiente y las instrucciones para definir título, secciones, subsecciones, tablas, etc.
+% ahora si incluimos cada uno  de los .tex correspondientes a los capitulos de la tesis. Es mas claro dividir los capitulos en .tex aunque puedes poner todo el texto aqui�.
+% los puntos .tex van sin preambulo, es decir que va el texto correspondiente y las instrucciones para definir titulo, secciones, subsecciones, tablas, etc.
 
 \include{capitulo_1}
 \include{capitulo_2}
