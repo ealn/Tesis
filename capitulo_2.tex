@@ -7,5 +7,183 @@
 
 \section{Bases teóricas}
 
+\subsection{Inteligencia Artificial}
 
+En computación el término Inteligencia Artificial se define como la facultad de razonamiento de un programa informático, este agente racional tiene la capacidad de percibir su entorno y lleva a cabo acciones para maximizar el éxito en una tarea asignada.
 
+Cuando una maquina es capaz de imitar las funciones cognitivas del ser humano para aprender y resolver problemas se puede decir que la maquina posee inteligencia artificial.
+
+Dentro de la inteligencia artificial tenemos varias ramas que se enfocan en la resolución de problemas aplicando un principio muy específico de la inteligencia.
+
+Las ramas de la inteligencia artificial se pueden dividir en áreas clásicas y áreas de vanguardia de acuerdo con la época cuando surgieron:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=8cm]{ramas_ia.png}}
+	\caption{Ramas de la inteligencia artificial}
+	\label{fig:ramas_ia}
+\end{figure}
+
+\textbf{Sistemas expertos.-}
+son conocidos también como sistemas de conocimientos y estos programas informáticos aplican el proceso de razonamiento de un humano experto en la materia en la solución de problemas específicos. El modo de procesamiento de estos sistemas es en base a una gran base de datos y utilizando una heurística avanzada para la determinación de las posibles soluciones a un problema.
+
+\textbf{Procesamiento del lenguaje natural.-}
+estos son sistemas capaces de reconocer, procesar y en cierto punto emular la comunicación humana, estos sistemas buscan dejar el uso de lenguajes de programación o conjunto de comandos, para procesar el lenguaje humano natural. Para procesar el lenguaje es necesario dividirlo, primero se obtiene la compresión del lenguaje natural, el cual investiga los métodos para que una computadora sea capaz de entender las instrucciones de este lenguaje, la segunda etapa consiste en la generación de lenguaje natural, aquí es donde la maquina intenta comunicarse en el lenguaje humano.
+
+\textbf{Robótica.-}
+un robot es un dispositivo programado para realizar una tarea en específico. Se dice que un robot está adquiriendo inteligencia artificial si es capaz de responder a cambios en su entorno en lugar de seguir instrucciones programadas con anterioridad.
+
+\textbf{Reconocimiento de patrones.-}
+esta es la parte de la inteligencia artificial encargada del procesamiento visual de un entorno, las imágenes son captadas por cámaras y posteriormente procesadas para el reconocimiento de patrones del entorno.
+
+\textbf{Lógica difusa.-}
+es una forma matemática de representar el lenguaje natural, y el principio es generalizar la lógica clásica haciendo que las variables tomen valores lingüísticos de verdad.
+
+\textbf{Redes neuronales.-}
+estas redes tratan de emular el comportamiento de las redes neuronales biológicas que poseen los humanos en su cerebro, partiendo de una neurona artificial y conectándola con otras para crear sinapsis entre ellas. 
+
+\textbf{Algoritmos genéticos.-}
+estos algoritmos son capaces de mutar para producir mejores respuestas a un entorno, estos sistemas tratan de imitar el proceso de selección natural en el cual al ir mutando algunos genes se van obteniendo sistemas más capaces para un entorno. Su función es seleccionar de una población de soluciones candidatas e intentar producir nuevas generaciones de soluciones las cuales se buscan que sean mejores que las anteriores.
+
+\textbf{Realidad virtual.-}
+es la recreación de un mundo artificial en tiempo real que puede ser captado por distintos canales sensoriales del espectador.
+Agentes.- estos son pequeños programas que actúan como espías observando las acciones comúnmente realizadas por el usuario, estas acciones son almacenadas y registradas, si en dado caso se llega a dar una anomalía el programa lanzara una alerta y dará una serie de soluciones.
+
+\subsection{Redes neuronales artificiales}
+
+Las redes neuronales artificiales son un conjunto de neuronas creadas artificialmente para el desarrollo de inteligencia artificial en una computadora.
+ 
+Estas redes están basadas en las redes biológicas del cerebro humano, modelando todos los factores biológicos de las neuronas.
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=7cm]{red_bio.png}}
+	\caption{Red neuronal biológica}
+	\label{fig:red_bio}
+\end{figure}
+
+Debido a su diseño las redes son capaces de aprender de la experiencia, de generalizar de casos anteriores a nuevos casos, de abstraer características esenciales a partir de entradas que representan en ocasiones información irreverente.
+
+La capacidad de aprendizaje adaptativo es una característica fundamental de las redes neuronales y les permiten llevar a cabo ciertas tareas mediante un entrenamiento previo, pueden aprender a diferenciar patrones y generalizar a partir de estos. Son considerados sistemas dinámicos ya que son capaces de adaptarse a nuevas condiciones de entrada.
+
+Tienen una alta tolerancia a fallos ya que son capaces de detectar patrones aun cuando estos patrones posean ruido, distorsión o simplemente están incompletos. Estos programas son capaces de seguir funcionando incluso si parte de la red presente fallas.
+
+La información se almacena de forma distribuida en las conexiones de las neuronas, provocando redundancia de información, es decir se guardara sus valores en base a la función de activación que posee cada neurona, de esta manera si una neurona es destruida o presenta fallas, las otras neuronas podrán aprender la información de la neurona que fallo.
+
+Las neuronas humanas poseen diferentes secciones:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=8cm]{estruc_neu.png}}
+	\caption{Estructura general de una neurona}
+	\label{fig:estruc_neu}
+\end{figure}
+
+En una neurona artificial se busca la emulación de las principales secciones de una neurona las cuales son:
+
+\begin{itemize}
+	\item \textbf{Cuerpo.-} Se encarga de producir un impulso eléctrico en base a las entradas de la neurona.
+	\item \textbf{Dendritas.-} son filamentos capaces de crear conexiones con otras neuronas.
+	\item \textbf{Axón.-} Es el encargado de transmitir el impulso eléctrico generado por el cuerpo.
+\end{itemize}
+
+A continuación se muestra una imagen de como luciría una neurona artificial:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=8cm]{neu_art.png}}
+	\caption{Neurona Artificial}
+	\label{fig:neu_art}
+\end{figure}
+
+Esta neurona posee las siguientes secciones:
+
+\begin{itemize}
+	\item \textbf{X1, X2, \ldots,Xn .-} Son las entradas de la neurona.
+	\item \textbf{W1, W2, \ldots, Wn.-} Pesos específicos que tendrá cada entrada, esto hace que las entradas no valgan lo mismo ponderadamente.
+	\item \textbf{Función de red.-} Esta es una función de sumatoria de las entradas.
+	\item \textbf{Función de activación.-} Si la suma de las entradas es mayor o igual que el umbral definido por esta función se tendrá una señal a la salida.
+\end{itemize}
+
+La salida de la neurona viene dada por esta ecuación:
+
+\begin{equation}
+y_j = f(\sum_{i=1}^{n}(W_{ij}x_i + \theta_j))
+\label{ec:neu_out}
+\end{equation}
+
+Una red neuronal no es más que la interconexión de varias neuronas artificiales, en la cual podemos identificar al menos tres secciones:
+
+\begin{itemize}
+	\item \textbf{Capa de entrada.-} En esta capa se procesan todas las entradas, y si estas entradas son capaces de excitar las neuronas de esta capa se producirá una señal de salida.
+	\item \textbf{Capa oculta.-} En esta capa se encuentran las neuronas encargadas del aprendizaje de la red.
+	\item \textbf{Capa de salida.-} Esta neurona o neuronas de salida tendrán la salida del sistema.
+\end{itemize}
+
+La forma en que las redes aprenden es mediante la modificación de los pesos de las entradas.
+
+Las redes neuronales artificiales han ido evolucionando con el paso del tiempo, hoy en día existen muchos modelos de redes neuronales, todas ellas con ventajas y desventajas si son comparadas entre ellas.
+
+\subsubsection{Aprendizaje de las redes neuronales}
+
+%Rf
+El procedimiento utilizado para llevar a cabo el proceso de aprendizaje en una red neuronal se denomina entrenamiento.
+
+El problema de aprendizaje en las redes neuronales se formula en términos de la minimización de la función de error (o pérdida) asociada.
+
+Normalmente, esta función está compuesta por dos términos, uno que evalúa cómo se ajusta la salida de la red neuronal al conjunto de datos de que disponemos, y que se denomina término de error, y otro que se denomina término de regularización, y que se utiliza para evitar el sobreaprendizaje por medio del control de la complejidad efectiva de la red neuronal.
+
+Por supuesto, el valor de la función de error depende por completo de los parámetros de la red neuronal: los pesos sinápticos entre neuronas, y los bias asociados a ellas, que, como suele ser ya habitual, se pueden agrupar adecuadamente en un único vector de peso de la dimensión adecuada, que denotaremos por $w$. En este sentido, podemos escribir $f(w)$ para indicar que el valor del error que comete la red neuronal depende de los pesos asociados a la misma. Con esta formalización, nuestro objetivo es encontrar el valor $w^{*}$ para el que se obtiene un mínimo global de la función $f$, convirtiendo el problema de aprendizaje en un problema de optimización.
+
+En general, la función de error es una función no lineal, por lo que no disponemos de algoritmos sencillos y exactos para encontrar sus mínimos. En consecuencia, tendremos que hacer uso de una búsqueda a través del espacio de parámetros que, idealmente, se aproxime de forma iterada a a un (error) mínimo de la red para los parámetros adecuados.
+
+De esta forma, se comienza con una red neuronal con algún vector inicial de parámetros (a menudo elegido al azar), a continuación se genera un nuevo vector de parámetros, esperando que con ellos la función de error se reduzca (aunque dependiendo del método elegido, no es obligatorio, y temporalmente se puede admitir un empeoramiento del error siempre y cuando conduzca a una disminución posterior más acusada). Este proceso se repite, normalmente, hasta haber reducido el error bajo un umbral tolerable, o cuando se satisfaga una condición específica de parada.
+
+El Descenso del Gradiente es el algoritmo de entrenamiento más simple y también el más extendido y conocido. Solo hace uso del vector gradiente, y por ello se dice que es un método de primer orden.
+
+Este método para construir el punto $w_{i+1}$ a partir de wi se traslada este punto en la dirección de entrenamiento d{i}=?g{i}. Es decir:
+
+\begin{equation}
+w_{i+1} = w_{i} - g_{i}v_{i}
+\label{ec:grad}
+\end{equation}
+
+Donde el parámetro ? se denomina tasa de entrenamiento, que puede fijarse a priori o calcularse mediante un proceso de optimización unidimensional a lo largo de la dirección de entrenamiento para cada uno de los pasos (aunque esta última opción es preferible, a menudo se usa un valor fijo, $?_{i}=?$ con el fin de simplificar el proceso).
+
+Aunque es muy sencillo, este algoritmo tiene el gran inconveniente de que, para funciones de error con estructuras con valles largos y estrechos, requiere muchas iteraciones. Se debe a que, aunque la dirección elegida es en la que la función de error disminuye más rápidamente, esto no significa que necesariamente produzca la convergencia más rápida.
+
+Por ello, es el algoritmo recomendado cuando tenemos redes neuronales muy grandes, con muchos miles de parámetros, ya que sólo almacena el vector gradiente (de tamaño n).
+%http://www.cs.us.es/~fsancho/?e=165
+%Rf
+
+\subsection{Deep Learning}
+
+\subsection{Redes neuronales recurrentes}
+
+%Rf
+La idea detrás de las RNN es hacer uso de la información secuencial. En una red neuronal tradicional suponemos que todas las entradas (y salidas) son independientes entre sí. Pero para muchas tareas eso es una muy mala idea. Si quieres predecir la siguiente palabra en una oración, es mejor que conozcas qué palabras vienen antes. Las RNN se llaman recurrentes porque realizan la misma tarea para cada elemento de una secuencia, y la salida depende de los cálculos previos. Otra forma de pensar acerca de las RNN es que tienen una "memoria" que captura información sobre lo que se ha calculado hasta ahora. En teoría, los RNN pueden hacer uso de la información en secuencias arbitrariamente largas, pero en la práctica se limitan a mirar hacia atrás solo unos pocos pasos.
+
+La decisión de una red recurrente alcanzada en el paso de tiempo t-1 afecta la decisión que alcanzará un momento más tarde en el paso de tiempo t. Entonces, las redes recurrentes tienen dos fuentes de entrada, el presente y el pasado reciente, que se combinan para determinar cómo responden a los datos nuevos, de forma similar a como lo hacemos en la vida.
+
+Esa información secuencial se conserva en el estado oculto de la red recurrente, que logra abarcar muchos pasos de tiempo a medida que avanza para afectar el procesamiento de cada nuevo ejemplo. Está encontrando correlaciones entre eventos separados por muchos momentos, y estas correlaciones se llaman "dependencias a largo plazo", porque un evento en el tiempo depende de, y es una función de, uno o más eventos que vinieron antes. Una forma de pensar acerca de las RNN es esta: son una forma de compartir pesos a lo largo del tiempo.
+
+Así como la memoria humana circula invisiblemente dentro de un cuerpo, afectando nuestro comportamiento sin revelar su forma completa, la información circula en los estados ocultos de las redes recurrentes.
+
+Describiremos el proceso de llevar la memoria hacia adelante matemáticamente:
+
+\begin{equation}
+h_t = \phi(Wx_t + Uh_{t-1})
+\label{ec:mem_neu}
+\end{equation}
+
+El estado oculto en el paso de tiempo $t$ es $h_t$. Es una función de la entrada al mismo tiempo paso $x_t$, modificada por una matriz de ponderación W (como la que usamos para las redes feedforward) agregada al estado oculto del paso de tiempo anterior $h_{t-1}$ multiplicado por su propio estado oculto matriz U de estado oculto, también conocida como matriz de transición y similar a una cadena de Markov. Las matrices de peso son filtros que determinan la importancia de acuerdo tanto con la entrada actual como con el estado oculto pasado. El error que generan volverá a través de la propagación inversa y se usará para ajustar sus ponderaciones hasta que el error no pueda bajar más.
+
+Debido a que este ciclo de retroalimentación ocurre en cada paso de la serie, cada estado oculto contiene rastros no solo del estado oculto anterior, sino también de todos los que precedieron a $h_{t-1}$ mientras la memoria pueda persistir.
+
+\subsubsection{LSTM}
+
+A mediados de los años 90, los investigadores alemanes Sepp Hochreiter y Juergen Schmidhuber propusieron una variación de la red recurrente con las denominadas unidades de memoria a largo plazo, o LSTM, como una solución al problema del gradiente de fuga.
+
+Los LSTM ayudan a preservar el error que se puede volver a propagar a través del tiempo y las capas. Al mantener un error más constante, permiten que las redes recurrentes continúen aprendiendo durante muchos pasos de tiempo (más de 1000), abriendo así un canal para vincular causas y efectos de forma remota. Este es uno de los desafíos centrales para el aprendizaje automático y la IA, ya que los algoritmos se enfrentan con frecuencia a entornos en los que las señales de recompensa son dispersas y diferidas, como la vida misma.
+
+Los LSTM contienen información fuera del flujo normal de la red recurrente en una celda cerrada. La información puede almacenarse, escribirse o leerse desde una celda, al igual que los datos en la memoria de una computadora. La célula toma decisiones sobre qué almacenar y cuándo permitir las lecturas, escrituras y borraduras, a través de puertas que se abren y cierran. Sin embargo, a diferencia del almacenamiento digital en computadoras, estas puertas son análogas, implementadas con la multiplicación de elementos por sigmoides, que están todas en el rango de 0-1. Siendo Analogica tiene la ventaja sobre digital de ser diferenciable y, por lo tanto, adecuado para la propagación inversa.
+
+Esas puertas actúan sobre las señales que reciben, y de forma similar a los nodos de la red neuronal, bloquean o transmiten información en función de su fuerza e importación, que filtran con sus propios conjuntos de ponderaciones. Esos pesos, como los pesos que modulan los estados de entrada y ocultos, se ajustan a través del proceso de aprendizaje de redes recurrentes. Es decir, las células aprenden cuándo permiten que los datos entren, salgan o se eliminen a través del proceso iterativo de hacer conjeturas, volver a propagar el error y ajustar los pesos mediante el descenso del gradiente.
+% https://skymind.ai/wiki/lstm
+%Rf
