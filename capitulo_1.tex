@@ -1,22 +1,46 @@
 \chapter{Introducción}
 
+La música es el idioma universal, no importa en qué lugar físico nos encontremos, todos alguna vez hemos escuchado alguna canción que se nos queda grabada en la cabeza por mucho tiempo. En ocasiones nos preguntamos cómo es que el autor compuso esa canción.
+
+Si bien es cierto el componer una canción es un arte, las canciones se pueden interpretar en forma matemática, esto nos abre la posibilidad de usar algoritmos para la creación de nuevas canciones.
 
 \section{Descripción del Problema}
-ñáá
+
+El tiempo requerido para la creación de una nueva canción es muy variado, ya que depende del género, el número de instrumentos y por supuesto la imaginación del compositor. Sin embargo si pudiéramos usar un algoritmo de aprendizaje en una computadora, esto nos permitiría generar nuevas canciones de una manera más sencilla y tomando mucho menos tiempo.
+
+Existen compositores que a lo largo del tiempo no les gusta explorar nuevas formas o ritmos musicales y eso ocasiona que sus composiciones sean muy similares entre si.
 
 \section{Objetivos}
-\subsection{Objetivo General}Objetivo General.
+\subsection{Objetivo General}
 
+Creación de un programa que use algoritmos de Deep Learning para servir de apoyo en una composición musical.
 
 \subsection{Objetivos Específicos}
 \begin{enumerate}
-  \item Objetivo específico 1
-  \item Objetivo específico 2
+%Rf
+  \item Implementar una red neuronal que sea capaz de crear melodías y armonías musicales en guitarra.
+  \item Implementar una red neuronal que sea capaz de crear melodías musicales en bajo eléctrico.
+  \item Implementar una red neuronal que sea capaz de crear ritmos básicos de batería.
+  \item Conjuntar la salida de las redes neuronales para generar un solo archivo de audio.
+  \item Verificar la cuadratura y tonalidad de la canción resultante.
 \end{enumerate}
 
 \section{Justificación}
 
+El uso de algoritmos de Deep Learning en la música no es algo nuevo, sin embargo, existen muchas áreas de oportunidad en cuestión de la implementación de estos algoritmos.
+
+%Rf
+La mayoría de trabajos en esta área se basan en sonidos melódicos y no abarcan tan a fondo el campo armónico. Lo que se pretende en esta investigación es tener una manera fácil y rápida para la creación de nuevas composiciones musicales partiendo ya sea por melodías o armonías musicales de uno o varios instrumentos. 
+
+Un algoritmo eficaz para composición es aquel que es capaz de aprender a componer música partiendo de tres fundamentos musicales: la tonalidad, el ritmo y la cuadratura, el algoritmo que se pretende realizar en esta investigación evaluara estas variables y las tratara de generalizar para poder crear música a partir de una simple melodía o una armonía.
+
 \section{Delimitación}
+
+Este proyecto se centrara en crear melodías musicales de guitarra y bajo eléctrico así como también ritmos básicos de batería, no se analizaran otros instrumentos.
+
+Las nuevas canciones creadas por estos algoritmos no buscan ser ideas finales de composición, la única intensión es crear una serie de ideas para nuevas canciones.
+
+La base de datos usada para entrenar a la red neuronal consta de canciones de genero rock y pop unicamente, no se entrenara la red para reconocer y generar canciones de otros géneros musicales.
 
 \section{Organización de la Tesis}
 
