@@ -469,3 +469,46 @@ Esta es una comparativa para diferenciar entre lo que sería una melodía y una ar
 	\caption{Melodia y Armonia}
 	\label{fig:melo_armo}
 \end{figure}
+
+\subsection{Formato MIDI}
+
+%Rf
+% Deep Learning Techniques for Music Generation - {A} Survey  <- Bibliografia
+
+MIDI (Interfaz digital de instrumentos musicales) es un estándar técnico que describe un protocolo, una interfaz digital y conectores para la interoperabilidad entre varios instrumentos musicales electrónicos, software y dispositivos. MIDI transmite mensajes de eventos que especifican información de notas (como tono y velocidad), así como señales de control para parámetros (como volumen, vibrato y señales de reloj). Hay cinco tipos de mensajes y aquí solo consideramos el tipo de Canal de voz, que transmite datos de rendimiento en tiempo real a través de un solo canal. Dos mensajes importantes son:
+
+\begin{itemize}
+	\item \textbf{Note on.-} Indica que una nota debe ser reproducida. Contiene la información de estado (número de canal, especificado por un entero dentro de [0 15] y dos valores de datos: un número de nota MIDI (el tono de la nota, un entero dentro de [0 127]) y una velocidad (que indica cómo la nota es reproducida, un entero dentro de [0 127]). Un ejemplo es <Note on, 0, 60, 50> que interpreta como: "en el canal 1, comienza a reproducir un C medio con una velocidad de 50".
+	\item \textbf{Note off.-} Indica que una nota termina. En esa situación, la velocidad indica qué tan rápido se libera la nota. Un ejemplo es <Note off, 0, 60, 20> que interpreta como: "en el canal 1, deja de reproducir un C medio con una velocidad de 20". 
+\end{itemize}
+
+Cada evento de nota está realmente incrustado en un fragmento de pista, una estructura de datos que contiene un valor de tiempo delta que especifica la información de temporización y el evento en sí. Un valor de tiempo delta representa la posición de tiempo, como un valor absoluto, del evento y podría representar:
+
+\begin{itemize}
+	\item \textbf{Metrical time.-} Representa el numero de pulsos desde el comienzo. Una referencia llamada división y es definida en el encabezado del archivo, especificando cuantos pulsos por nota de cuarto.
+	\item \textbf{time-code-based time.-} Representa el tiempo relacionado con horas, minutos y segundos de la canción. 
+\end{itemize}
+
+Un ejemplo de un extracto de un archivo MIDI y su partitura correspondiente es mostrado en las siguientes figuras. La división ah sido puesta en 384 pulsos por cuarto de nota lo cual corresponde a 96 pulsos por un octavo de nota:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=6cm]{extract_midi.png}}
+	\caption{Extracto de un formato MIDI}
+	\label{fig:extract_midi}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=6cm]{repres_midi.png}}
+	\caption{Partitura correspondiente al extracto MIDI}
+	\label{fig:repres_midi}
+\end{figure}
+
+%Rf
+
+Dentro del formato MIDI se pueden representar en cada track un instrumento diferente eh independiente de los demás, esto permite una fácil manipulacion de los diferentes instrumentos. A continuacion se muestra una tabla de todos los instrumentos que pueden ser representados en este formato:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=12cm]{instr_midi.png}}
+	\caption{Instrumentos en formato MIDI}
+	\label{fig:instr_midi}
+\end{figure}
