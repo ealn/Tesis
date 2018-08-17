@@ -5,7 +5,62 @@
 
 %%-----------------------------------------------------------------------
 
+\section{Desarrollo del proyecto}
 
+\subsection{Datos}
 
+La base de datos de archivos midi que se utilizo en este proyecto se llama ''Clean MIDI subset'' la cual se uso en el proyecto \cite{Lear_Coli}. Esta base de datos contiene más de 17,000 canciones en formato MIDI, estas canciones son en su mayoría del género Pop y Rock, por lo que la red utilizada en este proyecto fue entrenada para asimilar este tipo de estilos.
 
+Para el procesamiento de los archivos MIDI se utilizo una librería de software libre llamada Music21, la cual nos permite de una manera fácil trabajar con estos archivos. Esta librería es compatible con Python3 por lo que nuestro programa esta hecho en este lenguaje de programación.
 
+\subsubsection{Delimitación de los Datos}
+
+Esta es una base de datos demasiada extensa por lo que el tiempo de procesamiento puede ser excesivo si se introducen los datos directamente a una red neuronal, debido a esto se decidió dividirla y solamente usar una parte de ella (1000 canciones unicamente).
+
+Cada canción tiene una duración promedio de 3 minutos por lo que aunque se este usando solo una parte de las canciones la cantidad de datos es suficiente para lograr entrenar la red con buenos resultados.
+
+Los archivos MIDI de esta base de datos poseen diferentes Tracks de varios instrumentos de los cuales en este proyecto solamente se tomaran en cuenta los Tracks de guitarra eléctrica limpia, bajo eléctrico con dedos y batería, los demas Tracks serán ignorados.
+
+\subsection{Descripción del proyecto}
+
+\subsubsection{Red Neuronal} 
+
+La intensión de este proyecto es crear una serie de redes neuronales que sean capaces de procesar las entradas de guitarra, bajo y bateria, Para esto se usaron 3 redes neuronales por separado para procesar los instrumentos, estas redes tienen la siguiente arquitectura:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=8cm]{estruc_red.png}}
+	\caption{Estructura de la Red neuronal}
+	\label{fig:estruc_red}
+\end{figure}
+
+Las capas de redes LSTM procesan de manera secuencial la información de las matrices generadas a partir de los eventos en los Tracks, las capas de Dropout son usadas para prevenir el sobre entrenamiento de la red, eliminando algunos datos de salida de las redes LSTM, finalmente llega a una capa Dense la cual nos ayuda al aprendizaje de la red. 
+
+La función de activación que se uso en esta red es una $tanh$, este tipo de activación permite de una manera mas suavizada la activación o desactivación de las neuronas en comparación con una señal sigmoidea
+
+\subsubsection{Arquitectura de la aplicación}
+
+La arquitectura de la aplicación se muestra en la siguiente figura:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=10cm]{arq_app.png}}
+	\caption{Arquitectura de la aplicación}
+	\label{fig:arq_app}
+\end{figure}
+
+En esta arquitectura se puede observar que se tiene varios módulos el sistema:
+
+\begin{enumerate}
+	\item \textbf{GUI.-} Este modulo contiene la interfaz de usuario para el programa.
+	\item \textbf{Preprocesamiento.-} Este modulo se encarga de preprocesar los archivos MIDI con el fin de separar los tracks de guitarra, bajo y batería en diferentes archivos MIDI.
+	\item \textbf{Entrenamiento.-} Este modulo se encarga de entrenar la red con los archivos MIDI previamente preprocesados.
+	\item \textbf{Generación.-} Este modulo genera nuevas piezas a partir de enviar notas al azar a la red entrenada.
+	\item \textbf{Redes neuronales.-} En este modulo se tienen 3 redes neuronales completamente independientes, una para guitarra, otra para bajo y la ultima para batería.   
+	\item \textbf{Procesador MIDI.-} Este modulo contiene todas las utilerías para el manejo de los archivos MIDI.
+\end{enumerate}
+
+\subsection{Proceso de entrenamiento}
+
+%TODO: documentar todo el proceso de entrenamiento y los resultados
+\subsection{Validación de resultados}
+
+%TODO: documentar los resultados y el proceso de su validación
