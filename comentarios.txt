@@ -1,0 +1,80 @@
+******************** Descripcion del problema.
+
+No es puntual, hay que ser mas conciso en lo que se quiere resolver.
+
+******************** Objetivo General
+
+Creacion de un programa que use algoritmos para servir de apoyo para composicion musical.
+
+******************** Objetivos especificos
+
+Implementar una red neuronal de deep learning ...
+
+Eliminar la parte de la bateria.
+
+******************** Justificacion
+
+Poner referencias almenos 2 o 3 de lo que hicieron y no hicieron,
+
+******************** Estado del arte.
+
+Agregarla
+
+******************** Delimitacion
+
+******************** Organizacion de la tesis
+
+Descripcion de cada capitulo
+
+En el capitulo 2 se mostrara ...
+En el capitulo 3 se mostrara ...
+
+******************** Inteligencia Artificial
+
+poner referencia de las definiciones.
+
+buscar las referencias de lo que se escribio.
+
+irreverente por irrelevantes
+
+************** Aprendizaje
+
+wi por w subindice i
+
+************** Deep Learning
+
+Justificar por que usar deep learning
+
+Poner graficas e imagenes
+
+************** Redes recurrentes
+
+Por que se va a usar este tipo de redes en el proyecto
+
+Poner graficas e imagenes
+
+*************** LSTM
+
+poner graficas e imagenes
+
+*************** Composicion Musical
+
+Cambiar el numero a 2.2
+
+*************** Teoria Musical
+
+Poner libros de donde se esta sacando la informacion
+
+*************** Formato MIDI
+
+Dedicarle un poquito mas de paginas, head first Java
+
+
+
+
+
+
+
+
+
+
