@@ -4,13 +4,13 @@ No es puntual, hay que ser mas conciso en lo que se quiere resolver.
 
 ******************** Objetivo General
 
-Creacion de un programa que use algoritmos para servir de apoyo para composicion musical.
+* Creacion de un programa que use algoritmos para servir de apoyo para composicion musical.
 
 ******************** Objetivos especificos
 
-Implementar una red neuronal de deep learning ...
+* Implementar una red neuronal de deep learning ...
 
-Eliminar la parte de la bateria.
+* Eliminar la parte de la bateria.
 
 ******************** Justificacion
 
@@ -24,10 +24,10 @@ Agregarla
 
 ******************** Organizacion de la tesis
 
-Descripcion de cada capitulo
+* Descripcion de cada capitulo
 
-En el capitulo 2 se mostrara ...
-En el capitulo 3 se mostrara ...
+* En el capitulo 2 se mostrara ...
+* En el capitulo 3 se mostrara ...
 
 ******************** Inteligencia Artificial
 
@@ -39,7 +39,7 @@ irreverente por irrelevantes
 
 ************** Aprendizaje
 
-wi por w subindice i
+*wi por w subindice i
 
 ************** Deep Learning
 
@@ -59,7 +59,7 @@ poner graficas e imagenes
 
 *************** Composicion Musical
 
-Cambiar el numero a 2.2
+* Cambiar el numero a 2.2
 
 *************** Teoria Musical
 
@@ -69,7 +69,9 @@ Poner libros de donde se esta sacando la informacion
 
 Dedicarle un poquito mas de paginas, head first Java
 
+*************** Bibliografia
 
+Poner mas datos de cada referencia
 
 
 
