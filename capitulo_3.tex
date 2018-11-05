@@ -1,66 +1,326 @@
 %IMD PNA http://na.support.keysight.com/pna/help/latest/Applications/Swept_IMD_Configure_External_Source_and_Combiner.htm
-\chapter{Desarrollo}
+\chapter{Teoría musical}
 
 
 
 %%-----------------------------------------------------------------------
 
-\section{Desarrollo del proyecto}
 
-\subsection{Datos}
+%\section{}
 
-La base de datos de archivos midi que se utilizo en este proyecto se llama ''Clean MIDI subset'' la cual se uso en el proyecto \cite{Lear_Coli}. Esta base de datos contiene más de 17,000 canciones en formato MIDI, estas canciones son en su mayoría del género Pop y Rock, por lo que la red utilizada en este proyecto fue entrenada para asimilar este tipo de estilos.
+La teoría musical es el estudio de los elementos que conforman la música. En esta teoría se analizan todos los sonidos involucrados para la creación, análisis y composición musical.
 
-Para el procesamiento de los archivos MIDI se utilizo una librería de software libre llamada Music21, la cual nos permite de una manera fácil trabajar con estos archivos. Esta librería es compatible con Python3 por lo que nuestro programa esta hecho en este lenguaje de programación.
+La música es un arte que se basa en 2 elementos: 
 
-\subsubsection{Delimitación de los Datos}
+\begin{itemize}
+	\item Los sonidos
+	\item Los silencios
+\end{itemize}
 
-Esta es una base de datos demasiada extensa por lo que el tiempo de procesamiento puede ser excesivo si se introducen los datos directamente a una red neuronal, debido a esto se decidió dividirla y solamente usar una parte de ella (1000 canciones unicamente).
+Los sonidos tienen diferentes propiedades las cuales se describen a continuación:
 
-Cada canción tiene una duración promedio de 3 minutos por lo que aunque se este usando solo una parte de las canciones la cantidad de datos es suficiente para lograr entrenar la red con buenos resultados.
+\begin{itemize}
+	\item \textbf{Altura.-} un sonido puede ser agudo, medio o grave, dependiendo de la altura de su nota.
+	\item \textbf{Duración.-} un sonido debe de tener una duración la cual se expresa en unidades de tiempo.
+	\item \textbf{Intensidad.-} esto se refiere al volumen del sonido, puede ser débil o fuerte.
+	\item \textbf{Timbre.-} se le conoce como timbre o color del sonido a como un sonido con la misma nota suena diferente dependiendo del instrumento usado para su interpretación.  
+\end{itemize}
 
-Los archivos MIDI de esta base de datos poseen diferentes Tracks de varios instrumentos de los cuales en este proyecto solamente se tomaran en cuenta los Tracks de guitarra eléctrica limpia, bajo eléctrico con dedos y batería, los demas Tracks serán ignorados.
+Los silencios a su vez su única propiedad intrínseca es la duración, es decir en un silencio lo único que se mide es la duración del mismo.
 
-\subsection{Descripción del proyecto}
+\section{Composición musical}
 
-\subsubsection{Red Neuronal} 
+La composición musical esta catalogado como un arte que tiene como objeto crear nuevas piezas musicales.
 
-La intensión de este proyecto es crear una serie de redes neuronales que sean capaces de procesar las entradas de guitarra, bajo y bateria, Para esto se usaron 3 redes neuronales por separado para procesar los instrumentos, estas redes tienen la siguiente arquitectura:
+Un músico puede optar por varios caminos para la creación de su obra, existen músicos que se basan en su simple sentido común y crean canciones liricamente, sin embargo el proceso formal de composición involucra todos los conceptos musicales básicos de la teoría musical, los cuales se describirán a continuación.
+
+\subsection{Notas musicales}
+
+Las notas es un sistema que se usa para la representación de los diferentes sonidos en la música. En el mundo occidental se usa un sistema de 12 notas, los cuales pueden ser repetidos con diferentes alturas para generar una gama muy amplia de sonidos.
+Dentro de este sistema de 12 notas tenemos las notas naturales y las notas con alteraciones.
+Las notas naturales son:
+
+Do, Re, Mi, Fa, Sol, La, Si   (7 notas)
+
+Las alteraciones no son más que agregar o quitar medios tonos a una nota, para eso se usan los siguientes símbolos:
+
+\begin{itemize}
+	\item \textbf{\# (sostenido).-} se agrega $1/2$ tono a una nota.
+	\item \textbf{x (doble sostenido).-} Se agrega 1 tono a una nota.
+	\item \textbf{$\flat$ (bemol).-} se disminuye $1/2$ tono a una nota.
+	\item \textbf{$\flat\flat$ (doble bemol).-} Se disminuye 1 tono a una nota.  
+\end{itemize}
+
+Usando los símbolos anteriores podemos definir las siguientes notas con alteraciones:
+
+Do\#, Re\#, Fa\#, Sol\#, La\#  (5 notas)
+
+Como se puede observar tanto Mi y Si no tienen sonidos con alteraciones ascendentes, ya que los sonidos producidos por estas alteraciones son igual al de las notas consecutivas, a este tipo de sonidos iguales se les conoce como notas enarmónicas.
+
+Por ejemplo:
+
+\begin{itemize}
+	\item Mi\# sonaría exactamente igual que un Fa.
+	\item Si\# sonaría exactamente igual que un Do.  
+\end{itemize}
+
+También las notas con alteraciones pueden ser representadas usando el símbolo de bemol (b), es decir restando medio tono a una nota. En este caso se tendrían las notas con alteraciones de la siguiente manera:
+
+Re$_\flat$, Mi$_\flat$, Sol$_\flat$, La$_\flat$, Si$_\flat$      (5 notas)
+
+Como se mencionó anteriormente las notas que en sonido son exactamente iguales pero en nomenclatura son diferentes se conocen como notas enarmónicas, de tal manera que las 5 notas con alteraciones que se describieron se pueden hacer una comparación del sonido de las mismas, siendo así se tiene:
+
+\begin{itemize}
+	\item Do\#  suena exactamente igual que Re$_\flat$.
+	\item Re\# suena exactamente igual que Mi$_\flat$. 
+	\item Fa\# suena exactamente igual que Sol$_\flat$. 
+	\item Sol\# suena exactamente igual que La$_\flat$. 
+	\item La\# suena exactamente igual que Si$_\flat$.   
+\end{itemize}
+
+Podemos ver la relación de tonos y semitonos (1/2 tonos) en la siguiente figura:
 
 \begin{figure}[htbp]
-	\centerline{\includegraphics[width=8cm]{estruc_red.png}}
-	\caption{Estructura de la Red neuronal}
-	\label{fig:estruc_red}
+	\centerline{\includegraphics[width=8cm]{tonos.png}}
+	\caption{Relacion de tonos y semitonos}
+	\label{fig:tonos}
 \end{figure}
 
-Las capas de redes LSTM procesan de manera secuencial la información de las matrices generadas a partir de los eventos en los Tracks, las capas de Dropout son usadas para prevenir el sobre entrenamiento de la red, eliminando algunos datos de salida de las redes LSTM, finalmente llega a una capa Dense la cual nos ayuda al aprendizaje de la red. 
+Como se puede observar entre Mi y Fa existe un semitono, al igual que entre Si y Do.
 
-La función de activación que se uso en esta red es una $tanh$, este tipo de activación permite de una manera mas suavizada la activación o desactivación de las neuronas en comparación con una señal sigmoidea
-
-\subsubsection{Arquitectura de la aplicación}
-
-La arquitectura de la aplicación se muestra en la siguiente figura:
+El pentagrama es un sistema de cinco líneas y cuatro espacios para escribir música:
 
 \begin{figure}[htbp]
-	\centerline{\includegraphics[width=10cm]{arq_app.png}}
-	\caption{Arquitectura de la aplicación}
-	\label{fig:arq_app}
+	\centerline{\includegraphics[width=8cm]{pentagrama.png}}
+	\caption{Pentagrama}
+	\label{fig:pentagrama}
 \end{figure}
 
-En esta arquitectura se puede observar que se tiene varios módulos el sistema:
+Este sistema puede tener diferentes elementos dentro de los principales tenemos:
 
-\begin{enumerate}
-	\item \textbf{GUI.-} Este modulo contiene la interfaz de usuario para el programa.
-	\item \textbf{Preprocesamiento.-} Este modulo se encarga de preprocesar los archivos MIDI con el fin de separar los tracks de guitarra, bajo y batería en diferentes archivos MIDI.
-	\item \textbf{Entrenamiento.-} Este modulo se encarga de entrenar la red con los archivos MIDI previamente preprocesados.
-	\item \textbf{Generación.-} Este modulo genera nuevas piezas a partir de enviar notas al azar a la red entrenada.
-	\item \textbf{Redes neuronales.-} En este modulo se tienen 3 redes neuronales completamente independientes, una para guitarra, otra para bajo y la ultima para batería.   
-	\item \textbf{Procesador MIDI.-} Este modulo contiene todas las utilerías para el manejo de los archivos MIDI.
-\end{enumerate}
+\begin{itemize}
+	\item Clave.
+	\item Compás.
+	\item Armadura. 
+	\item Notas.
+\end{itemize}
 
-\subsection{Proceso de entrenamiento}
+\subsection{Claves musicales}
 
-%TODO: documentar todo el proceso de entrenamiento y los resultados
-\subsection{Validación de resultados}
+Las claves musicales se usan para darle nombre y altura a las notas musicales dentro de un pentagrama.
 
-%TODO: documentar los resultados y el proceso de su validación
+Las claves más usadas en la música son: la clave de Sol, la clave de Fa y la clave de Do.
+
+La clave de Sol se usa en instrumentos agudos como la guitarra, violín, entre otros. Esta clave normalmente se escribe empezando en la segunda línea del pentagrama para formar una especie de G. El hecho de que esta clave se escriba en la segunda línea establece que esa línea será llamada como el nombre de la clave, en este caso Sol:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=4cm]{clave_sol.png}}
+	\caption{Clave de Sol en 2da. Linea}
+	\label{fig:clave_sol}
+\end{figure}
+
+La clave de Fa es usada en instrumentos más graves, tales como el contrabajo, el bajo, etc. Normalmente se escribe empezando en la cuarta línea, de tal manera que esta línea tomara el nombre de Fa:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=4cm]{clave_fa.png}}
+	\caption{Clave de Fa en 4ta. Linea}
+	\label{fig:clave_fa}
+\end{figure}
+
+La clave de Do es usada comúnmente para las voces, y esta clave se escribe en diferentes líneas dependiendo del timbre de la voz, para un tenor se usa la clave de Do en 4ta línea, mientras que para un soprano normalmente la clave se usa en 3ra o 2da línea:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=8cm]{clave_do.png}}
+	\caption{Clave de Do en 4ta. y 3ra. linea}
+	\label{fig:clave_do}
+\end{figure}
+
+A partir de estas claves se le puede poner nombre a las diferentes líneas y espacios del pentagrama, por ejemplo en la clave de sol en segunda línea, el pentagrama quedaría de la siguiente forma:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=8cm]{notas_clave_sol.png}}
+	\caption{Nombre de las notas en un pentagrama con clave de Sol}
+	\label{fig:notas_clave_sol}
+\end{figure}
+
+\subsection{Compases y tiempo}
+
+El compás se puede definir como la unidad métrica de la música, es la que nos dice que tiempo llevara la canción.
+
+Existen una infinidad de compases los cuales podemos clasificar en dos grandes grupos:
+
+\begin{itemize}
+	\item Compases regulares.
+	\item Compases irregulares.
+\end{itemize}
+
+Los compases regulares están regidos por formas regulares las cuales dictan el tiempo, mientras que en los compases irregulares hay que determinar la base de tiempo de forma indirecta.
+
+Cada nota puede tener un valor de tiempo y este valor estará determinado por el compás que se esté utilizando, por ejemplo en un compás de 4/4 las figuras musicales tendrán los siguientes valores:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=8cm]{dura_notas.png}}
+	\caption{Duración de las notas musicales}
+	\label{fig:dura_notas}
+\end{figure}
+
+Como se puede observar para cada figura musical existe su silencio correspondiente, el cual tendrá el mismo valor solo que este caso no se producirá sonido alguno.
+
+Podemos tener también los valores relativos de estas notas respecto a otras notas:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=8cm]{valor_rel.png}}
+	\caption{Valor relativo de las notas}
+	\label{fig:valor_rel}
+\end{figure}
+
+De tal manera que en un compás tendremos dos datos los cuales se describen a continuación:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=8cm]{compas.png}}
+	\caption{Compas}
+	\label{fig:valor_rel}
+\end{figure}
+
+Se puede ver que este compas tendrá 2 pulsos y el valor de cada pulso será de un tiempo de negra, ya que el valor relativo de la negra respecto a la redonda es de $1/4$.
+
+Otro punto a considerar en los compases es que estos tienen tiempos fuertes, semifuertes y débiles. La cuadratura de una armonía usa estos tiempos para indicar los cambios que se deben de hacer.
+
+Este es un ejemplo de los tiempos en compases de $4/4$, $3/4$ y $2/4$: 
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=8cm]{tiempos_fd.png}}
+	\caption{Tiempos fuertes y débiles}
+	\label{fig:tiempos_fd}
+\end{figure}
+
+\subsection{Escalas}
+
+Las escalas son una serie de notas musicales que siguen un orden establecido por intervalos desde una nota base. En el mundo de la música hay una infinidad de escalas pero todas parten de la escala mayor de Do:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=8cm]{escala.png}}
+	\caption{Escala de Do Mayor}
+	\label{fig:escala}
+\end{figure}
+
+En la escala mayor se tiene los siguientes intervalos: tono, tono, semitono, tono, tono, tono, semitono, si esta fórmula la aplicamos con las otras notas musicales podremos construir todas las escalas mayores.
+
+Por ejemplo la escala de sol mayor quedaría de la siguiente manera:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=8cm]{escala_sol.png}}
+	\caption{Escala de Sol Mayor}
+	\label{fig:escala_sol}
+\end{figure}
+
+Para poder completar el tono completo de la fórmula de la escala mayor entre Mi y Fa se tuvo que poner una alteración en la nota de Fa.
+
+La única escala mayor que no posee alteraciones es la escala mayor de Do, de ahí en más todas las demás escalas mayores tendrán al menos una alteración.
+
+Las escalas menores parten de la escala mayor obteniendo su sexta nota y siguiendo las mismas notas de la escala mayor. Estas escalas menores se les conocen como menores relativas, ya que se basan en una escala mayor para su formación.
+
+Por ejemplo la escala relativa de Do mayor seria La menor y esta escala posee exactamente las mismas notas que la escala mayor solamente que empieza desde la nota de La:
+
+En este caso las notas son: La, Si, Do, Re, Mi, Fa, Sol, La.
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=8cm]{escala_la_men.png}}
+	\caption{Escala de La menor}
+	\label{fig:escala_la_men}
+\end{figure}
+
+Esta relatividad puede ser usada con todas las escalas mayores para obtener sus relativas menores.
+
+A pesar que las escalas mayores y menores poseen las mismas notas no deben ser nunca confundidas ya que el sonido final producido es muy diferente, mientras las escalas mayores se usan para canciones se puede decir hasta cierto punto alegres, las escalas menores normalmente acompañan melodías melancólicas, esto no es en todos los casos.
+
+\subsection{Armaduras}
+
+Todas las alteraciones de una escala se pueden juntar al inicio del pentagrama para dar lugar a lo que se conoce como armaduras.
+
+Estas armaduras indicaran que todas las notas que poseen alteraciones las mantendrán a lo largo de toda la canción.
+
+Debido a que las escalas mayores y sus relativas menores poseen las mismas alteraciones por lo tanto comparten también la misma armadura:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=6cm]{armadura_sost.png}}
+	\caption{Armaduras relativas con sostenidos}
+	\label{fig:armadura_sost}
+\end{figure}
+
+También podemos tener armaduras con bemoles:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=6cm]{armadura_bem.png}}
+	\caption{Armaduras relativas con bemoles}
+	\label{fig:armadura_bem}
+\end{figure}
+
+\subsection{Tonalidades}
+
+La tonalidad de una canción se basa en la escala base de la canción y esta la podemos averiguar viendo la armadura que posee la canción, aunque como se vio anteriormente las escalas mayores y sus relativas poseen la misma armadura, así que antes de definir la tonalidad en base a la armadura también se debe de hacer un análisis de la interacción de las notas en la canción.
+
+Dentro de las tonalidades tenemos tonalidades mayores y menores, por ejemplo si vemos un pentagrama el cual no posee alteraciones podríamos asumir que la canción esta en Do mayor o en La menor, el siguiente paso sería ver la interacción de las notas en la canción para determinar correctamente la tonalidad.
+
+\subsection{Melodías y Armonías}
+
+Una melodía es una sucesión de notas de forma ascendente o descendente que llevan cierta cordura. 
+
+Las melodías suelen estar formadas por frases y generalmente se repiten a lo largo de una canción variando algunas notas intermedias. En este caso se trata de una sucesión de notas que no son tocadas al mismo tiempo sino que una nota es tocada después de la otra.
+
+Las armonías son una conjunción de sonidos tocados al mismo tiempo, normalmente la sucesión de varios acordes armónicos está ligado directamente con la melodía de la canción.
+
+La armonía ha cambiado considerablemente desde la época de la música barroca hasta la música moderna, anteriormente para generar sistemas armónicos se usaban varios instrumentos tocando una nota en específico y la conjunción de todos los sonidos daba como resultado la armonía, actualmente la armonía es creada a partir de acordes de instrumentos que puedan generar este tipo de condiciones.
+
+Esta es una comparativa para diferenciar entre lo que sería una melodía y una armonía:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=8cm]{melo_armo.png}}
+	\caption{Melodía y Armonía}
+	\label{fig:melo_armo}
+\end{figure}
+
+\section{Formato MIDI}
+
+%TODO: Rf
+% Deep Learning Techniques for Music Generation - {A} Survey  <- Bibliografia
+
+MIDI (Interfaz digital de instrumentos musicales) es un estándar técnico que describe un protocolo, una interfaz digital y conectores para la interoperabilidad entre varios instrumentos musicales electrónicos, software y dispositivos. MIDI transmite mensajes de eventos que especifican información de notas (como tono y velocidad), así como señales de control para parámetros (como volumen, vibrato y señales de reloj). Hay cinco tipos de mensajes y aquí solo consideramos el tipo de Canal de voz, que transmite datos de rendimiento en tiempo real a través de un solo canal. Dos mensajes importantes son:
+
+\begin{itemize}
+	\item \textbf{Note on.-} Indica que una nota debe ser reproducida. Contiene la información de estado (número de canal, especificado por un entero dentro de [0 15] y dos valores de datos: un número de nota MIDI (el tono de la nota, un entero dentro de [0 127]) y una velocidad (que indica cómo la nota es reproducida, un entero dentro de [0 127]). Un ejemplo es <Note on, 0, 60, 50> que interpreta como: "en el canal 1, comienza a reproducir un C medio con una velocidad de 50".
+	\item \textbf{Note off.-} Indica que una nota termina. En esa situación, la velocidad indica qué tan rápido se libera la nota. Un ejemplo es <Note off, 0, 60, 20> que interpreta como: "en el canal 1, deja de reproducir un C medio con una velocidad de 20". 
+\end{itemize}
+
+Cada evento de nota está realmente incrustado en un fragmento de pista, una estructura de datos que contiene un valor de tiempo delta que especifica la información de temporización y el evento en sí. Un valor de tiempo delta representa la posición de tiempo, como un valor absoluto, del evento y podría representar:
+
+\begin{itemize}
+	\item \textbf{Metrical time.-} Representa el numero de pulsos desde el comienzo. Una referencia llamada división y es definida en el encabezado del archivo, especificando cuantos pulsos por nota de cuarto.
+	\item \textbf{time-code-based time.-} Representa el tiempo relacionado con horas, minutos y segundos de la canción. 
+\end{itemize}
+
+Un ejemplo de un extracto de un archivo MIDI y su partitura correspondiente es mostrado en las siguientes figuras. La división ah sido puesta en 384 pulsos por cuarto de nota lo cual corresponde a 96 pulsos por un octavo de nota:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=6cm]{extract_midi.png}}
+	\caption{Extracto de un formato MIDI}
+	\label{fig:extract_midi}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=6cm]{repres_midi.png}}
+	\caption{Partitura correspondiente al extracto MIDI}
+	\label{fig:repres_midi}
+\end{figure}
+
+%Rf
+
+Dentro del formato MIDI se pueden representar en cada track un instrumento diferente eh independiente de los demás, esto permite una fácil manipulación de los diferentes instrumentos. A continuación se muestra una tabla de todos los instrumentos que pueden ser representados en este formato:
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=12cm]{instr_midi.png}}
+	\caption{Instrumentos en formato MIDI}
+	\label{fig:instr_midi}
+\end{figure}
+
+\section{Algoritmo Krumhansl-Schmuckler}
