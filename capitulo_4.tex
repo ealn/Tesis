@@ -5,6 +5,10 @@
 
 \section{Desarrollo del proyecto}
 
+En este proyecto se busca que las redes neuronales sean capaces de aprender las diferentes tonalidades de las canciones, y que puedan crear nuevas composiciones que tengan sentido musicalmente hablando, tomando como base una cancion de entrada en cierta tonalidad. 
+
+Esto sera de gran ayuda para un músico ya que podrá introducir sus propias canciones y en base a las notas de sus canciones la red sera capaz de generar música completamente nueva en la misma tonalidad de la canción de entrada. Estas canciones en definitiva no son composiciones finales, el músico podrá identificar las frases que sean de su agrado y continuar con la composición.
+
 \subsection{Datos}
 
 La base de datos de archivos MIDI que se utilizo en este proyecto se llama ''Clean MIDI subset'' la cual se uso en la tesis doctoral \cite{Lear_Coli}. Esta base de datos contiene más de 17,000 canciones en formato MIDI, estas en su mayoría del género Pop y Rock, por lo que la red utilizada en este proyecto fue entrenada para asimilar este tipo de estilos.
@@ -67,12 +71,132 @@ Como se puede observar en la figura \ref{fig:arq_app} hay algunos modulos que pa
 
 \subsubsection{Preprocesamiento}
 
+En este modulo se realiza el preprocesamiento de la base de datos, esto es con el fin de extraer únicamente los Tracks de guitarra y bajo de los archivos MIDI.
+
+Como se menciono anteriormente esta base de datos tiene archivos de musica pop y rock, sin embargo, no todos los archivos son validos para ser procesados por este programa, debido a que algunos no contienen informacion completa en sus Tracks para su correcto procesamiento usando la libreria Music21.
+
+La libreria Music21 esta enfocada principalmente para hacer reconocimiento de pianos y sus derivados, por lo tanto se tuvo que realizar un reacondicionamiento de esta libreria para el correcto funcionamiento con los instrumentos de guitarra y bajo. 
+
+El modo en que se puede reconocer si un track es de guitarra o de bajo es en base a un evento llamado ''Program Change'', este evento no lo poseen todos los Tracks MIDI por lo que en ocaciones es complicado determinar cual es el instrumento que se esta ejecutando, en estos casos el sintetizador MIDI es el encargado de asignarle un instrumento por defecto, el cual generalmente es el piano.
+
+Estos eventos de ''Program Change'' estan agrupados en familias, de esta manera es mas facil su identificación, como se ah mencionado a nosotros unicamente nos interesa la familia de guitarra y bajo, por lo tanto los unicos "Program Change" que estaremos buscando son:
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			Program Change & Familia \\
+			\hline \hline
+			25-32 & Guitarra \\ \hline
+			33-40 & Bajo \\ \hline
+		\end{tabular}
+		\caption{Familias de guitarra y bajo.}
+		\label{tabla:fam_gui_baj}
+	\end{center}
+\end{table}
+
+Este elemento de ''Program Change'' no es una propiedad inherente de los Tracks, por lo que hay que hacer una busqueda en todos los eventos de cada Track.
+
+Normalmente encontraremos varios Tracks que contengan sonidos de guitarra o bajo en un archivo MIDI y esto se debe que para tocar por ejemplo una guitarra con distorsion se utiliza un Track, y para un sonido limpio se utiliza otro Track. Tambien existen casos en los cuales aun y cuando se trate del mismo sonido las notas están exparsidas en varios Tracks, esto depende de como fue que se creo el archivo MIDI.
+
+Es por estas circunstancias la importancia de tener este modulo, ya que no solamente se encarga de separar los Tracks de guitarra y bajo en archivos separados, sino que tambien valida la integridad de los archivos MIDI y descarta los Tracks que tienen muchos silencios y muy pocas notas activas.
+
+Para tener un procesamiento mas rapido a la hora del proceso de entrenamiento o generacion musical, se realiza la exportacion de las notas y silencios a un archivo de manera serializada, de esta manera nos evitamos estar procesando los archivos MIDI y solamente deserializamos el archivo exportado.
+
+Como se observa en la figura \ref{fig:arq_app} la salida de este modulo seran los archivos preprocesados los cuales son necesarios para realizar la parte de entrenamiento.
+
 \subsubsection{Red neuronal}
+
+En este proyecto se estan utilizando 3 tipos de arquitecturas diferentes para validar cual de las 3 arroja mejores resultados:
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=10cm]{arq_redes.png}}
+	\caption{Arquitectura de las redes usadas}
+	\label{fig:arq_redes}
+\end{figure}
+
+Como se puede observar las 3 redes poseen 3 capas de LSTM sin embargo en las 2 primeras se estan usando unas capas de Dropout intermedias, estas capas realizan la funcion de poner en 0 aleatoriamente algunas entradas para prevenir el sobre entrenamiento, sin embargo en la ultima arquitectura, se eliminaron estas capas para verificar el comportamiento que podría tener una red así.
+
+Otro de los aspectos a verificar es el mejor optimizador, en este caso se esta usando un optimizador RMSProp en la primera y tercera arquitectura. Este optimizador funciona calculando dividiendo la tasa de aprendizaje por un promedio decreciente exponencial de gradientes cuadrados:
+
+\begin{equation}
+E[g^{2}]_t = 0.9E[g^{2}]_{t-1} + 0.1g^{2}_t
+\label{ec:grad_cuad}
+\end{equation}
+
+\begin{equation}
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{E[g^{2}]_t + \epsilon}}g_t
+\label{ec:rmsprop}
+\end{equation}
+
+En la figura \ref{fig:arq_redes} se observa que la primera y segunda red son prácticamente iguales, lo único que las diferencia es que la segunda usa un optimizador Nadam, la cual es una combinación de RMSProp, Momentum y Nesterov:
+
+\begin{equation}
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon}(\beta_1\hat{m}_t + \frac{(1 - \beta_1)g_t}{1 - \beta^{t}_1})
+\label{ec:nadam}
+\end{equation}
+
+Las ultimas capas de las redes son densas las cuales interconectan todas las neuronas de una capa con otra, esto nos permite mejorar la tasa de aprendizaje. 
+
+Finalmente la capa de activación es por medio de una función softmax o función exponencial normalizada, la cual es una generalización de la función logística:
+
+\begin{equation}
+\sigma(z)_j = \frac{e^{z_t}}{\sum_{k=1}^{K}e^{z_k}} \ \  \textup{para $j$ = 1, ..., $K$}
+\label{ec:softmax}
+\end{equation}
 
 \subsubsection{Entrenamiento}
 
+En este modulo se realiza toda la parte del entrenamiento. Es necesario seleccionar el tipo de arquitectura que se usara para el entrenamiento, asi como también el instrumento a entrenar, es importante mencionar que cada instrumento es entrenado por separado.
+
+Se toman los datos preprocesados (archivos exportados con las notas) los cuales son deserializados para obtener un arreglo únicamente con las notas y silencios, con este arreglo se empiezan a generar secuencias de 100 notas y silencios. Estas secuencias son insertadas en forma de matriz a una funcion de mapeo, la cual les asignara un valor único a cada nota, esto es debido que la red neuronal solamente reconoce numeros. Finalmente esta matriz es normalizada para poder ser procesada por la red LSTM.
+
+En la siguiente figura podemos observar como es el flujo de entrenamiento:
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{entrenamiento.png}}
+	\caption{Flujo de entrenamiento}
+	\label{fig:flujo_ent}
+\end{figure}
+
+En este proyecto las diferentes arquitecturas fueron entrenadas con 200 epocas para cada instrumento, obteniendo buenos resultados de salida. Es posible entrenar usando mas epocas sin embargo el poder de procesamiento nos limita un poco a esto, ya que para poder entrenar un instrumento lleva aproximadamente 2 semanas y media por cada red. Se esta usando un servidor de Amazon con tarjetas NVIDIA para realizar todo el proceso de entrenamiento y aun así el tiempo de entrenamiento es bastante considerable.
+
+En cada epoca se verifica si la red esta teniendo una mejora en su aprendizaje, si es asi se guarda un archivo con todos los pesos de las neuronas, con esto nos aseguramos de siempre guardar los mejores valores de pesos.
+
+Además de este archivo de pesos, también se guarda un histórico con los valores de aprendizaje y de disminución del error, para poder graficarlo después y ver como fue evolucionando nuestra red.
+
+De todo el conjunto de entrenamiento se usa un 75\% para la fase de entrenamiento y el otro 25\% para la fase de validación, de esta manera tenemos un gran conjunto de validación. 
+
+Los datos son introducidos a la red en forma de lotes, cada uno de tamaño 64 y la actualización de los pesos de la red se realiza después de que cada lote sea procesado.
+
 \subsubsection{Generación}
 
+Este es el modulo encargado de la generación de nuevas canciones en base a una cancion de entrada, y una red entrenada para guitarra y bajo.
+
+El usuario puede elegir con cual arquitectura realizar la generación musical, sin embargo, es importante mencionar que si no se tiene entrenada la arquitectura tanto para guitarra como para bajo no podrá ser usada.
+
+La forma en que funciona este modulo es tomando una cancion de la base de datos preprocesados (archivos exportados con las notas), este archivo es deserializado para obtener un arreglo de notas y silencios, con el cual se generaran secuencias de 100 notas y silencios, tal como en el caso del modulo de entrenamiento son puestas en una matriz para posteriormente pasarlas por una función de mapeo.
+
+Las secuencias son insertadas a la red una por una y usando la funcionalidad de prediccion de la red, se obtiene una secuencia de salida con las ponderaciones de la proximidad a la siguiente nota. Esta secuencia se analiza y se toma el numero mayor para descubrir cual es la siguiente nota generada. Este proceso se repite hasta tener el numero de notas deseadas por el usuario.
+
+En esta figura se puede visualizar mas fácil este procedimiento:
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=16cm]{generacion.png}}
+	\caption{Flujo de generación de notas}
+	\label{fig:flujo_gen}
+\end{figure}
+
+El modulo generara la salida de guitarra y la de bajo, para posteriormente juntarlas en una sola cancion y el usuario podrá elegir si desea que la salida posea los mismos instrumentos de la canción base.
+
+La canción de salida deberá tener la misma tonalidad de la canción base, esto no siempre se puede cumplir ya que la red no tiene un 100\% de eficacia, sin embargo, los resultados obtenidos en este proyecto fueron bastante alentadores llegando a un máximo de 75\% aproximadamente. 
+
+Las canciones son guardadas con un numero genérico seguido de una numeración, esto es para poder generar muchas canciones sin preocuparnos de que se puedan sobreescribir canciones anteriormente creadas.
+
 \subsubsection{Analizador}
+
+Finalmente el modulo de analizador como su nombre lo dice es el encargado de analizar las canciones generadas por el programa.
+
+Si no se tienen canciones generadas por el programa este modulo no podrá ser usado.
 
 \section{Resultados}
