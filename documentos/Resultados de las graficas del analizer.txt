@@ -1,0 +1,42 @@
+Arquitectura 1
+
+
+Ploting: Guitar Key validation
+Element[0] Init=2.251 end=64.2632 min=2.251 max=64.2632
+
+Ploting: Bass Key validation
+Element[0] Init=3.1204 end=65.3834 min=3.1204 max=67.5041
+
+
+Arquitectura 2
+
+
+Ploting: Guitar Key validation
+Element[0] Init=3.1008 end=49.8122 min=3.1008 max=49.8122
+
+Ploting: Bass Key validation
+Element[0] Init=2.127 end=36.0719 min=2.127 max=37.6297
+
+
+Arquitectura 3
+
+
+Ploting: Guitar Key validation
+Element[0] Init=0.0021 end=10.9422 min=0.0021 max=10.9422
+
+Ploting: Bass Key validation
+Element[0] Init=0.0022 end=11.8519 min=0.0022 max=11.8865
+
+
+Todas las arquitecturas juntas
+
+
+Ploting: Guitar Key validation
+Element[0] Init=2.251 end=64.2632 min=2.251 max=64.2632
+Element[1] Init=3.1008 end=49.8122 min=3.1008 max=49.8122
+Element[2] Init=0.0021 end=10.9422 min=0.0021 max=10.9422
+
+Ploting: Bass Key validation
+Element[0] Init=3.1204 end=65.3834 min=3.1204 max=67.5041
+Element[1] Init=2.127 end=36.0719 min=2.127 max=37.6297
+Element[2] Init=0.0022 end=11.8519 min=0.0022 max=11.8865

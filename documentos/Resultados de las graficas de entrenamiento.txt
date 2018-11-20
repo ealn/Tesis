@@ -1,0 +1,53 @@
+Arquitectura 1
+
+Ploting: Guitar Training error vs Validation error
+Element[0] Init=6.641 end=1.3161 min=1.3055 max=6.641
+Element[1] Init=6.0144 end=4.1383 min=3.0009 max=6.0167
+
+Ploting: Guitar Training accurancy vs Validation accurancy
+Element[0] Init=0.0001 end=0.5666 min=0.0001 max=0.7226
+Element[1] Init=0.0001 end=0.5818 min=0.0001 max=0.5818
+
+Ploting: Bass Training error vs Validation error
+Element[0] Init=5.7464 end=2.3281 min=2.2614 max=5.7531
+Element[1] Init=6.0615 end=2.8547 min=2.8547 max=6.062
+
+Ploting: Bass Training accurancy vs Validation accurancy
+Element[0] Init=0.0034 end=0.7408 min=0.0034 max=0.7408
+Element[1] Init=0.0014 end=0.5228 min=0.0014 max=0.617
+
+Arquitectura 2
+
+Ploting: Guitar Training error vs Validation error
+Element[0] Init=6.1054 end=1.8103 min=1.4658 max=6.1138
+Element[1] Init=6.2114 end=4.4766 min=4.3697 max=6.2126
+
+Ploting: Guitar Training accurancy vs Validation accurancy
+Element[0] Init=0.0 end=0.5558 min=0.0 max=0.6555
+Element[1] Init=0.0007 end=0.4273 min=0.0007 max=0.4273
+
+Ploting: Bass Training error vs Validation error
+Element[0] Init=5.3796 end=2.2061 min=2.115 max=5.3796
+Element[1] Init=6.4556 end=4.2744 min=3.8736 max=6.4556
+
+Ploting: Bass Training accurancy vs Validation accurancy
+Element[0] Init=0.0024 end=0.617 min=0.0017 max=0.6426
+Element[1] Init=0.0008 end=0.2988 min=0.0008 max=0.3683
+
+Arquitectura 3
+
+Ploting: Guitar Training error vs Validation error
+Element[0] Init=11.8742 end=14.1156 min=11.8739 max=14.6645
+Element[1] Init=13.743 end=15.4095 min=13.743 max=15.7345
+
+Ploting: Guitar Training accurancy vs Validation accurancy
+Element[0] Init=0.001 end=0.1702 min=0.0004 max=0.1964
+Element[1] Init=0.0006 end=0.0969 min=0.0002 max=0.1328
+
+Ploting: Bass Training error vs Validation error
+Element[0] Init=12.0105 end=14.4731 min=12.0105 max=14.5983
+Element[1] Init=16.112 end=17.1656 min=16.112 max=17.2226
+
+Ploting: Bass Training accurancy vs Validation accurancy
+Element[0] Init=0.0 end=0.1507 min=0.0 max=0.1734
+Element[1] Init=0.0002 end=0.1297 min=0.0002 max=0.1368
