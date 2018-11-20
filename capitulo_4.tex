@@ -195,8 +195,32 @@ Las canciones son guardadas con un numero genérico seguido de una numeración, es
 
 \subsubsection{Analizador}
 
-Finalmente el modulo de analizador como su nombre lo dice es el encargado de analizar las canciones generadas por el programa.
+Finalmente el modulo de analizador como su nombre lo dice es el encargado de analizar las canciones generadas por el programa. Si no se tienen canciones generadas por el programa este modulo no podrá ser usado.
 
-Si no se tienen canciones generadas por el programa este modulo no podrá ser usado.
+Este modulo contiene 3 utilerias:
+
+\begin{itemize}
+	\item Visor.
+	\item Reproductor.
+	\item Analizador.
+\end{itemize}
+
+El visor nos permite visualizar una cancion en forma de tablatura en el programa que tengamos configurado por defecto en Music21, esto nos permite analizar las alturas y los intervalos entre las notas, así como también visualizar como se entrelazan la parte de guitarra con el bajo en la canción generada.
+
+Es posible realizar modificaciones a las canciones creadas usando el visor, y verificar como se escucha con estas modificaciones. En este caso se tiene configurado MuseScore con Music21, el cual es un programa gratis para crear, reproducir e imprimir partituras.
+
+El reproductor permite reproducir las canciones generadas en el reproductor por defecto instalado en Windows. Es importante mencionar que cada reproductor tiene su propio sonido a la hora de reproducir los archivos MIDI.
+
+El analizador utiliza el algoritmo de Krumhansl-Schmuckler para realizar el calculo de la tonalidad de la canción generada. Este algoritmo retorna un arreglo con las posibles tonalidades de la canción, siendo el primer elemento la tonalidad con mayor probabilidad.
+
+Para el calculo de la tonalidad se toma en cuenta las notas de las escalas para las diferentes tonalidades. Como se vio en el capitulo de Teoría musical, cada tonalidad tiene sus propias alteraciones, sin embargo existen tonalidades relativas, las cuales poseen exactamente las mismas alteraciones, por lo que en ocasiones este algoritmo determina que la tonalidad de la canción es una tonalidad relativa, en este caso tomamos como un calculo correcto, ya que para determinar mas a fondo si es una tonalidad relativa o no, es necesario analizar las notas dominantes de las canciones, así como las funciones tonales.
+
+Una vez obtenida la tonalidad con este algoritmo, se compara contra la tonalidad con la que fue creada esta canción, si son iguales, lo catalogamos como un caso exitoso, de esta manera podemos verificar si nuestra red en realidad esta aprendiendo a crear canciones con diferentes tonalidades.
 
 \section{Resultados}
+
+
+
+\subsection{Etapa de entrenamiento}
+
+\subsection{Etapa de generacion}
