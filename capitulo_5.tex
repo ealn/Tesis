@@ -1,11 +1,419 @@
 %IMD PNA http://na.support.keysight.com/pna/help/latest/Applications/Swept_IMD_Configure_External_Source_and_Combiner.htm
-\chapter{Conclusiones}
-
-
+\chapter{Resultados}
 
 %%-----------------------------------------------------------------------
 
+En esta sección se presentaran los resultados obtenidos de los diferentes experimentos que se realizaron en esta tesis. Estos experimentos se dividieron en 3 secciones:
+
+\begin{itemize} [noitemsep]
+	\item Etapa de entrenamiento.
+	\item Etapa de generación.
+	\item Etapa de validación.
+\end{itemize}
+
+\section{Etapa de entrenamiento}
+
+En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se entrenaron por 200 epocas, obteniendo los resultados presentados a continuación.
+
+\subsection{Arquitectura 1}
+
+\subsubsection{Guitarra}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq1_guitar_error.png}}
+	\caption{Grafica de error para guitarra en arquitectura 1}
+	\label{fig:arq1_guitar_error}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Fase & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Entrenamiento & 6.6410 & 1.3161 & 1.3055 & 6.6410 \\ \hline
+			Validación    & 6.0144 & 4.1383 & 3.0009 & 6.0167 \\ \hline
+		\end{tabular}
+		\caption{Valores de error para guitarra en arquitectura 1.}
+		\label{tabla:val_error_gui_arq1}
+	\end{center}
+\end{table}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq1_guitar_acc.png}}
+	\caption{Grafica de aprendizaje para guitarra en arquitectura 1}
+	\label{fig:arq1_guitar_acc}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Fase & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Entrenamiento & 0.0001 & 0.5666 & 0.0001 & 0.7226 \\ \hline
+			Validación    & 0.0001 & 0.5818 & 0.0001 & 0.5818 \\ \hline
+		\end{tabular}
+		\caption{Valores de aprendizaje para guitarra en arquitectura 1.}
+		\label{tabla:val_acc_gui_arq1}
+	\end{center}
+\end{table}
+
+\subsubsection{Bajo}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq1_bass_error.png}}
+	\caption{Grafica de error para bajo en arquitectura 1}
+	\label{fig:arq1_bass_error}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Fase & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Entrenamiento & 5.7464 & 2.3281 & 2.2614 & 5.7531 \\ \hline
+			Validación    & 6.0615 & 2.8547 & 2.8547 & 6.0620 \\ \hline
+		\end{tabular}
+		\caption{Valores de error para bajo en arquitectura 1.}
+		\label{tabla:val_error_bass_arq1}
+	\end{center}
+\end{table}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq1_bass_acc.png}}
+	\caption{Grafica de aprendizaje para bajo en arquitectura 1}
+	\label{fig:arq1_bass_acc}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Fase & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Entrenamiento & 0.0034 & 0.7408 & 0.0034 & 0.7408 \\ \hline
+			Validación    & 0.0014 & 0.5228 & 0.0014 & 0.6170 \\ \hline
+		\end{tabular}
+		\caption{Valores de aprendizaje para bajo en arquitectura 1.}
+		\label{tabla:val_acc_bass_arq1}
+	\end{center}
+\end{table}
+
+\subsection{Arquitectura 2}
+
+\subsubsection{Guitarra}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq2_guitar_error.png}}
+	\caption{Grafica de error para guitarra en arquitectura 2}
+	\label{fig:arq2_guitar_error}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Fase & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Entrenamiento & 6.1054 & 1.8103 & 1.4658 & 6.1138 \\ \hline
+			Validación    & 6.2114 & 4.4766 & 4.3697 & 6.2126 \\ \hline
+		\end{tabular}
+		\caption{Valores de error para guitarra en arquitectura 2.}
+		\label{tabla:val_error_gui_arq2}
+	\end{center}
+\end{table}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq2_guitar_acc.png}}
+	\caption{Grafica de aprendizaje para guitarra en arquitectura 2}
+	\label{fig:arq2_guitar_acc}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Fase & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Entrenamiento & 0.0000 & 0.5558 & 0.0000 & 0.6555 \\ \hline
+			Validación    & 0.0007 & 0.4273 & 0.0007 & 0.4273 \\ \hline
+		\end{tabular}
+		\caption{Valores de aprendizaje para guitarra en arquitectura 2.}
+		\label{tabla:val_acc_gui_arq2}
+	\end{center}
+\end{table}
+
+\subsubsection{Bajo}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq2_bass_error.png}}
+	\caption{Grafica de error para bajo en arquitectura 2}
+	\label{fig:arq2_bass_error}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Fase & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Entrenamiento & 5.3796 & 2.2061 & 2.1150 & 5.3796 \\ \hline
+			Validación    & 6.4556 & 4.2744 & 3.8736 & 6.4556 \\ \hline
+		\end{tabular}
+		\caption{Valores de error para bajo en arquitectura 2.}
+		\label{tabla:val_error_bass_arq2}
+	\end{center}
+\end{table}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq2_bass_acc.png}}
+	\caption{Grafica de aprendizaje para bajo en arquitectura 2}
+	\label{fig:arq2_bass_acc}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Fase & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Entrenamiento & 0.0024 & 0.6170 & 0.0017 & 0.6426 \\ \hline
+			Validación    & 0.0008 & 0.2988 & 0.0008 & 0.3683 \\ \hline
+		\end{tabular}
+		\caption{Valores de aprendizaje para bajo en arquitectura 2.}
+		\label{tabla:val_acc_bass_arq2}
+	\end{center}
+\end{table}
+
+\subsection{Arquitectura 3}
+
+\subsubsection{Guitarra}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq3_guitar_error.png}}
+	\caption{Grafica de error para guitarra en arquitectura 3}
+	\label{fig:arq3_guitar_error}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Fase & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Entrenamiento & 11.8742 & 14.1156 & 11.8739 & 14.6645 \\ \hline
+			Validación    & 13.7430 & 15.4095 & 13.7430 & 15.7345 \\ \hline
+		\end{tabular}
+		\caption{Valores de error para guitarra en arquitectura 3.}
+		\label{tabla:val_error_gui_arq3}
+	\end{center}
+\end{table}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq3_guitar_acc.png}}
+	\caption{Grafica de aprendizaje para guitarra en arquitectura 3}
+	\label{fig:arq3_guitar_acc}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Fase & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Entrenamiento & 0.0010 & 0.1702 & 0.0004 & 0.1964 \\ \hline
+			Validación    & 0.0006 & 0.0969 & 0.0002 & 0.1328 \\ \hline
+		\end{tabular}
+		\caption{Valores de aprendizaje para guitarra en arquitectura 3.}
+		\label{tabla:val_acc_gui_arq3}
+	\end{center}
+\end{table}
+
+\subsubsection{Bajo}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq3_bass_error.png}}
+	\caption{Grafica de error para bajo en arquitectura 3}
+	\label{fig:arq3_bass_error}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Fase & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Entrenamiento & 12.0105 & 14.4731 & 12.0105 & 14.5983 \\ \hline
+			Validación    & 16.1120 & 17.1656 & 16.1120 & 17.2226 \\ \hline
+		\end{tabular}
+		\caption{Valores de error para bajo en arquitectura 3.}
+		\label{tabla:val_error_bass_arq3}
+	\end{center}
+\end{table}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq3_bass_acc.png}}
+	\caption{Grafica de aprendizaje para bajo en arquitectura 3}
+	\label{fig:arq3_bass_acc}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Fase & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Entrenamiento & 0.0000 & 0.1507 & 0.0000 & 0.1734 \\ \hline
+			Validación    & 0.0002 & 0.1297 & 0.0002 & 0.1368 \\ \hline
+		\end{tabular}
+		\caption{Valores de aprendizaje para bajo en arquitectura 3.}
+		\label{tabla:val_acc_bass_arq3}
+	\end{center}
+\end{table}
+
+\subsection{Comparativa de las arquitecturas}
 
 
 
 
+\section{Etapa de generación}
+
+\subsection{Arquitectura 1}
+
+\subsection{Arquitectura 2}
+
+\subsection{Arquitectura 3}
+
+\subsection{Comparativa de las arquitecturas}
+
+\section{Etapa de validación}
+
+\subsection{Arquitectura 1}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq1_guitar_val.png}}
+	\caption{Gráfica de validación para guitarra en arquitectura 1}
+	\label{fig:arq1_guitar_val}
+\end{figure}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq1_bass_val.png}}
+	\caption{Gráfica de validación para bajo en arquitectura 1}
+	\label{fig:arq1_bass_val}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Instrumento & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Guitarra & 2.2510 & 64.2632 & 2.2510 & 64.2632 \\ \hline
+			Bajo     & 3.1204 & 65.3834 & 3.1204 & 67.5041 \\ \hline
+		\end{tabular}
+		\caption{Valores de validación para la arquitectura 1.}
+		\label{tabla:val_arq1}
+	\end{center}
+\end{table}
+
+\subsection{Arquitectura 2}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq2_guitar_val.png}}
+	\caption{Gráfica de validación para guitarra en arquitectura 2}
+	\label{fig:arq1_guitar_val}
+\end{figure}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq2_bass_val.png}}
+	\caption{Gráfica de validación para bajo en arquitectura 2}
+	\label{fig:arq2_bass_val}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Instrumento & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Guitarra & 3.1008 & 49.8122 & 3.1008 & 49.8122 \\ \hline
+			Bajo     & 2.1270 & 36.0719 & 2.1270 & 37.6297 \\ \hline
+		\end{tabular}
+		\caption{Valores de validación para la arquitectura 2.}
+		\label{tabla:val_arq2}
+	\end{center}
+\end{table}
+
+\subsection{Arquitectura 3}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq3_guitar_val.png}}
+	\caption{Gráfica de validación para guitarra en arquitectura 3}
+	\label{fig:arq3_guitar_val}
+\end{figure}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arq3_bass_val.png}}
+	\caption{Gráfica de validación para bajo en arquitectura 3}
+	\label{fig:arq3_bass_val}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Instrumento & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			Guitarra & 0.0021 & 10.9422 & 0.0021 & 10.9422 \\ \hline
+			Bajo     & 0.0022 & 11.8519 & 0.0022 & 11.8865 \\ \hline
+		\end{tabular}
+		\caption{Valores de validación para la arquitectura 3.}
+		\label{tabla:val_arq3}
+	\end{center}
+\end{table}
+
+\subsection{Comparativa de las arquitecturas}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arqt_guitar_val.png}}
+	\caption{Gráfica comparativa de arquitecturas para guitarra}
+	\label{fig:arqt_guitar_val}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Arquitectura & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			1 & 2.2510 & 64.2632 & 2.2510 & 64.2632 \\ \hline
+			2 & 3.1008 & 49.8122 & 3.1008 & 49.8122 \\ \hline
+			3 & 0.0021 & 10.9422 & 0.0021 & 10.9422 \\ \hline
+		\end{tabular}
+		\caption{Valores de validación de guitarra para la comparación de arquitecturas.}
+		\label{tabla:val_gui_comp}
+	\end{center}
+\end{table}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{arqt_bass_val.png}}
+	\caption{Gráfica comparativa de arquitecturas para bajo}
+	\label{fig:arqt_bass_val}
+\end{figure}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Arquitectura & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			1 & 3.1204 & 65.3834 & 3.1204 & 67.5041 \\ \hline
+			2 & 2.1270 & 36.0719 & 2.1270 & 37.6297 \\ \hline
+			3 & 0.0022 & 11.8519 & 0.0022 & 11.8865 \\ \hline
+		\end{tabular}
+		\caption{Valores de validación de bajo para la comparación de arquitecturas.}
+		\label{tabla:val_bass_comp}
+	\end{center}
+\end{table}

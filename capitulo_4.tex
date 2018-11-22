@@ -3,13 +3,11 @@
 
 %%-----------------------------------------------------------------------
 
-\section{Desarrollo del proyecto}
-
 En este proyecto se busca que las redes neuronales sean capaces de aprender las diferentes tonalidades de las canciones, y que puedan crear nuevas composiciones que tengan sentido musicalmente hablando, tomando como base una cancion de entrada en cierta tonalidad. 
 
 Esto sera de gran ayuda para un músico ya que podrá introducir sus propias canciones y en base a las notas de sus canciones la red sera capaz de generar música completamente nueva en la misma tonalidad de la canción de entrada. Estas canciones en definitiva no son composiciones finales, el músico podrá identificar las frases que sean de su agrado y continuar con la composición.
 
-\subsection{Datos}
+\section{Datos}
 
 La base de datos de archivos MIDI que se utilizo en este proyecto se llama ''Clean MIDI subset'' la cual se uso en la tesis doctoral \cite{Lear_Coli}. Esta base de datos contiene más de 17,000 canciones en formato MIDI, estas en su mayoría del género Pop y Rock, por lo que la red utilizada en este proyecto fue entrenada para asimilar este tipo de estilos.
 
@@ -19,7 +17,7 @@ Los archivos MIDI de esta base de datos poseen varios Tracks, cada uno con un in
 
 Cada canción tiene una duración promedio de 3 minutos, por lo que la cantidad de notas que procesa la red es bastante considerable.
 
-\subsection{Arquitectura de la aplicación}
+\section{Arquitectura de la aplicación}
 
 Este proyecto posee varios modulos, cada uno funciona independientemente de los otros, sin embargo existen interconexiones entre ellos para el paso de información, esto nos permite tener una buena modulación del código y realizar cambios en un modulo sin afectar a los otros.
 
@@ -54,7 +52,7 @@ Mientras que los elementos pasivos son:
 
 A continuación se describirán cada modulo del sistema.
 
-\subsubsection{UI}
+\subsection{UI}
 
 Este modulo es una pequeña interfaz de usuario de consola basada en menus, la cual nos permite accesar a los otros modulos del sistema.
 
@@ -69,7 +67,7 @@ El menu principal contiene el acceso a los siguientes modulos:
 
 Como se puede observar en la figura \ref{fig:arq_app} hay algunos modulos que para poderse ejecutar es necesario ejecutar otro modulo primero, con el fin de obtener la información necesaria para este modulo. El único modulo que no tiene condicionantes es el de Preprocesamiento, por lo tanto es el primer modulo que se debería de ejecutar en el programa.
 
-\subsubsection{Preprocesamiento}
+\subsection{Preprocesamiento}
 
 En este modulo se realiza el preprocesamiento de la base de datos, esto es con el fin de extraer únicamente los Tracks de guitarra y bajo de los archivos MIDI.
 
@@ -105,7 +103,7 @@ Para tener un procesamiento mas rapido a la hora del proceso de entrenamiento o 
 
 Como se observa en la figura \ref{fig:arq_app} la salida de este modulo seran los archivos preprocesados los cuales son necesarios para realizar la parte de entrenamiento.
 
-\subsubsection{Red neuronal}
+\subsection{Red neuronal}
 
 En este proyecto se estan utilizando 3 tipos de arquitecturas diferentes para validar cual de las 3 arroja mejores resultados:
 
@@ -145,7 +143,7 @@ Finalmente la capa de activación es por medio de una función softmax o función e
 \label{ec:softmax}
 \end{equation}
 
-\subsubsection{Entrenamiento}
+\subsection{Entrenamiento}
 
 En este modulo se realiza toda la parte del entrenamiento. Es necesario seleccionar el tipo de arquitectura que se usara para el entrenamiento, asi como también el instrumento a entrenar, es importante mencionar que cada instrumento es entrenado por separado.
 
@@ -169,7 +167,7 @@ De todo el conjunto de entrenamiento se usa un 75\% para la fase de entrenamient
 
 Los datos son introducidos a la red en forma de lotes, cada uno de tamaño 64 y la actualización de los pesos de la red se realiza después de que cada lote sea procesado.
 
-\subsubsection{Generación}
+\subsection{Generación}
 
 Este es el modulo encargado de la generación de nuevas canciones en base a una cancion de entrada, y una red entrenada para guitarra y bajo.
 
@@ -193,7 +191,7 @@ La canción de salida deberá tener la misma tonalidad de la canción base, esto no
 
 Las canciones son guardadas con un numero genérico seguido de una numeración, esto es para poder generar muchas canciones sin preocuparnos de que se puedan sobreescribir canciones anteriormente creadas.
 
-\subsubsection{Analizador}
+\subsection{Analizador}
 
 Finalmente el modulo de analizador como su nombre lo dice es el encargado de analizar las canciones generadas por el programa. Si no se tienen canciones generadas por el programa este modulo no podrá ser usado.
 
@@ -217,36 +215,3 @@ Para el calculo de la tonalidad se toma en cuenta las notas de las escalas para 
 
 Una vez obtenida la tonalidad con este algoritmo, se compara contra la tonalidad con la que fue creada esta canción, si son iguales, lo catalogamos como un caso exitoso, de esta manera podemos verificar si nuestra red en realidad esta aprendiendo a crear canciones con diferentes tonalidades.
 
-\section{Resultados}
-
-En esta sección se presentaran los resultados obtenidos de los diferentes experimentos que se realizaron en esta tesis. Estos experimentos se dividieron en 3 secciones:
-
-\begin{itemize} [noitemsep]
-	\item Etapa de entrenamiento.
-	\item Etapa de generación.
-	\item Etapa de validación.
-\end{itemize}
-
-\subsection{Etapa de entrenamiento}
-
-En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se entrenaron por 200 epocas, obteniendo los resultados presentados a continuación.
-
-\subsubsection{Arquitectura 1}
-
-\subsubsection{Arquitectura 2}
-
-\subsubsection{Arquitectura 3}
-
-\subsubsection{Comparativa de las arquitecturas}
-
-\subsection{Etapa de generación}
-
-\subsubsection{Arquitectura 1}
-
-\subsubsection{Arquitectura 2}
-
-\subsubsection{Arquitectura 3}
-
-\subsubsection{Comparativa de las arquitecturas}
-
-\subsection{Etapa de validación}
