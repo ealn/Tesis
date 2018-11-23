@@ -11,6 +11,8 @@ En esta sección se presentaran los resultados obtenidos de los diferentes experi
 	\item Etapa de validación.
 \end{itemize}
 
+En cada etapa se intenta evaluar a los diferentes instrumentos de la manera mas objetiva posible.
+
 \section{Etapa de entrenamiento}
 
 En la etapa de entrenamiento se usaron las 3 diferentes arquitecturas de redes neuronales de manera independiente, es decir, primeramente se entreno con una arquitectura y se guardaron los mejores valores de los pesos, para posteriormente realizar el mismo procedimiento con las otras arquitecturas. 
@@ -365,6 +367,8 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 
 \subsubsection{Guitarra}
 
+En la tabla \ref{tabla:comp_arqt_guitar_error} vemos que en la fase de entrenamiento la arquitectura que mejor redujo el error fue la arquitectura 1 con un valor final de 1.3161, la arquitectura 2 dio un buen desempeño reduciendo el error hasta 1.8103 y finalmente, la arquitectura 3 presento el peor desempeño disminuyendo este valor.
+
 \begin{table}[H]
 	\begin{center}
 		\begin{tabular}{|l|l|l|l|l|}
@@ -379,6 +383,8 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 		\label{tabla:comp_arqt_guitar_error}
 	\end{center}
 \end{table}
+
+En la tabla \ref{tabla:comp_arqt_guitar_error_val} vemos que en la fase de validación la arquitectura que mejor redujo el error fue la arquitectura 1 con un valor final de 4.1383, la arquitectura 2 dio un buen desempeño reduciendo el error hasta 4.4766 y finalmente, la arquitectura 3 presento el peor desempeño disminuyendo este valor.
 
 \begin{table}[H]
 	\begin{center}
@@ -395,6 +401,8 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 	\end{center}
 \end{table}
 
+En la tabla \ref{tabla:comp_arqt_guitar_acc} vemos que en la fase de entrenamiento la arquitectura que mejor aprendió fue la arquitectura 1 con un valor final de 56.66\%, seguido muy de cerca por la arquitectura 2 con un 55.58\% y finalmente, la arquitectura 3 presento el peor desempeño en este concepto.
+
 \begin{table}[H]
 	\begin{center}
 		\begin{tabular}{|l|l|l|l|l|}
@@ -409,6 +417,8 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 		\label{tabla:comp_arqt_guitar_acc}
 	\end{center}
 \end{table}
+
+En la tabla \ref{tabla:comp_arqt_guitar_acc_val} vemos que en la fase de validación la arquitectura que mejor aprendió fue la arquitectura 1 con un valor final de 58.18\%, en segundo lugar tenemos a la arquitectura 2 con un 42.73\% y finalmente, la arquitectura 3 presento el peor desempeño en este concepto.
 
 \begin{table}[H]
 	\begin{center}
@@ -427,6 +437,8 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 
 \subsubsection{Bajo}
 
+En la tabla \ref{tabla:comp_arqt_bass_error} vemos que en la fase de entrenamiento la arquitectura que mejor redujo el error fue la arquitectura 2 con un valor final de 2.2061, la arquitectura 1 dio un buen desempeño reduciendo el error hasta 2.3281 y finalmente, la arquitectura 3 presento el peor desempeño disminuyendo este valor.
+
 \begin{table}[H]
 	\begin{center}
 		\begin{tabular}{|l|l|l|l|l|}
@@ -441,6 +453,8 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 		\label{tabla:comp_arqt_bass_error}
 	\end{center}
 \end{table}
+
+En la tabla \ref{tabla:comp_arqt_bass_error_val} vemos que en la fase de validación la arquitectura que mejor redujo el error fue la arquitectura 1 con un valor final de 2.8547, la arquitectura 2 no redujo el error como era de esperarse quedando con un valor final de 4.2744 y finalmente, la arquitectura 3 presento el peor desempeño disminuyendo este valor.
 
 \begin{table}[H]
 	\begin{center}
@@ -457,6 +471,8 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 	\end{center}
 \end{table}
 
+En la tabla \ref{tabla:comp_arqt_bass_acc} vemos que en la fase de entrenamiento la arquitectura que mejor aprendió fue la arquitectura 1 con un valor final de 74.08\%, seguido por la arquitectura 2 con un 61.70\% y finalmente, la arquitectura 3 presento el peor desempeño en este concepto.
+
 \begin{table}[H]
 	\begin{center}
 		\begin{tabular}{|l|l|l|l|l|}
@@ -471,6 +487,8 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 		\label{tabla:comp_arqt_bass_acc}
 	\end{center}
 \end{table}
+
+En la tabla \ref{tabla:comp_arqt_bass_acc_val} vemos que en la fase de validación la arquitectura que mejor aprendió fue la arquitectura 1 con un valor final de 52.28\%, en segundo lugar tenemos a la arquitectura 2 con un 29.88\% y finalmente, la arquitectura 3 presento el peor desempeño en este concepto.
 
 \begin{table}[H]
 	\begin{center}
@@ -489,6 +507,8 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 
 \section{Etapa de generación}
 
+En esta etapa se evaluara la salida de las redes desde un concepto musical.
+
 \subsection{Arquitectura 1}
 
 \subsection{Arquitectura 2}
@@ -499,7 +519,15 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 
 \section{Etapa de validación}
 
+Durante esta etapa se evaluaron 100 canciones creadas usando las diferentes arquitecturas y aplicandoles el algoritmo de Krumhansl-Schmuckler para determinar la tonalidad final de las notas de cada instrumento.
+
+Cada composición es hecha a partir de una cancion base, esta cancion posee una tonalidad ya establecida y la red debe de ser capaz de crear una nueva composición tomando como base las notas de esta cancion, la nueva pieza debería tener la misma tonalidad que la canción base, esto nos indica que nuestra red es capaz de identificar tonalidades y de crear nuevas cosas en base a estas.
+
+La salida de cada instrumento es generado de manera independiente usando el Track correspondiente de la cancion base.
+
 \subsection{Arquitectura 1}
+
+Para la arquitectura 1 se obtuvieron los siguientes resultados:
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq1_guitar_val.png}}
@@ -507,11 +535,16 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 	\label{fig:arq1_guitar_val}
 \end{figure}
 
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq1_bass_val.png}}
 	\caption{Gráfica de validación para bajo en arquitectura 1}
 	\label{fig:arq1_bass_val}
 \end{figure}
+
+En las figuras \ref{fig:arq1_guitar_val} y \ref{fig:arq1_bass_val} se puede observar que conforme van pasando las epocas, el numero de canciones creadas que poseen la misma tonalidad que la canción base va en aumento.
+
+En la tabla \ref{tabla:val_arq1} vemos que los valores alcanzados por esta arquitectura son de 64.26\% para guitarra y de 65.38\% para bajo, teniendo unos maximos de 64.26\% y 67.50\% respectivamente.
 
 \begin{table}[H]
 	\begin{center}
@@ -529,10 +562,12 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 
 \subsection{Arquitectura 2}
 
+Para la arquitectura 2 se obtuvieron los siguientes resultados:
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq2_guitar_val.png}}
 	\caption{Gráfica de validación para guitarra en arquitectura 2}
-	\label{fig:arq1_guitar_val}
+	\label{fig:arq2_guitar_val}
 \end{figure}
 
 \begin{figure}[H]
@@ -540,6 +575,10 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 	\caption{Gráfica de validación para bajo en arquitectura 2}
 	\label{fig:arq2_bass_val}
 \end{figure}
+
+En las figuras \ref{fig:arq2_guitar_val} y \ref{fig:arq2_bass_val} se puede observar que conforme van pasando las epocas, el numero de canciones creadas que poseen la misma tonalidad que la canción base va en aumento, sin embargo el crecimiento en las canciones de bajo es mucho mas lento en comparación a la guitarra.
+
+En la tabla \ref{tabla:val_arq2} vemos que los valores alcanzados por esta arquitectura son de 49.81\% para guitarra y de 36.07\% para bajo, teniendo unos maximos de 49.81\% y 37.62\% respectivamente.
 
 \begin{table}[H]
 	\begin{center}
@@ -557,6 +596,8 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 
 \subsection{Arquitectura 3}
 
+Para la arquitectura 3 se obtuvieron los siguientes resultados:
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq3_guitar_val.png}}
 	\caption{Gráfica de validación para guitarra en arquitectura 3}
@@ -568,6 +609,10 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 	\caption{Gráfica de validación para bajo en arquitectura 3}
 	\label{fig:arq3_bass_val}
 \end{figure}
+
+En las figuras \ref{fig:arq3_guitar_val} y \ref{fig:arq3_bass_val} se puede observar que conforme van pasando las epocas, el numero de canciones creadas que poseen la misma tonalidad que la canción base va en aumento, sin embargo el porcentaje final es bastante bajo despues de 200 epocas.
+
+En la tabla \ref{tabla:val_arq3} vemos que los valores alcanzados por esta arquitectura son de 10.94\% para guitarra y de 11.85\% para bajo, teniendo unos maximos de 10.94\% y 11.88\% respectivamente.
 
 \begin{table}[H]
 	\begin{center}
@@ -585,11 +630,17 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 
 \subsection{Comparativa de las arquitecturas}
 
+Podemos realizar una comparativa de estas arquitecturas si se grafican juntas.
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arqt_guitar_val.png}}
 	\caption{Gráfica comparativa de arquitecturas para guitarra}
 	\label{fig:arqt_guitar_val}
 \end{figure}
+
+En la figura \ref{fig:arqt_guitar_val} observamos que la arquitectura que tuvo mejores resultados fue la arquitectura 1, seguido de la arquitectura 2. El porcentaje de la arquitectura 3 es bastante bajo despues de todas estas epocas.
+
+En la tabla \ref{tabla:comp_arqt_val_gui} se observa que los valores alcanzados por cada arquitectura fueron de 64.26\%, 49.81\% y 10.94\% respectivamente.
 
 \begin{table}[H]
 	\begin{center}
@@ -606,11 +657,15 @@ A continuación se presenta una comparativa de las diferentes arquitecturas, toma
 	\end{center}
 \end{table}
 
+En la figura \ref{fig:arqt_bass_val} se muestra el comportamiento que tuvieron las arquitecturas para bajo, siendo de nuevo la mejor la arquitectura 1.
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arqt_bass_val.png}}
 	\caption{Gráfica comparativa de arquitecturas para bajo}
 	\label{fig:arqt_bass_val}
 \end{figure}
+
+En la tabla \ref{tabla:comp_arqt_val_bass} se observa que los valores alcanzados por cada arquitectura fueron de 65.38\%, 36.07\% y 11.85\% respectivamente.
 
 \begin{table}[H]
 	\begin{center}
