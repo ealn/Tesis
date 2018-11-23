@@ -3,7 +3,7 @@
 
 %%-----------------------------------------------------------------------
 
-En esta sección se presentaran los resultados obtenidos de los diferentes experimentos que se realizaron en esta tesis. Estos experimentos se dividieron en 3 secciones:
+En esta sección se presentaran los resultados obtenidos de los diferentes experimentos que se realizaron en este proyecto. Estos experimentos se dividieron en 3 secciones:
 
 \begin{itemize} [noitemsep]
 	\item Etapa de entrenamiento.
@@ -13,17 +13,29 @@ En esta sección se presentaran los resultados obtenidos de los diferentes experi
 
 \section{Etapa de entrenamiento}
 
-En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se entrenaron por 200 epocas, obteniendo los resultados presentados a continuación.
+En la etapa de entrenamiento se usaron las 3 diferentes arquitecturas de redes neuronales de manera independiente, es decir, primeramente se entreno con una arquitectura y se guardaron los mejores valores de los pesos, para posteriormente realizar el mismo procedimiento con las otras arquitecturas. 
+
+Este entrenamiento fue realizado usando toda la base de datos preprocesados, los cuales tomaron en cuenta únicamente los archivos MIDI que contaran con al menos un Track de guitarra y uno de bajo. 
+
+Esta base de datos fue segmentada en 2 partes, dejando el 75\% de los datos para entrenamiento y el restante 25\% para la validación.
+
+Las redes se entrenaron durante 200 epocas para cada instrumento, es decir, primero se entreno la red para que generara patrones de guitarra y luego se entreno para bajo, por lo tanto se tienen resultados de los 2 procesos.
 
 \subsection{Arquitectura 1}
 
+Esta arquitectura posee 3 capas de redes LSTM con capas de Dropout intermedias, asi como tambien unas capas Densas al final y un optimizador RMSProp.
+
 \subsubsection{Guitarra}
+
+En la Figura \ref{fig:arq1_guitar_error} se muestra como fue disminuyendo el error usando esta arquitectura para  guitarra.
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq1_guitar_error.png}}
 	\caption{Grafica de error para guitarra en arquitectura 1}
 	\label{fig:arq1_guitar_error}
 \end{figure}
+
+En la Tabla \ref{tabla:val_error_gui_arq1} se puede observar que la tendencia del error es a la baja, llegando a valores de 1.3161 en la fase de entrenamiento y de 4.1383 en la fase de validación, y aunque por la epoca 100 pareciera que el error va a tender a subir, no es así al final.
 
 \begin{table}[H]
 	\begin{center}
@@ -39,11 +51,17 @@ En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se e
 	\end{center}
 \end{table}
 
+En la Figura \ref{fig:arq1_guitar_acc} se muestra como fue aprendiendo la red con esta arquitectura para guitarra.
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq1_guitar_acc.png}}
 	\caption{Grafica de aprendizaje para guitarra en arquitectura 1}
 	\label{fig:arq1_guitar_acc}
 \end{figure}
+
+En la Tabla \ref{tabla:val_acc_gui_arq1} se observa que para la fase de entrenamiento se llego a un valor final de 56.66\% y en la fase de validación a un 58.18\%, este porcentaje podría parecer bajo, sin embargo se tuvieron máximos en algunas épocas de hasta 72.26\% y 58.18\% respectivamente.
+
+El resultado final de esta arquitectura es bastante bueno, ya que la fase de validación se comporto de manera muy lineal en comparación de la fase de entrenamiento, obteniendo un valor muy parecido al final.
 
 \begin{table}[H]
 	\begin{center}
@@ -61,11 +79,17 @@ En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se e
 
 \subsubsection{Bajo}
 
+En la Figura \ref{fig:arq1_bass_error} se muestra como fue disminuyendo el error usando esta arquitectura para  bajo.
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq1_bass_error.png}}
 	\caption{Grafica de error para bajo en arquitectura 1}
 	\label{fig:arq1_bass_error}
 \end{figure}
+
+En la Tabla \ref{tabla:val_error_bass_arq1} se puede observar que el error llego a valores de 2.3281 en la fase de entrenamiento y de 2.8547 en la fase de validación. 
+
+Despues de la epoca 150 parece que el error va a volver a subir tanto en la fase de entrenamiento como en la de validación, sin embargo al pasar las epocas se recupera la tendencia a la baja.
 
 \begin{table}[H]
 	\begin{center}
@@ -81,11 +105,19 @@ En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se e
 	\end{center}
 \end{table}
 
+En la Figura \ref{fig:arq1_bass_acc} se muestra como fue aprendiendo la red con esta arquitectura para bajo.
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq1_bass_acc.png}}
-	\caption{Grafica de aprendizaje para bajo en arquitectura 1}
+	\caption{Gráfica de aprendizaje para bajo en arquitectura 1}
 	\label{fig:arq1_bass_acc}
 \end{figure}
+
+En la Tabla \ref{tabla:val_acc_bass_arq1} se observa que para la fase de entrenamiento se llego a un valor final de 74.08\% y en la fase de validación a un 52.28\%.
+
+Al igual que la guitarra, el bajo tuvo un excelente aprendizaje con esta arquitectura, a pesar de que tuvo algunas caidas bastante pronunciadas, cerca de la epoca 150.
+
+El valor máximo obtenido es bastante similar al valor máximo para la guitarra con esta misma arquitectura.
 
 \begin{table}[H]
 	\begin{center}
@@ -103,13 +135,19 @@ En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se e
 
 \subsection{Arquitectura 2}
 
+Esta arquitectura es muy similar a la numero 1, posee las mismas capas de LSTM, Dropout y Densas, sin embargo esta arquitectura usa un optimizador Nadam.
+
 \subsubsection{Guitarra}
+
+En la Figura \ref{fig:arq2_guitar_error} se muestra como fue disminuyendo el error usando esta arquitectura para  guitarra. Se puede observar que en la fase de validación el error disminuyo mas lentamente que en la fase de entrenamiento.
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq2_guitar_error.png}}
 	\caption{Grafica de error para guitarra en arquitectura 2}
 	\label{fig:arq2_guitar_error}
 \end{figure}
+
+En la Tabla \ref{tabla:val_error_gui_arq2} se observa que el error disminuyo a niveles de 1.8103 y 4.4766 en las fases de entrenamiento y validación respectivamente.
 
 \begin{table}[H]
 	\begin{center}
@@ -125,11 +163,18 @@ En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se e
 	\end{center}
 \end{table}
 
+En la Figura \ref{fig:arq2_guitar_acc} se muestra como fue aprendiendo la red con esta arquitectura para guitarra.
+Se tuvieron grandes caídas en la fase de validación a partir de la época 150.
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq2_guitar_acc.png}}
-	\caption{Grafica de aprendizaje para guitarra en arquitectura 2}
+	\caption{Gráfica de aprendizaje para guitarra en arquitectura 2}
 	\label{fig:arq2_guitar_acc}
 \end{figure}
+
+En la Tabla \ref{tabla:val_acc_gui_arq2} se observa que para la fase de entrenamiento se llego a un valor final de 55.58\% y en la fase de validación a un 42.73\%, obteniendo valores máximos en algunas épocas de hasta 65.55\% y 42.73\% respectivamente.
+
+El desempeño de esta red para guitarra es un poco menor al de la arquitectura 1, a pesar de que el optimizador utiliza un algoritmo de momento para salir de mínimos locales.
 
 \begin{table}[H]
 	\begin{center}
@@ -147,11 +192,15 @@ En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se e
 
 \subsubsection{Bajo}
 
+En la Figura \ref{fig:arq2_bass_error} se muestra como fue disminuyendo el error usando esta arquitectura para  bajo. El error desciende de una forma mas lineal que en el caso de la guitarra.
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq2_bass_error.png}}
 	\caption{Grafica de error para bajo en arquitectura 2}
 	\label{fig:arq2_bass_error}
 \end{figure}
+
+En la Tabla \ref{tabla:val_error_bass_arq2} se observa que el error disminuyo a niveles de 2.2061 y 4.2744 en las fases de entrenamiento y validación respectivamente, sin embargo se tuvieron valores mínimos de 2.1150 y 3.8736 en épocas anteriores.
 
 \begin{table}[H]
 	\begin{center}
@@ -167,11 +216,20 @@ En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se e
 	\end{center}
 \end{table}
 
+En la Figura \ref{fig:arq2_bass_acc} se muestra como fue aprendiendo la red con esta arquitectura para bajo.
+La fase de validación no tuvo resultados tan buenos como la fase de entrenamiento.
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq2_bass_acc.png}}
 	\caption{Grafica de aprendizaje para bajo en arquitectura 2}
 	\label{fig:arq2_bass_acc}
 \end{figure}
+
+En la Tabla \ref{tabla:val_acc_bass_arq2} se observa que para la fase de entrenamiento se llego a un valor final de 61.70\% y en la fase de validación a un 29.88\%, obteniendo valores máximos en algunas épocas de hasta 64.26\% y 36.83\% respectivamente.
+
+El rendimiento en la fase de validación es de mas de un 50\% menor que en la fase de entrenamiento. Esto demuestra que la red no esta aprendiendo a la velocidad deseada.
+
+La guitarra obtuvo mejores resultados de aprendizaje que el bajo en la fase de validación siendo aproximadamente un 15\% mayor.
 
 \begin{table}[H]
 	\begin{center}
@@ -189,13 +247,19 @@ En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se e
 
 \subsection{Arquitectura 3}
 
+En esta arquitectura se quitaron las capas de Dropout, por lo tanto la red es menos profunda. Al igual que en la arquitectura 1 se esta usando un optimizador RMSProp.
+
 \subsubsection{Guitarra}
+
+En la Figura \ref{fig:arq3_guitar_error} se muestra como fue cambiando el error usando esta arquitectura para  guitarra. Se puede observar que el error va creciendo conforme las epocas pasan.
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq3_guitar_error.png}}
-	\caption{Grafica de error para guitarra en arquitectura 3}
+	\caption{Gráfica de error para guitarra en arquitectura 3}
 	\label{fig:arq3_guitar_error}
 \end{figure}
+
+En la Tabla \ref{tabla:val_error_gui_arq3} se puede observar que la tendencia del error es a la alza, llegando a valores de 14.1156 en la fase de entrenamiento y de 15.4095 en la fase de validación.
 
 \begin{table}[H]
 	\begin{center}
@@ -211,11 +275,18 @@ En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se e
 	\end{center}
 \end{table}
 
+En la Figura \ref{fig:arq3_guitar_acc} se muestra como fue aprendiendo la red con esta arquitectura para guitarra.
+A pesar de mostrar un comportamiento a la alza, los valores finales de esta grafica no son tan alentadores.
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq3_guitar_acc.png}}
 	\caption{Grafica de aprendizaje para guitarra en arquitectura 3}
 	\label{fig:arq3_guitar_acc}
 \end{figure}
+
+En la Tabla \ref{tabla:val_acc_gui_arq3} se observa que para la fase de entrenamiento se llego a un valor final de 17.02\% y en la fase de validación a un 9.69\%, obteniendo maximos de hasta 19.64\% y 13.28\% respectivamente.
+
+Estos valores son bastante bajos y no garantizan que con el transcurso de las epocas esta arquitectura pueda seguir mejorando.
 
 \begin{table}[H]
 	\begin{center}
@@ -233,11 +304,15 @@ En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se e
 
 \subsubsection{Bajo}
 
+En la Figura \ref{fig:arq3_bass_error} se muestra como fue cambiando el error usando esta arquitectura para  bajo. Se puede observar un crecimiento del error conforme las épocas pasan.
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq3_bass_error.png}}
-	\caption{Grafica de error para bajo en arquitectura 3}
+	\caption{Gráfica de error para bajo en arquitectura 3}
 	\label{fig:arq3_bass_error}
 \end{figure}
+
+En la Tabla \ref{tabla:val_error_bass_arq3} se puede observar que la tendencia del error es a la alza, llegando a valores de 14.4731 en la fase de entrenamiento y de 17.1656 en la fase de validación.
 
 \begin{table}[H]
 	\begin{center}
@@ -253,11 +328,22 @@ En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se e
 	\end{center}
 \end{table}
 
+En la Figura \ref{fig:arq3_bass_acc} se muestra como fue aprendiendo la red con esta arquitectura para bajo.
+Esta grafica muestra que el bajo va aprendiendo pero la tasa de aprendizaje es bastante baja.
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq3_bass_acc.png}}
-	\caption{Grafica de aprendizaje para bajo en arquitectura 3}
+	\caption{Gráfica de aprendizaje para bajo en arquitectura 3}
 	\label{fig:arq3_bass_acc}
 \end{figure}
+
+En la Tabla \ref{tabla:val_acc_bass_arq3} se observa que para la fase de entrenamiento se llego a un valor final de 15.07\% y en la fase de validación a un 12.97\%, obteniendo maximos de hasta 17.34\% y 13.68\% respectivamente.
+
+El rendimiento de esta red para bajo es menor al rendimiento para guitarra, sin embargo la tasa de aprendizaje es bastante parecida.
+
+Es interesante ver que de la epoca 75 a la 135 la tasa de aprendizaje se mantiene oscilando entre los mismos valores, alcanzando por algunas epocas valores mayores.
+
+Los valores obtenidos por esta red no son alentadores por lo que no podemos asegurarnos de que si entrenamos por mas epocas esta red, sea capaz de alcanzar valores superiores al 70\%.
 
 \begin{table}[H]
 	\begin{center}
@@ -275,8 +361,131 @@ En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se e
 
 \subsection{Comparativa de las arquitecturas}
 
+A continuación se presenta una comparativa de las diferentes arquitecturas, tomando en cuenta los valores descritos anteriormente.
 
+\subsubsection{Guitarra}
 
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Arquitectura & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			1 & 6.6410  & 1.3161  & 1.3055  & 6.6410 \\ \hline
+			2 & 6.1054  & 1.8103  & 1.4658  & 6.1138 \\ \hline
+			3 & 11.8742 & 14.1156 & 11.8739 & 14.6645 \\ \hline
+		\end{tabular}
+		\caption{Comparativa del error en la fase de entrenamiento para guitarra}
+		\label{tabla:comp_arqt_guitar_error}
+	\end{center}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Arquitectura & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			1 & 6.0144  & 4.1383  & 3.0009  & 6.0167 \\ \hline
+			2 & 6.2114  & 4.4766  & 4.3697  & 6.2126 \\ \hline
+			3 & 13.7430 & 15.4095 & 13.7430 & 15.7345 \\ \hline
+		\end{tabular}
+		\caption{Comparativa del error en la fase de validación de entrenamiento para guitarra}
+		\label{tabla:comp_arqt_guitar_error_val}
+	\end{center}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Arquitectura & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			1 & 0.0001  & 0.5666  & 0.0001  & 0.7226 \\ \hline
+			2 & 0.0000  & 0.5558  & 0.0000  & 0.6555 \\ \hline
+			3 & 0.0010  & 0.1702  & 0.0004  & 0.1964 \\ \hline
+		\end{tabular}
+		\caption{Comparativa del aprendizaje en la fase de entrenamiento para guitarra}
+		\label{tabla:comp_arqt_guitar_acc}
+	\end{center}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Arquitectura & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			1 & 0.0001  & 0.5818  & 0.0001  & 0.5818 \\ \hline
+			2 & 0.0007  & 0.4273  & 0.0007  & 0.4273 \\ \hline
+			3 & 0.0006  & 0.0969  & 0.0002  & 0.1328 \\ \hline
+		\end{tabular}
+		\caption{Comparativa del aprendizaje en la fase de validación de entrenamiento para guitarra}
+		\label{tabla:comp_arqt_guitar_acc_val}
+	\end{center}
+\end{table}
+
+\subsubsection{Bajo}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Arquitectura & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			1 & 5.7464  & 2.3281  & 2.2614  & 5.7531 \\ \hline
+			2 & 5.3796  & 2.2061  & 2.1150  & 5.3796 \\ \hline
+			3 & 12.0105 & 14.4731 & 12.0105 & 14.5983 \\ \hline
+		\end{tabular}
+		\caption{Comparativa del error en la fase de entrenamiento para bajo}
+		\label{tabla:comp_arqt_bass_error}
+	\end{center}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Arquitectura & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			1 & 6.0615  & 2.8547  & 2.8547  & 6.0620 \\ \hline
+			2 & 6.4556  & 4.2744  & 3.8736  & 6.4556 \\ \hline
+			3 & 16.112  & 17.1656 & 16.112  & 17.2226 \\ \hline
+		\end{tabular}
+		\caption{Comparativa del error en la fase de validación de entrenamiento para bajo}
+		\label{tabla:comp_arqt_bass_error_val}
+	\end{center}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Arquitectura & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			1 & 0.0034  & 0.7408  & 0.0034  & 0.7408 \\ \hline
+			2 & 0.0024  & 0.6170  & 0.0017  & 0.6426 \\ \hline
+			3 & 0.0000  & 0.1507  & 0.0000  & 0.1734 \\ \hline
+		\end{tabular}
+		\caption{Comparativa del aprendizaje en la fase de entrenamiento para bajo}
+		\label{tabla:comp_arqt_bass_acc}
+	\end{center}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			Arquitectura & Valor inicial & Valor final & Valor mínimo & Valor máximo\\
+			\hline \hline \hline \hline \hline
+			1 & 0.0014  & 0.5228  & 0.0014  & 0.6170 \\ \hline
+			2 & 0.0008  & 0.2988  & 0.0008  & 0.3683 \\ \hline
+			3 & 0.0002  & 0.1297  & 0.0002  & 0.1368 \\ \hline
+		\end{tabular}
+		\caption{Comparativa del aprendizaje en la fase de validación de entrenamiento para bajo}
+		\label{tabla:comp_arqt_bass_acc_val}
+	\end{center}
+\end{table}
 
 \section{Etapa de generación}
 
@@ -392,8 +601,8 @@ En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se e
 			2 & 3.1008 & 49.8122 & 3.1008 & 49.8122 \\ \hline
 			3 & 0.0021 & 10.9422 & 0.0021 & 10.9422 \\ \hline
 		\end{tabular}
-		\caption{Valores de validación de guitarra para la comparación de arquitecturas.}
-		\label{tabla:val_gui_comp}
+		\caption{Comparativa de arquitecturas en la fase de validación para guitarra.}
+		\label{tabla:comp_arqt_val_gui}
 	\end{center}
 \end{table}
 
@@ -413,7 +622,7 @@ En la etapa de entrenamiento se usaron 3 tipos de arquitecturas, las cuales se e
 			2 & 2.1270 & 36.0719 & 2.1270 & 37.6297 \\ \hline
 			3 & 0.0022 & 11.8519 & 0.0022 & 11.8865 \\ \hline
 		\end{tabular}
-		\caption{Valores de validación de bajo para la comparación de arquitecturas.}
-		\label{tabla:val_bass_comp}
+		\caption{Comparativa de arquitecturas en la fase de validación para bajo.}
+		\label{tabla:comp_arqt_val_bass}
 	\end{center}
 \end{table}
