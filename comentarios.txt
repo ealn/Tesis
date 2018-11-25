@@ -71,7 +71,7 @@ Dedicarle un poquito mas de paginas, head first Java
 
 *************** Bibliografia
 
-Poner mas datos de cada referencia
+*Poner mas datos de cada referencia
 
 
 
