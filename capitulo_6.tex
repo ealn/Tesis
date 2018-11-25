@@ -5,36 +5,38 @@
 
 Las diferentes arquitecturas presentadas en este documento fueron capaces de aprender y generar musica a partir de secuencias de notas de entrada. A pesar de que algunas arquitecturas no tuvieron el desempeño esperado, los resultados finales fueron bastante alentadores.
 
-Las redes fueron capaces de generar tanto melodias como armonias musicales en guitarra y melodias basicas de bajo.
+Estas redes fueron capaces de generar tanto melodías como armonías musicales en guitarra y melodías básicas de bajo.
 
-Las secuencias de salida generadas por las redes poseen los 2 elementos basicos de la musica: sonidos y silencios. Sin embargo lo interesante de estas salidas es ver como estan interactuando estos elementos para finalmente crear una nueva pieza musical.
+Las secuencias de salida generadas por las redes poseen los 2 elementos básicos de la musica: sonidos y silencios. Sin embargo lo interesante de estas salidas es ver como están interactuando estos elementos para finalmente crear una nueva pieza musical.
 
-Al parecer las secuencias de guitarra fueron mas sencillas de aprender que las de bajo, esto es un dato bastante curioso, puesto que en bajo no se tenian tantos cambios de tonos como en la guitarra.
+Al parecer las secuencias de guitarra fueron mas sencillas de aprender que las de bajo, esto es un dato bastante curioso, puesto que en bajo no se tenían tantos cambios de tonos como en la guitarra.
 
-Despues de todas las pruebas realizadas a las arquitecturas, la que tuvo el mejor desempeño fue sin duda la arquitectura 1, la cual cuenta con capaz intermedias de Dropout asi como tambien un optimizador RMSProp.
+Despues de todas las pruebas realizadas a las arquitecturas, la que tuvo el mejor desempeño fue sin duda la arquitectura 1, la cual cuenta con capaz intermedias de Dropout asi como tambien un optimizador RMSProp. Sin embargo la arquitectura 2 tambien presento resultados bastante alentadores.
 
 Es interesante analizar que aunque se use un optimizador con momento como el Nadam, este no genera un resultado sobresaliente en redes LSTM, al parecer entre mas simple sea el optimizador mejores resultados se obtienen.
 
-Las capas de Dropout fueron vitales para el correcto aprendizaje de estas redes, ya que sin ellas, el error iba aumentando en lugar de dismunir al transcurrir las epocas. Este comportamiento lo vemos mas claramente en la arquitectura 3.
+Las capas de Dropout fueron vitales para el correcto aprendizaje de estas redes, ya que sin ellas, el error iba aumentando en lugar de disminuir al transcurrir las épocas. Este comportamiento lo vemos mas claramente en la arquitectura 3.
 
-Dentro de la búsqueda por encontrar un algoritmo computacional que nos permitiera realizar una validación de la salida, se encontró con el algoritmo de Krumhansl-Schmuckler, que a pesar, de ser bastante sencillo, nos genera muy buenos valores de validación.
+Dentro de la búsqueda por encontrar un algoritmo computacional que nos permitiera realizar una validación de la salida, se encontró con el algoritmo de Krumhansl-Schmuckler, que a pesar, de ser bastante sencillo, nos genera muy buenos valores de validación, lo que nos permitio dar certeza de que las piezas generadas por estas redes, estaban cumpliendo con lo establecido.
 
 A pesar de que las redes se entrenaron por separado para guitarra y bajo, la salida que se obtiene al conjuntar la salida de ambos instrumentos se escucha bastante bien.
 
 El tiempo de procesamiento es algo a tomar en cuenta cuando se trabajan con muchos datos y este tipo de redes, ya que computacionalmente hablando el procesamiento de estas redes es bastante costoso, y entre mas capas se esten usando en las redes, mas tiempo tarda por cada epoca de entrenamiento.
 
-En este trabajo únicamente se realizaron 200 epocas de cada instrumento por cada una de las arquitecturas, ya que el tiempo promedio de procesamiento era de alrededor de 3 semanas por instrumento.
+En este trabajo únicamente se realizaron 200 epocas de cada instrumento por cada una de las arquitecturas, ya que el tiempo promedio de procesamiento era de alrededor de 3 semanas por instrumento, lo que en conjunto de todas las pruebas realizadas se tomo cerca de 4 meses.
 
 \section{Trabajos futuros}
 
-Dentro de los trabajos futuros de esta investigación seria bueno experimentar con otro tipo de arquitecturas LSTM, para ver si se logran mejores resultados a los obtenidos en este trabajo.
+Dentro de los trabajos futuros de esta investigación seria bueno experimentar con otro tipo de arquitecturas usando capas LSTM, para ver si se logran mejores resultados a los obtenidos en este trabajo.
 
 La infinidad de posibilidades de nuevas arquitecturas solamente se limita a la imaginación del ser humano, por lo tanto no dudo que en un futuro se creen arquitecturas mas complejas para el procesamiento de secuencias. Posiblemente estas arquitecturas sean capaces de aprender y obtener buenos resultados en menor cantidad de epocas.
 
-Seria bueno en un trabajo futuro analizar estas mismas arquitecturas usando un algoritmo de validación de armonías musicales, para ver todo el campo armónico y dar una mayor certeza de que se estas redes están generando música de calidad. Este trabajo únicamente se baso en ver que las redes fueran capaces de aprender tonalidades y generar música a partir de ellas.
+Conforme el tiempo pasa, el hardware también sufre modificaciones haciendo a los equipos mas potentes para procesar grandes cantidades de datos, es posible que en un futuro no muy lejano se puedan procesar estas redes en cuestión de horas, en lugar de dias o semanas, eso también nos abriría la posibilidad de introducir una mayor cantidad de datos o de inclusive usar arquitecturas mas robustas, sin importarnos tanto el tiempo de procesamiento.
 
-Se podrían explorar la interacción de otros instrumentos, como por ejemplo el piano, bateria, violin, etc. para al final juntarlos y generar nuevas canciones.
+Seria bueno en un trabajo futuro analizar estas mismas arquitecturas usando un algoritmo de validación de armonías musicales, para ver todo el campo armónico y dar una mayor certeza de que se estas redes están generando música de calidad. Este trabajo únicamente se centro en entrenar a las redes para que fueran capaces de aprender tonalidades y generar música a partir de ellas.
 
-La batería y los instrumentos de percusión se manejan un poco diferente a los demas instrumentos, por lo que seria interesante ver si una red es capaz de realizar ritmos bases, los cuales puedan ser integrados a nuevas canciones, así como también ver si se generan nuevos ritmos diferentes a los que la red aprendio.
+Es posible extrapolar este proyecto a otros instrumentos de cuerda o de viento, tales como violin, saxofon, trompeta, entre otros. El metodo de aprendizaje seria muy similar, lo unico que se tendria que hacer es que en la etapa de preprocesamiento, separar los Tracks de estos instrumentos.
 
-Sin duda este trabajo se podría extrapolar a otros estilos musicales, lo unico que se necesita es una buena base de datos para estos otros estilos musicales.
+La batería y los instrumentos de percusión se manejan un poco diferente a los demas instrumentos, por lo que seria interesante ver si una red es capaz de realizar ritmos bases, los cuales puedan ser integrados a nuevas canciones, así como también ver si se generan nuevos ritmos diferentes a los que la red aprendió.
+
+Es posible entrenar estas redes con otros estilos musicales, lo unico que se necesita es una base de datos bastante grande de canciones de estos generos, pero basicamente todas las demas etapas no sufririan cambios.
