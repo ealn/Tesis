@@ -507,11 +507,17 @@ En la tabla \ref{tabla:comp_arqt_bass_acc_val} vemos que en la fase de validació
 
 \section{Etapa de generación}
 
-En esta etapa se evaluara la salida de las redes desde un concepto musical. Se veran como estan interactuando las notas en una salida de nuestra red.
+En esta etapa se evaluara la salida de las redes desde un concepto musical. Se vera como están interactuando las notas en una salida de nuestra red.
 
 Se tomaran muestras de pocos compases de las salidas de nuestras redes, esto para ser mas objetivos con la interpretación de los resultados.
 
+Cada red fue alimentada con las notas de una canción base, y con esta entrada mas lo que la red pudo aprender en el proceso de entrenamiento generara una salida.
+
 \subsection{Arquitectura 1}
+
+Para la interpretación de resultados, en esta red se uso una canción base con tonalidad de Mi Mayor, y se espera que la salida posea esta misma tonalidad.
+
+En la figura \ref{fig:gen_arq1_base_guitar} se muestra la entrada de la red para la parte de guitarra.
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=14cm]{gen_arq1_base_guitar.png}}
@@ -519,11 +525,15 @@ Se tomaran muestras de pocos compases de las salidas de nuestras redes, esto par
 	\label{fig:gen_arq1_base_guitar}
 \end{figure}
 
+En la figura \ref{fig:gen_arq1_base_bass} se muestra la entrada de la red para la parte de bajo.
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=14cm]{gen_arq1_base_bass.png}}
 	\caption{Entrada de bajo para la arquitectura 1}
 	\label{fig:gen_arq1_base_bass}
 \end{figure}
+
+Una vez introducidas estas 2 entradas, la salida correspondiente que obtenemos se puede ver en la figura \ref{fig:gen_arq1}
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=14cm]{gen_arq1.png}}
@@ -531,7 +541,18 @@ Se tomaran muestras de pocos compases de las salidas de nuestras redes, esto par
 	\label{fig:gen_arq1}
 \end{figure}
 
+Si analizamos la salida obtenida nos daremos cuenta que efectivamente esta nueva pieza musical conserva su tonalidad de Mi Mayor (esto se puede observar por su armadura).
+Se puede observar que la salida posee mayormente notas semicorcheas y negras, lo cual se asemeja mucho a la entrada original.
+
+En el primer compas vemos que cuando la entrada en la guitarra es un Fa, la salida de nuestra red nos esta entregando un Do\#, pero si vemos en el 3er compas la primera nota de entrada vuelve a ser un Fa, pero en este caso obtenemos como salida un La, esto es un dato interesante ya que la red no se esta basando en únicamente una nota de entrada, sino que toma en cuenta toda la secuencia.
+
+En el caso del bajo en nuestro primer compas tenemos como primera entrada un Sol\# y de salida obtenemos un Re\#, en el segundo compas la red vuelve a recibir como entrada un Sol\#, pero en este caso nos arroja un La.
+
 \subsection{Arquitectura 2}
+
+Para la interpretación de resultados, en esta red se uso una canción base con tonalidad de Do Mayor, y se espera que la salida posea esta misma tonalidad.
+
+En la figura \ref{fig:gen_arq2_base_guitar} se muestra la entrada de la red para la parte de guitarra.
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=14cm]{gen_arq2_base_guitar.png}}
@@ -539,11 +560,15 @@ Se tomaran muestras de pocos compases de las salidas de nuestras redes, esto par
 	\label{fig:gen_arq2_base_guitar}
 \end{figure}
 
+En la figura \ref{fig:gen_arq2_base_bass} se muestra la entrada de la red para la parte de bajo.
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=14cm]{gen_arq2_base_bass.png}}
 	\caption{Entrada de bajo para la arquitectura 2}
 	\label{fig:gen_arq2_base_bass}
 \end{figure}
+
+Una vez introducidas estas 2 entradas, la salida correspondiente que obtenemos se puede ver en la figura \ref{fig:gen_arq2}
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=14cm]{gen_arq2.png}}
@@ -551,7 +576,24 @@ Se tomaran muestras de pocos compases de las salidas de nuestras redes, esto par
 	\label{fig:gen_arq2}
 \end{figure}
 
+La nueva pieza musical posee la tonalidad de Do Mayor, tal como las secuencias de entradas, lo que nos indica que esta red esta trabajando correctamente.
+
+La salida que estamos obteniendo con esta red usa principalmente notas de corcheas y negras, lo cual corresponde muy bien con las notas de entrada que esta recibiendo la red.
+
+Si realizamos un análisis de las notas, tenemos, que en la parte de guitarra en nuestro primer compas tenemos un acorde de poder formado por Do y Sol, y a la salida obtenemos tambien un acorde de poder pero conformado por Re y Sol, la siguiente nota de entrada es nuevamente el acorde de Do y Sol, y en este caso obtenemos el mismo acorde de salida.
+
+En cuanto a la salida de bajo se puede observar que posee semicorcheas aparte de corcheas y negras, esto puede ser debido a las otras melodías que aprendió la red.
+
+La primer nota de entrada que tenemos en el bajo es Fa y nos genera un Mi, despues en el quinto compas volvemos a introducir un Fa y la salida obtenida resulta ser otro Fa.
+
+En base a estos argumentos podemos verificar que esta red esta cumpliendo su cometido de aprender secuencias y generar salidas que tengan sentido con las secuencias de entrada.
+
+
 \subsection{Arquitectura 3}
+
+Para la interpretación de resultados, en esta red se uso una canción base con tonalidad de Sol Mayor, y se espera que la salida posea esta misma tonalidad.
+
+En la figura \ref{fig:gen_arq3_base_guitar} se muestra la entrada de la red para la parte de guitarra.
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=14cm]{gen_arq3_base_guitar.png}}
@@ -559,11 +601,15 @@ Se tomaran muestras de pocos compases de las salidas de nuestras redes, esto par
 	\label{fig:gen_arq3_base_guitar}
 \end{figure}
 
+En la figura \ref{fig:gen_arq3_base_bass} se muestra la entrada de la red para la parte de bajo.
+
 \begin{figure}[H]
 	\centerline{\includegraphics[width=14cm]{gen_arq3_base_bass.png}}
 	\caption{Entrada de bajo para la arquitectura 3}
 	\label{fig:gen_arq3_base_bass}
 \end{figure}
+
+Una vez introducidas estas 2 entradas, la salida correspondiente que obtenemos se puede ver en la figura \ref{fig:gen_arq3}
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=14cm]{gen_arq3.png}}
@@ -571,13 +617,25 @@ Se tomaran muestras de pocos compases de las salidas de nuestras redes, esto par
 	\label{fig:gen_arq3}
 \end{figure}
 
+La nueva pieza musical generada parece tener la misma tonalidad de Sol Mayor, ya que posee una alteracion en Fa\#, sin embargo en el bajo la tonalidad predominante es Do Mayor.
+
+La salida en el caso de la guitarra son puras semicorcheas, mientras que en el bajo son de corcheas y negras. Cabe mencionar que las notas de entrada se componen principalmente de corcheas y negras.
+
+Se observa que la salida de la guitarra es bastante pobre, ya que únicamente esta generando notas de Fa\# sin importar la entrada.
+
+En la parte del bajo se observa que tiene mayor ritmo que la guitarra, sin embargo si analizamos la entrada, son puras secuencias de Si, y a la salida obtenemos notas que parecieran sacadas al azar.
+
 \subsection{Comparativa de las arquitecturas}
+
+En base a lo que se describió de los resultados de cada una de las arquitecturas, musicalmente hablando las arquitecturas 1 y 2 presentaron resultados alentadores, no es así el caso para la arquitectura 3.
+
+Mientras que en la arquitectura 1 y 2 se puede observar valores de notas y ritmos similares a las entradas, la arquitectura 3 muestra puros patrones aleatorios.
 
 \section{Etapa de validación}
 
-Durante esta etapa se evaluaron 100 canciones creadas usando las diferentes arquitecturas y aplicandoles el algoritmo de Krumhansl-Schmuckler para determinar la tonalidad final de las notas de cada instrumento.
+Durante esta etapa se evaluaron 100 canciones creadas usando las diferentes arquitecturas y aplicándoles el algoritmo de Krumhansl-Schmuckler para determinar la tonalidad final de las notas de cada instrumento.
 
-Cada composición es hecha a partir de una cancion base, esta cancion posee una tonalidad ya establecida y la red debe de ser capaz de crear una nueva composición tomando como base las notas de esta cancion, la nueva pieza debería tener la misma tonalidad que la canción base, esto nos indica que nuestra red es capaz de identificar tonalidades y de crear nuevas cosas en base a estas.
+Cada composición es hecha a partir de una canción base, la cual posee una tonalidad ya establecida y la red debe de ser capaz de crear una nueva composición tomando como base las notas de esta canción, la nueva pieza debería tener la misma tonalidad que la canción base, esto nos indica que nuestra red es capaz de identificar tonalidades y de crear nuevas cosas en base a estas.
 
 La salida de cada instrumento es generado de manera independiente usando el Track correspondiente de la cancion base.
 
