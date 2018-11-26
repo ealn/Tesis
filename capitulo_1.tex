@@ -44,18 +44,72 @@ La base de datos usada para entrenar a la red neuronal consta de canciones de ge
 
 \section{Organización de la Tesis}
 
-A continuación se muestra la descripción de cada capitulo:
+Esta tesis esta dividida en varios capitulos, los cuales se describen a continuación.
+
 \begin{itemize}
-	\item \textbf{Capitulo 1.-} En el primer capitulo se ve la descripción del problema, objetivos generales y justificación del proyecto.
-	\item \textbf{Capitulo 2.-} Este capitulo contiene marco teórico del proyecto, en el cual se describen los conceptos generales usados en el proyecto. 
-	\item \textbf{Capitulo 3.-} En este capitulo se abordara el desarrollo del proyecto asi como los resultados obtenidos.
-	\item \textbf{Capitulo 4.-} En este ultimo capitulo se ven las conclusiones del proyecto.
+	\item \textbf{Capitulo 1.-} Se presenta una descripción del problema, justificación, delimitación y antecedentes históricos de la investigación.
+	\item \textbf{Capitulo 2.-} Contiene el marco teórico de las redes neuronales y su clasificación. 
+	\item \textbf{Capitulo 3.-} Aborda el marco teorico musical, todos los conceptos básicos para interpretar y leer música.
+	\item \textbf{Capitulo 4.-} Se muestra el desarrollo del proyecto, la arquitectura y los componentes del sistema.
+	\item \textbf{Capitulo 5.-} Contiene los resultados de las diferentes etapas del proyecto.
+	\item \textbf{Capitulo 6.-} Se muestran las conclusiones del proyecto, asi como tambien los trabajos futuros que podrían realizarse.
 \end{itemize}
 
+\section{Antecedentes históricos}
 
+A lo largo del tiempo han surgido varios estudios referentes al uso de algoritmos de Deep Learning con la música, a continuación se presentan algunos de los articulos mas relevantes en este tema:
+\newline
 
+\textbf{2017, ''Deep Learning Techniques for Music Generation - A Survey''. \cite{DBLP:journals/corr/abs-1709-01620}}
 
+\textbf{Autores: Jean-Pierre Briot, Gaetan Hadjeres, Francois Pachet}
+\newline
 
+''Este documento es una encuesta y un análisis de diferentes formas de utilizar el Deep Learning (redes neuronales artificiales profundas) para generar contenido musical.''
 
+''Proponemos una metodología basada en cinco dimensiones para nuestro análisis: - Objetivo - ¿Qué contenido musical se generará? Por ejemplo, melodía, polifonía, acompañamiento y contrapunto: ¿para qué destino y para qué uso? Para ser realizado por un humano (s) o por una máquina. - Representación - ¿Cuáles son los conceptos a manipular? Por ejemplo, la forma de onda, el espectrograma, la nota, el acorde, el medidor y el tiempo: ¿qué formato se utilizará? Por ejemplo, MIDI, piano roll y texto. ¿Cómo se codificará la representación? Por ejemplo, escalar, one-hot y many-hot. - Arquitectura - ¿Qué tipo de red neuronal profunda se va a utilizar? Por ejemplo, red feedforward, red recurrente, autocodificador y redes adversas generativas. - Retos - ¿Cuáles son las limitaciones \ índice y desafíos abiertos? Por ejemplo, variabilidad, interactividad y creatividad. - Estrategia - ¿Cómo modelamos y controlamos el proceso de generación? Por ejemplo, avance en un solo paso, avance en el decodificador, manipulación de muestreo y entrada.
+Para cada dimensión, realizamos un análisis comparativo de varios modelos y técnicas y proponemos una tipología multidimensional tentativa. Esta tipología es de abajo hacia arriba, basada en el análisis de muchos sistemas existentes basados ??en deep learning para la generación de música seleccionados de la literatura relevante. Estos sistemas se describen en esta encuesta / análisis y se utilizan para ejemplificar las diversas opciones de objetivos, representación, arquitectura, desafíos y estrategias. La parte final del documento incluye algunas discusiones y algunas perspectivas.''
+
+''Este artículo es una versión simplificada (DRM débil) del siguiente libro: Jean-Pierre Briot, Gaetan Hadjeres y Francois Pachet, Técnicas de aprendizaje profundo para la generación de música, Síntesis computacional y Sistemas creativos, Springer Nature, 2019.''
+\newline
+
+\textbf{2017, ''End-to-end learning for music audio tagging at scale''. \cite{DBLP:journals/corr/abs-1711-02520}}
+
+\textbf{Autores: Jordi Pons, Oriol Nieto, Matthew Prockup, Erik M. Schmidt, Andreas F. Ehmann, Xavier Serra}
+\newline
+
+''La falta de datos tiende a limitar los resultados de la investigación de Deep Learning, especialmente cuando se trata de acumulaciones de aprendizaje de extremo a extremo que procesan datos sin procesar, como las formas de onda. En este estudio, 1.2M pistas comentadas con etiquetas musicales están disponibles para entrenar a nuestros modelos de extremo a extremo. Esta gran cantidad de datos nos permite explorar sin restricciones dos paradigmas de diseño diferentes para el etiquetado automático de música: modelos sin supuestos: el uso de formas de onda como entrada con filtros convolucionales muy pequeños; y modelos que se basan en el conocimiento del dominio: espectrogramas log-mel con una red neuronal convolucional diseñada para aprender las características tímbricas y temporales. Nuestro trabajo se centra en estudiar cómo funcionan estos dos tipos de arquitecturas profundas cuando se dispone de conjuntos de datos de tamaño variable para la capacitación: el MagnaTagATune (canciones de 25 k), el conjunto de datos de la canción Million (canciones de 240 k) y un conjunto de datos privado de 1,2 millones de canciones. Nuestros experimentos sugieren que las suposiciones del dominio de la música son relevantes cuando no hay suficientes datos de entrenamiento disponibles, lo que demuestra que los modelos basados en formas de onda superan a los basados en espectrogramas en escenarios de datos a gran escala.''
+\newline
+
+\textbf{2016, ''Deep Learning for Music''. \cite{DBLP:journals/corr/HuangW16}}
+
+\textbf{Autores: Allen Huang, Raymond Wu}
+\newline
+
+''Nuestro objetivo es poder construir un modelo generativo a partir de una arquitectura de red neuronal profunda para intentar crear música que tenga armonía y melodía y que sea pasable como música compuesta por humanos. El trabajo anterior en la generación de música se ha centrado principalmente en crear una sola melodía. El trabajo más reciente sobre el modelado de música polifónica, centrado alrededor de la estimación de densidad de probabilidad de series de tiempo, ha logrado cierto éxito parcial. En particular, ha habido mucho trabajo basado en redes neuronales recurrentes combinadas con máquinas de Boltzmann restringidas (RNN-RBM) y otros modelos similares basados en energía recurrente. Sin embargo, nuestro enfoque es realizar el aprendizaje y la generación de extremo a extremo solo con redes neuronales profundas.''
+\newline
+
+\textbf{2014, ''Improving Content-based and Hybrid Music Recommendation Using Deep Learning''. \cite{Wang:2014:ICH:2647868.2654940}}
+
+\textbf{Autores: Wang, Xinxi and Wang, Ye}
+\newline
+
+''Los sistemas de recomendación de música basados ??en contenido existentes suelen emplear un enfoque \ textit {two-stage}. Primero extraen características de contenido de audio tradicionales como los coeficientes cepstral de frecuencia de Mel y luego predicen las preferencias del usuario. Sin embargo, estas características tradicionales, originalmente no creadas para la recomendación de música, no pueden capturar toda la información relevante en el audio y, por lo tanto, limitar el rendimiento de la recomendación. Usando un modelo novedoso basado en una red de creencias profundas y un modelo gráfico probabilístico, unificamos las dos etapas en un proceso automatizado que aprende simultáneamente las características del contenido de audio y hace recomendaciones personalizadas. Comparado con los modelos basados en Deep Learning existentes, nuestro modelo supera a los de las etapas de arranque en caliente y de arranque en frío sin depender del filtrado colaborativo (CF). Luego presentamos un método híbrido eficiente para integrar a la perfección las características aprendidas automáticamente y la CF. Nuestro método híbrido no solo mejora significativamente el rendimiento de la FQ, sino que también supera el método híbrido basado en características tradicionales.''
+\newline
+
+\textbf{2013, ''Feature Learning and Deep Architectures: New Directions for Music Informatics''. \cite{Humphrey:2013:FLD:2590112.2590133}}
+
+\textbf{Autores: Humphrey, Eric J. and Bello, Juan P. and Lecun, Yann}
+\newline
+
+''A medida que buscamos avanzar en el estado del arte en informática de música basada en contenido, hay un sentido general de que el progreso se está desacelerando en todo el campo. En una inspección más cercana, las trayectorias de rendimiento en varias aplicaciones revelan que este es realmente el caso, lo que plantea algunas preguntas difíciles para la disciplina: ¿por qué nos estamos desacelerando y qué podemos hacer al respecto? Aquí, nos esforzamos por abordar estas dos preocupaciones. Primero, revisamos críticamente el enfoque estándar para el análisis de la señal de música e identificamos tres deficiencias específicas de los métodos actuales: el diseño de características artesanal es subóptimo e insostenible, el poder de las arquitecturas poco profundas es fundamentalmente limitado y el análisis a corto plazo no puede codificar musicalmente estructura significativa Reconociendo los avances en otros dominios perceptivos de inteligencia artificial, ofrecemos que el aprendizaje profundo tiene el potencial de superar cada uno de estos obstáculos. A través de argumentos conceptuales para el aprendizaje de características y arquitecturas de procesamiento más profundas, demostramos cómo los modelos de procesamiento profundo son extensiones más poderosas de los métodos actuales y por qué ahora es el momento de este cambio de paradigma. Finalmente, concluimos con una discusión de los desafíos actuales y el impacto potencial para motivar aún más una exploración de esta área de investigación prometedora.''
+\newline
+
+\textbf{2009, ''Unsupervised Feature Learning for Audio Classification Using Convolutional Deep Belief Networks''. \cite{Lee:2009:UFL:2984093.2984217}}
+
+\textbf{Autores: Lee, Honglak and Largman, Yan and Pham, Peter and Ng, Andrew Y.}
+\newline
+
+''En los últimos años, los enfoques de Deep Learning han ganado un gran interés como una forma de construir representaciones jerárquicas a partir de datos sin etiquetar. Sin embargo, según nuestro conocimiento, estos enfoques de Deep Learning no se han estudiado exhaustivamente para datos auditivos. En este documento, aplicamos redes de creencias profundas convolucionales a los datos de audio y los evaluamos empíricamente en varias tareas de clasificación de audio. Para el caso de datos de voz, mostramos que las características aprendidas corresponden a teléfonos / fonemas. Además, nuestras representaciones de funciones entrenadas a partir de datos de audio sin etiquetar muestran un rendimiento muy bueno para múltiples tareas de clasificación de audio. Esperamos que este documento inspire más investigación sobre los enfoques de aprendizaje profundo aplicados a una amplia gama de tareas de reconocimiento de audio.''
 
 
