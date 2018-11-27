@@ -1,6 +1,6 @@
 ******************** Descripcion del problema.
 
-* No es puntual, hay que ser mas conciso en lo que se quiere resolver.
+*No es puntual, hay que ser mas conciso en lo que se quiere resolver.
 
 ******************** Objetivo General
 
@@ -14,11 +14,11 @@
 
 ******************** Justificacion
 
-* Poner referencias almenos 2 o 3 de lo que hicieron y no hicieron,
+*Poner referencias almenos 2 o 3 de lo que hicieron y no hicieron,
 
 ******************** Estado del arte.
 
-* Agregarla
+*Agregarla
 
 ******************** Delimitacion
 

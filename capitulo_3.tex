@@ -81,7 +81,7 @@ Como se mencionó anteriormente las notas que en sonido son exactamente iguales p
 Podemos ver la relación de tonos y semitonos (1/2 tonos) en la siguiente figura:
 
 \begin{figure}[H]
-	\centerline{\includegraphics[width=8cm]{tonos.png}}
+	\centerline{\includegraphics[width=12cm]{tonos.png}}
 	\caption{Relacion de tonos y semitonos}
 	\label{fig:tonos}
 \end{figure}
@@ -158,21 +158,45 @@ Los compases regulares están regidos por formas regulares las cuales dictan el t
 
 Cada nota puede tener un valor de tiempo y este valor estará determinado por el compás que se esté utilizando, por ejemplo en un compás de 4/4 las figuras musicales tendrán los siguientes valores:
 
-\begin{figure}[H]
-	\centerline{\includegraphics[width=8cm]{dura_notas.png}}
-	\caption{Duración de las notas musicales}
-	\label{fig:dura_notas}
-\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			Nombre & Figura & Silencio & Valor/Pulsos\\
+			\hline \hline \hline \hline
+			Redonda      & \Ganz & \GaPa & 4 Tiempos \\ \hline
+			Blanca       & \Halb & \HaPa & 2 Tiempos \\ \hline
+			Negra        & \Vier & \ViPa & 1 Tiempo \\ \hline
+			Corchea      & \Acht & \AcPa & $1/2$ Tiempo \\ \hline
+			Semicorchea  & \Sech & \SePa & $1/4$ Tiempo \\ \hline
+			Fusa         & \Zwdr & \ZwPa & $1/8$ Tiempo \\ \hline
+		\end{tabular}
+		\caption{Duración de notas musicales.}
+		\label{tabla:notes_val}
+	\end{center}
+\end{table}
 
 Como se puede observar para cada figura musical existe su silencio correspondiente, el cual tendrá el mismo valor solo que este caso no se producirá sonido alguno.
 
 Podemos tener también los valores relativos de estas notas respecto a otras notas:
 
-\begin{figure}[H]
-	\centerline{\includegraphics[width=8cm]{valor_rel.png}}
-	\caption{Valor relativo de las notas}
-	\label{fig:valor_rel}
-\end{figure}
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|l|l|l|}
+			\hline
+			 &  & \Ganz & \Halb & \Vier & \Acht & \Sech & \Zwdr\\
+			\hline \hline \hline \hline \hline
+			Redonda      & \Ganz & 1      & 2      & 4     & 8     & 16    & 32 \\ \hline
+			Blanca       & \Halb & $1/2$  & 1      & 2     & 4     & 8     & 16 \\ \hline
+			Negra        & \Vier & $1/4$  & $1/2$  & 1     & 2     & 4     & 8 \\ \hline
+			Corchea      & \Acht & $1/8$  & $1/4$  & $1/2$ & 1     & 2     & 4 \\ \hline
+			Semicorchea  & \Sech & $1/16$ & $1/8$  & $1/4$ & $1/2$ & 1     & 2 \\ \hline
+			Fusa         & \Zwdr & $1/32$ & $1/16$ & $1/8$ & $1/4$ & $1/2$ & 1 \\ \hline
+		\end{tabular}
+		\caption{Valor relativo de las notas.}
+		\label{tabla:valor_rel}
+	\end{center}
+\end{table}
 
 De tal manera que en un compás tendremos dos datos los cuales se describen a continuación:
 
@@ -240,20 +264,12 @@ Todas las alteraciones de una escala se pueden juntar al inicio del pentagrama p
 
 Estas armaduras indicaran que todas las notas que poseen alteraciones las mantendrán a lo largo de toda la canción.
 
-Debido a que las escalas mayores y sus relativas menores poseen las mismas alteraciones por lo tanto comparten también la misma armadura:
+Debido a que las escalas mayores y sus relativas menores poseen las mismas alteraciones comparten también la misma armadura:
 
 \begin{figure}[H]
-	\centerline{\includegraphics[width=6cm]{armadura_sost.png}}
-	\caption{Armaduras relativas con sostenidos}
-	\label{fig:armadura_sost}
-\end{figure}
-
-También podemos tener armaduras con bemoles:
-
-\begin{figure}[H]
-	\centerline{\includegraphics[width=6cm]{armadura_bem.png}}
-	\caption{Armaduras relativas con bemoles}
-	\label{fig:armadura_bem}
+	\centerline{\includegraphics[width=10cm]{armaduras.png}}
+	\caption{Armaduras}
+	\label{fig:armadura}
 \end{figure}
 
 \subsection{Tonalidades}
