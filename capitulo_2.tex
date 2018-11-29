@@ -1,60 +1,13 @@
 %IMD PNA http://na.support.keysight.com/pna/help/latest/Applications/Swept_IMD_Configure_External_Source_and_Combiner.htm
-\chapter{Inteligencia Artificial}
+\chapter{Redes neuronales}
 
 
 
 %%-----------------------------------------------------------------------
 
-En computación el término Inteligencia Artificial se define como la facultad de razonamiento de un programa informático, este agente racional tiene la capacidad de percibir su entorno y lleva a cabo acciones para maximizar el éxito en una tarea asignada.
-
-Cuando una maquina es capaz de imitar las funciones cognitivas del ser humano para aprender y resolver problemas se puede decir que la maquina posee inteligencia artificial.
-
-Dentro de la inteligencia artificial tenemos varias ramas que se enfocan en la resolución de problemas aplicando un principio muy específico de la inteligencia.
-
-Las ramas de la inteligencia artificial se pueden dividir en áreas clásicas y áreas de vanguardia de acuerdo con la época cuando surgieron:
-
-\begin{figure}[H]
-	\centerline{\includegraphics[width=8cm]{ramas_ia.png}}
-	\caption{Ramas de la inteligencia artificial}
-	\label{fig:ramas_ia}
-\end{figure}
-
-\textbf{Sistemas expertos.-}
-son conocidos también como sistemas de conocimientos y estos programas informáticos aplican el proceso de razonamiento de un humano experto en la materia en la solución de problemas específicos. El modo de procesamiento de estos sistemas es en base a una gran base de datos y utilizando una heurística avanzada para la determinación de las posibles soluciones a un problema.
-
-\textbf{Procesamiento del lenguaje natural.-}
-estos son sistemas capaces de reconocer, procesar y en cierto punto emular la comunicación humana, estos sistemas buscan dejar el uso de lenguajes de programación o conjunto de comandos, para procesar el lenguaje humano natural. Para procesar el lenguaje es necesario dividirlo, primero se obtiene la compresión del lenguaje natural, el cual investiga los métodos para que una computadora sea capaz de entender las instrucciones de este lenguaje, la segunda etapa consiste en la generación de lenguaje natural, aquí es donde la maquina intenta comunicarse en el lenguaje humano.
-
-\textbf{Robótica.-}
-un robot es un dispositivo programado para realizar una tarea en específico. Se dice que un robot está adquiriendo inteligencia artificial si es capaz de responder a cambios en su entorno en lugar de seguir instrucciones programadas con anterioridad.
-
-\textbf{Reconocimiento de patrones.-}
-esta es la parte de la inteligencia artificial encargada del procesamiento visual de un entorno, las imágenes son captadas por cámaras y posteriormente procesadas para el reconocimiento de patrones del entorno.
-
-\textbf{Lógica difusa.-}
-es una forma matemática de representar el lenguaje natural, y el principio es generalizar la lógica clásica haciendo que las variables tomen valores lingüísticos de verdad.
-
-\textbf{Redes neuronales.-}
-estas redes tratan de emular el comportamiento de las redes neuronales biológicas que poseen los humanos en su cerebro, partiendo de una neurona artificial y conectándola con otras para crear sinapsis entre ellas. 
-
-\textbf{Algoritmos genéticos.-}
-estos algoritmos son capaces de mutar para producir mejores respuestas a un entorno, estos sistemas tratan de imitar el proceso de selección natural en el cual al ir mutando algunos genes se van obteniendo sistemas más capaces para un entorno. Su función es seleccionar de una población de soluciones candidatas e intentar producir nuevas generaciones de soluciones las cuales se buscan que sean mejores que las anteriores.
-
-\textbf{Realidad virtual.-}
-es la recreación de un mundo artificial en tiempo real que puede ser captado por distintos canales sensoriales del espectador.
-Agentes.- estos son pequeños programas que actúan como espías observando las acciones comúnmente realizadas por el usuario, estas acciones son almacenadas y registradas, si en dado caso se llega a dar una anomalía el programa lanzara una alerta y dará una serie de soluciones.
-
-\section{Redes neuronales artificiales}
-
 Las redes neuronales artificiales son un conjunto de neuronas creadas artificialmente para el desarrollo de inteligencia artificial en una computadora.
  
 Estas redes están basadas en las redes biológicas del cerebro humano, modelando todos los factores biológicos de las neuronas.
-
-\begin{figure}[H]
-	\centerline{\includegraphics[width=7cm]{red_bio.png}}
-	\caption{Red neuronal biológica}
-	\label{fig:red_bio}
-\end{figure}
 
 Debido a su diseño las redes son capaces de aprender de la experiencia, de generalizar de casos anteriores a nuevos casos, de abstraer características esenciales a partir de entradas que representan en ocasiones información irreverente.
 
@@ -91,8 +44,8 @@ A continuación se muestra una imagen de como luciría una neurona artificial:
 Esta neurona posee las siguientes secciones:
 
 \begin{itemize}
-	\item \textbf{X1, X2, \ldots,Xn .-} Son las entradas de la neurona.
-	\item \textbf{W1, W2, \ldots, Wn.-} Pesos específicos que tendrá cada entrada, esto hace que las entradas no valgan lo mismo ponderadamente.
+	\item \textbf{$X_1$, $X_2$, \ldots, $X_n$ .-} Son las entradas de la neurona.
+	\item \textbf{$W_1$, $W_2$, \ldots, $W_n$.-} Pesos específicos que tendrá cada entrada, esto hace que las entradas no valgan lo mismo ponderadamente.
 	\item \textbf{Función de red.-} Esta es una función de sumatoria de las entradas.
 	\item \textbf{Función de activación.-} Si la suma de las entradas es mayor o igual que el umbral definido por esta función se tendrá una señal a la salida.
 \end{itemize}
@@ -116,7 +69,7 @@ La forma en que las redes aprenden es mediante la modificación de los pesos de l
 
 Las redes neuronales artificiales han ido evolucionando con el paso del tiempo, hoy en día existen muchos modelos de redes neuronales, todas ellas con ventajas y desventajas si son comparadas entre ellas.
 
-\subsection{Aprendizaje de las redes neuronales}
+\section{Aprendizaje de las redes neuronales}
 
 %TODO: Rf
 El procedimiento utilizado para llevar a cabo el proceso de aprendizaje en una red neuronal se denomina entrenamiento.
@@ -148,7 +101,7 @@ Por ello, es el algoritmo recomendado cuando tenemos redes neuronales muy grande
 %http://www.cs.us.es/~fsancho/?e=165
 %Rf
 
-\subsection{Deep Learning}
+\section{Deep Learning}
 
 Deep Learning usa redes neuronales con muchas capas para lograr aprendizajes más complejos. Este comportamiento asemeja la forma en que el cerebro humano toma decisiones, el cual usa la interconexión de varias capas de neuronas para realizar actividades complejas.
 Dentro de las redes de Deep Learning se tienen 2 tipos muy usados en la actualidad:
@@ -158,12 +111,18 @@ Dentro de las redes de Deep Learning se tienen 2 tipos muy usados en la actualid
 	\item \textbf{Redes recurrentes (RNN).-} Este tipo de redes son muy usadas cuando se busca analizar una secuencia de datos, estas redes poseen memoria y una retroalimentación de la salida a la entrada.  
 \end{itemize}
 
-\subsection{Redes neuronales recurrentes}
+\section{Redes neuronales recurrentes}
 
 %TODO: Rf
 La idea detrás de las RNN es hacer uso de la información secuencial. En una red neuronal tradicional suponemos que todas las entradas (y salidas) son independientes entre sí. Pero para muchas tareas eso es una muy mala idea. Si quieres predecir la siguiente palabra en una oración, es mejor que conozcas qué palabras vienen antes. Las RNN se llaman recurrentes porque realizan la misma tarea para cada elemento de una secuencia, y la salida depende de los cálculos previos. Otra forma de pensar acerca de las RNN es que tienen una "memoria" que captura información sobre lo que se ha calculado hasta ahora. En teoría, los RNN pueden hacer uso de la información en secuencias arbitrariamente largas, pero en la práctica se limitan a mirar hacia atrás solo unos pocos pasos.
 
-La decisión de una red recurrente alcanzada en el paso de tiempo t-1 afecta la decisión que alcanzará un momento más tarde en el paso de tiempo t. Entonces, las redes recurrentes tienen dos fuentes de entrada, el presente y el pasado reciente, que se combinan para determinar cómo responden a los datos nuevos, de forma similar a como lo hacemos en la vida.
+La decisión de una red recurrente alcanzada en el paso de tiempo t-1 afecta la decisión que alcanzará un momento más tarde en el paso de tiempo t (Figura \ref{fig:red_rec}). Entonces, las redes recurrentes tienen dos fuentes de entrada, el presente y el pasado reciente, que se combinan para determinar cómo responden a los datos nuevos, de forma similar a como lo hacemos en la vida.
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=4cm]{red_rec.png}}
+	\caption{Redes recurrentes}
+	\label{fig:red_rec}
+\end{figure}
 
 Esa información secuencial se conserva en el estado oculto de la red recurrente, que logra abarcar muchos pasos de tiempo a medida que avanza para afectar el procesamiento de cada nuevo ejemplo. Está encontrando correlaciones entre eventos separados por muchos momentos, y estas correlaciones se llaman "dependencias a largo plazo", porque un evento en el tiempo depende de, y es una función de, uno o más eventos que vinieron antes. Una forma de pensar acerca de las RNN es esta: son una forma de compartir pesos a lo largo del tiempo.
 
@@ -180,7 +139,7 @@ El estado oculto en el paso de tiempo $t$ es $h_t$. Es una función de la entrada
 
 Debido a que este ciclo de retroalimentación ocurre en cada paso de la serie, cada estado oculto contiene rastros no solo del estado oculto anterior, sino también de todos los que precedieron a $h_{t-1}$ mientras la memoria pueda persistir.
 
-\subsubsection{LSTM}
+\subsection{LSTM}
 
 A mediados de los años 90, los investigadores alemanes Sepp Hochreiter y Juergen Schmidhuber propusieron una variación de la red recurrente con las denominadas unidades de memoria a largo plazo, o LSTM, como una solución al problema del gradiente de fuga.
 
@@ -192,4 +151,35 @@ Esas puertas actúan sobre las señales que reciben, y de forma similar a los nodo
 % https://skymind.ai/wiki/lstm
 %Rf
 
-\subsection{Optimizadores}
+\begin{figure}[H]
+	\centerline{\includegraphics[width=10cm]{lstm.png}}
+	\caption{Redes LSTM}
+	\label{fig:lstm}
+\end{figure}
+
+\section{Optimizadores}
+
+% https://towardsdatascience.com/types-of-optimization-algorithms-used-in-neural-networks-and-ways-to-optimize-gradient-95ae5d39529f
+
+Los algoritmos de optimización nos ayudan a minimizar (o maximizar) una función de objetivo $E(x)$, que es simplemente una función matemática que depende de los parámetros internos de aprendizaje del modelo que se utilizan para calcular los valores objetivo $(Y)$ a partir de Conjunto de predictores $(X)$ utilizados en el modelo. 
+
+Los algoritmos de optimización estan en 2 categorías principales:
+
+\begin{itemize}
+	\item  \textbf{Algoritmos de optimización de primer orden: } estos algoritmos minimizan o maximizan una función de pérdida $E(x)$ utilizando sus valores de gradiente con respecto a los parámetros. El algoritmo de optimización de primer orden más utilizado es Descenso por Gradiente. La derivada de primer orden nos dice si la función está disminuyendo o aumentando en un punto en particular.
+	\item  \textbf{Algoritmos de optimización de segundo orden: } estos algoritmos utilizan la derivada de segundo orden, que también se llama Hessian para minimizar o maximizar la función de error $E(x)$. La Hessian es una matriz de derivados parciales de segundo orden. Dado que la segunda derivada es costosa de calcular, el segundo orden no se usa mucho. La derivada de segundo orden nos dice si la primera derivada está aumentando o disminuyendo, lo que sugiere la curvatura de la función.
+\end{itemize}
+
+Un gradiente es simplemente un vector que es una generalización multivariable de una derivada $(\frac{dy}{dx})$ en funciones multivariables.
+
+\subsection{Decenso por gradiente}
+
+El descenso por gradiente es la tecnica mas usada para entrenar y optimizar sistemas inteligentes. Es utilizada para realizar la actualizacion de los pesos en modelos de redes neuronales y minimizar la funcion de error $E(x)$, la forma en que actualiza los parametros es utilizando la siguiente ecuacion:
+
+\begin{equation}
+\theta = \theta - \eta\nabla J(\theta)
+\label{ec:des_grad}
+\end{equation}
+
+Donde $\eta$ es la tasa de aprendizaje, y $\nabla J(\theta)$ es el gradiente de la función de error $J(\theta)$.
+El descenso por gradiente es mayormente usado para hacer la actualización de los pesos en una red neuronal.
