@@ -296,17 +296,86 @@ Esta es una comparativa para diferenciar entre lo que sería una melodía y una ar
 	\label{fig:melo_armo}
 \end{figure}
 
+\newpage
+
 \section{Formato MIDI}
 
-%TODO: Rf
-% Deep Learning Techniques for Music Generation - {A} Survey  <- Bibliografia
+MIDI (Interfaz digital de instrumentos musicales) es un estándar técnico que describe un protocolo, una interfaz digital y conectores para la interoperabilidad entre varios instrumentos musicales electrónicos, software y dispositivos. \cite{Lear_Coli}
 
-MIDI (Interfaz digital de instrumentos musicales) es un estándar técnico que describe un protocolo, una interfaz digital y conectores para la interoperabilidad entre varios instrumentos musicales electrónicos, software y dispositivos. MIDI transmite mensajes de eventos que especifican información de notas (como tono y velocidad), así como señales de control para parámetros (como volumen, vibrato y señales de reloj). Hay cinco tipos de mensajes y aquí solo consideramos el tipo de Canal de voz, que transmite datos de rendimiento en tiempo real a través de un solo canal. Dos mensajes importantes son:
+Los archivos MIDI transmiten datos, no sonidos, y estos datos son almacenados en Tracks. Cada archivo MIDI puede tener 1 o mas Tracks.
+
+Los Tracks poseen mensajes de eventos que especifican información de notas (como tono y velocidad), así como señales de control para parámetros (como volumen, vibrato y señales de reloj). Tambien hay eventos que dan informacion acerca del instrumento, clave musical y tiempo. En la figura \ref{fig:formato_midi} se observa la estructura de un archivo MIDI.
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=12cm]{formato_midi.png}}
+	\caption{Formato MIDI}
+	\label{fig:formato_midi}
+\end{figure}
+
+Los mensajes MIDI estan estructurados en octetos, por lo que solo pueden existir $2^{3}$ tipos de mensajes diferentes. Cuando se transmiten, a cada octeto se le agrega el bit de paridad con la finalidad de detectar errores en la transmición o recepción.
+
+En la tabla \ref{tabla:mensajes_midi} se muestran los diferentes eventos que existen y sus parametros:
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			Mensaje & Código & Parametro 1 & Parametro 2\\
+			\hline \hline \hline \hline
+			Note Off               & 0x8 & Numero de nota        & Velocidad \\ \hline
+			Note On                & 0x9 & Numero de nota        & Velocidad \\ \hline
+			Polyphonic aftertouch  & 0xA & Numero de nota        & Presión \\ \hline
+			Control Change         & 0xB & Numero de controlador & Datos \\ \hline
+			Program Change         & 0xC & Numero de programa    & - \\ \hline
+			Channel aftertouch     & 0xD & Presion               & - \\ \hline
+			Pitch wheel            & 0xE & LSByte                & MSByte \\ \hline
+			System Message         & 0xF & -                     & - \\ \hline
+		\end{tabular}
+		\caption{Mensajes MIDI.}
+		\label{tabla:mensajes_midi}
+	\end{center}
+\end{table}
+
+Cada uno de los mensajes se describen a continuación \cite{Lear_Coli}\cite{sergi_audio}:
 
 \begin{itemize}
-	\item \textbf{Note on.-} Indica que una nota debe ser reproducida. Contiene la información de estado (número de canal, especificado por un entero dentro de [0 15] y dos valores de datos: un número de nota MIDI (el tono de la nota, un entero dentro de [0 127]) y una velocidad (que indica cómo la nota es reproducida, un entero dentro de [0 127]). Un ejemplo es <Note on, 0, 60, 50> que interpreta como: "en el canal 1, comienza a reproducir un C medio con una velocidad de 50".
-	\item \textbf{Note off.-} Indica que una nota termina. En esa situación, la velocidad indica qué tan rápido se libera la nota. Un ejemplo es <Note off, 0, 60, 20> que interpreta como: "en el canal 1, deja de reproducir un C medio con una velocidad de 20". 
+	\item \textbf{Note on.-} Este mensaje le indica al dispositivo, que debe iniciar una nota. Indica que una nota debe ser reproducida. Contiene la información de estado (número de canal, especificado por un entero dentro de [0 15] y dos valores de datos: un número de nota MIDI (el tono de la nota, un entero dentro de [0 127]) y una velocidad (que indica cómo la nota es reproducida, un entero dentro de [0 127]). Un ejemplo es ''Note on, 0, 60, 50'' que interpreta como: en el canal 1, comienza a reproducir un C medio con una velocidad de 50.
+	\item \textbf{Note off.-} Indica que una nota termina. En esa situación, la velocidad indica qué tan rápido se libera la nota. Un ejemplo es ''Note off, 0, 60, 20'' que interpreta como: en el canal 1, deja de reproducir un C medio con una velocidad de 20. 
+	\item \textbf{Polyphonic aftertouch.-} Algunos teclados de alta gama son capaces de detectar de forma permanente (decenas de veces por segundo) los cambios en la presión ejercida sobre cada una de sus teclas. En este	caso, siempre que se produzca algún cambio, envían este mensaje.
+	\item \textbf{Control Change.-} Este mensaje engloba 128 posibles mensajes de	control diferentes Todos ellos afectan de alguna forma a la calidad del sonido; existen controles para modificar el volumen, la modulación, la reverberación, etc. 
+	\item \textbf{Program Change.-} Evento para designar los diferentes sonidos disponibles en un sintetizador (instrumentos, efectos sonoros, etc.). 
+	\item \textbf{Channel aftertouch.-} Este mensaje es parecido al Polyphonic aftertouch con la diferencia de que en lugar de enviar un mensaje de presión por cada nota, se envia uno por cada canal.
+	\item \textbf{Pitch wheel.-} la inmensa mayoría de teclados disponen a la izquierda, de
+	dos pequeñas ruedas giratorias. Una de ellas (la que vuelve automáticamente a su posición
+	central), se utiliza para desafinar ligeramente el sonido. Cuando la rueda gira, el teclado envía
+	estos mensajes de forma ?continua? (decenas de veces por segundo).
+	\item \textbf{System Message.-} Estos mensajes se comportan de forma diferente a todos los anteriores, ya que los cuatro bits restantes no indican un número de canal, y por ello, afectan globalmente al comportamiento de los dispositivos que los reciban. Estos cuatro bits restantes, definen de hecho dieciséis mensajes diferentes, que se reparten en tres grupos: los mensajes comunes de sistema, los 	mensajes de sistema de tiempo real y los mensajes de sistema exclusivo. 
 \end{itemize}
+
+En la siguiente tabla \ref{tabla:n_notas_midi} se puede observar los valores de las notas y a que octava pertenecen:
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+			\hline
+			Octava & C & C\# & D & D\# & E & F & F\# & G & G\# & A & A\# & B \\
+			\hline \hline \hline \hline \hline \hline \hline \hline \hline \hline \hline \hline \hline
+			-1 & 0   & 1   & 2   & 3   & 4   & 5   & 6   & 7   & 8   & 9   & 10  & 11  \\ \hline
+			0  & 12  & 13  & 14  & 15  & 16  & 17  & 18  & 19  & 20  & 21  & 22  & 23  \\ \hline
+			1  & 24  & 25  & 26  & 27  & 28  & 29  & 30  & 31  & 32  & 33  & 34  & 35  \\ \hline
+			2  & 36  & 37  & 38  & 39  & 40  & 41  & 42  & 43  & 44  & 45  & 46  & 47  \\ \hline
+			3  & 48  & 49  & 50  & 51  & 52  & 53  & 54  & 55  & 56  & 57  & 58  & 59  \\ \hline
+			4  & 60  & 61  & 62  & 63  & 64  & 65  & 66  & 67  & 68  & 69  & 70  & 71  \\ \hline
+			5  & 72  & 73  & 74  & 75  & 76  & 77  & 78  & 79  & 80  & 81  & 82  & 83  \\ \hline
+			6  & 84  & 85  & 86  & 87  & 88  & 89  & 90  & 91  & 92  & 93  & 94  & 95  \\ \hline
+			7  & 96  & 97  & 98  & 99  & 100 & 101 & 102 & 103 & 104 & 105 & 106 & 107 \\ \hline
+			8  & 108 & 109 & 110 & 111 & 112 & 113 & 114 & 115 & 116 & 117 & 118 & 119 \\ \hline
+			9  & 120 & 121 & 122 & 123 & 124 & 125 & 126 & 127 &     &     &     &     \\ \hline
+		\end{tabular}
+		\caption{Numero de nota en formato MIDI.}
+		\label{tabla:n_notas_midi}
+	\end{center}
+\end{table}
 
 Cada evento de nota está realmente incrustado en un fragmento de pista, una estructura de datos que contiene un valor de tiempo delta que especifica la información de temporización y el evento en sí. Un valor de tiempo delta representa la posición de tiempo, como un valor absoluto, del evento y podría representar:
 
@@ -315,10 +384,10 @@ Cada evento de nota está realmente incrustado en un fragmento de pista, una estr
 	\item \textbf{time-code-based time.-} Representa el tiempo relacionado con horas, minutos y segundos de la canción. 
 \end{itemize}
 
-Un ejemplo de un extracto de un archivo MIDI y su partitura correspondiente es mostrado en las siguientes figuras. La división ah sido puesta en 384 pulsos por cuarto de nota lo cual corresponde a 96 pulsos por un octavo de nota:
+Un ejemplo de un extracto de un archivo MIDI y su partitura correspondiente es mostrado en las siguientes figuras \ref{fig:extract_midi} \ref{fig:repres_midi}.
 
 \begin{figure}[H]
-	\centerline{\includegraphics[width=6cm]{extract_midi.png}}
+	\centerline{\includegraphics[width=12cm]{eventos_midi.png}}
 	\caption{Extracto de un formato MIDI}
 	\label{fig:extract_midi}
 \end{figure}
@@ -329,15 +398,59 @@ Un ejemplo de un extracto de un archivo MIDI y su partitura correspondiente es m
 	\label{fig:repres_midi}
 \end{figure}
 
-%Rf
+Dentro del formato MIDI se pueden representar en cada track un instrumento diferente, para realizar esto se utiliza el evento "Program Change", el cual dependiendo de su valor, sera el instrumento a reproducir.
 
-Dentro del formato MIDI se pueden representar en cada track un instrumento diferente eh independiente de los demás, esto permite una fácil manipulación de los diferentes instrumentos. A continuación se muestra una tabla de todos los instrumentos que pueden ser representados en este formato:
+\begin{table}[H]
+	\begin{center}
+		\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|l|l|l|l|l|l|l|l|}
+			\hline
+			PC & Instrumento & PC & Instrumento & PC & Instrumento & PC & Instrumento\\
+			\hline \hline \hline \hline \hline \hline \hline \hline
+			1    &    Acoustic Grand Piano   &   9    &    Celesta            &   17   &    Drawbar Organ         &   25   &    Acoustic Guitar (nylon) \\ \hline
+			2    &    Bright Acoustic Piano  &   10   &    Glockenspiel       &   18   &    Percussive Organ      &   26   &    Acoustic Guitar (steel) \\ \hline
+			3    &    Electric Grand Piano   &   11   &    Music Box          &   19   &    Rock Organ            &   27   &    Electric Guitar (jazz) \\ \hline
+			4    &    Honky-tonk Piano       &   12   &    Vibraphone         &   20   &    Church Organ          &   28   &    Electric Guitar (clean) \\ \hline
+			5    &    Electric Piano 1       &   13   &    Marimba            &   21   &    Reed Organ            &   29   &    Electric Guitar (muted) \\ \hline
+			6    &    Electric Piano 2       &   14   &    Xylophone          &   22   &    Accordion             &   30   &    Overdriven Guitar \\ \hline
+			7    &    Harpsichord            &   15   &    Tubular Bells      &   23   &    Harmonica             &   31   &    Distortion Guitar \\ \hline
+			8    &    Clavi                  &   16   &    Dulcimer           &   24   &    Tango Accordion       &   32   &    Guitar harmonics \\ \hline
+			\hline \hline \hline \hline \hline \hline \hline \hline
+			33   &    Acoustic Bass          &   41   &    Violin             &   49   &    String Ensemble 1     &   57   &    Trumpet \\ \hline
+			34   &    Electric Bass (finger) &   42   &    Viola              &   50   &    String Ensemble 2     &   58   &    Trombone \\ \hline
+			35   &    Electric Bass (pick)   &   43   &    Cello              &   51   &    SynthStrings 1        &   59   &    Tuba \\ \hline
+			36   &    Fretless Bass          &   44   &    Contrabass         &   52   &    SynthStrings 2        &   60   &    Muted Trumpet \\ \hline
+			37   &    Slap Bass 1            &   45   &    Tremolo Strings    &   53   &    Choir Aahs            &   61   &    French Horn \\ \hline
+			38   &    Slap Bass 2            &   46   &    Pizzicato Strings  &   54   &    Voice Oohs            &   62   &    Brass Section \\ \hline
+			39   &    Synth Bass 1           &   47   &    Orchestral Harp    &   55   &    Synth Voice           &   63   &    SynthBrass 1 \\ \hline
+			40   &    Synth Bass 2           &   48   &    Timpani            &   56   &    Orchestra Hit         &   64   &    SynthBrass 2 \\ \hline
+			\hline \hline \hline \hline \hline \hline \hline \hline
+			65   &    Soprano Sax            &   73   &    Piccolo            &   81   &    Lead 1 (square)       &   89   &    Pad 1 (new age) \\ \hline
+			66   &    Alto Sax               &   74   &    Flute              &   82   &    Lead 2 (sawtooth)     &   90   &    Pad 2 (warm) \\ \hline
+			67   &    Tenor Sax              &   75   &    Recorder           &   83   &    Lead 3 (calliope)     &   91   &    Pad 3 (polysynth) \\ \hline
+			68   &    Baritone Sax           &   76   &    Pan Flute          &   84   &    Lead 4 (chiff)        &   92   &    Pad 4 (choir) \\ \hline
+			69   &    Oboe                   &   77   &    Blown Bottle       &   85   &    Lead 5 (charang)      &   93   &    Pad 5 (bowed) \\ \hline
+			70   &    English Horn           &   78   &    Shakuhachi         &   86   &    Lead 6 (voice)        &   94   &    Pad 6 (metallic) \\ \hline
+			71   &    Bassoon                &   79   &    Whistle            &   87   &    Lead 7 (fifths)       &   95   &    Pad 7 (halo) \\ \hline
+			72   &    Clarinet               &   80   &    Ocarina            &   88   &    Lead 8 (bass + lead)  &   96   &    Pad 8 (sweep) \\ \hline
+			\hline \hline \hline \hline \hline \hline \hline \hline
+			97   &    FX 1 (rain)            &   105  &    Sitar              &   113  &    Tinkle Bell           &   121  &    Guitar Fret Noise \\ \hline
+			98   &    FX 2 (soundtrack)      &   106  &    Banjo              &   114  &    Agogo                 &   122  &    Breath Noise \\ \hline
+			99   &    FX 3 (crystal)         &   107  &    Shamisen           &   115  &    Steel Drums           &   123  &    Seashore \\ \hline
+			100  &    FX 4 (atmosphere)      &   108  &    Koto               &   116  &    Woodblock             &   124  &    Bird Tweet \\ \hline
+			101  &    FX 5 (brightness)      &   109  &    Kalimba            &   117  &    Taiko Drum            &   125  &    Telephone Ring \\ \hline
+			102  &    FX 6 (goblins)         &   110  &    Bag pipe           &   118  &    Melodic Tom           &   126  &    Helicopter \\ \hline
+			103  &    FX 7 (echoes)          &   111  &    Fiddle             &   119  &    Synth Drum            &   127  &    Applause \\ \hline
+			104  &    FX 8 (sci-fi)          &   112  &    Shanai             &   120  &    Reverse Cymbal        &   128  &    Gunshot \\ \hline
+		\end{tabular}}
+		\caption{Instrumentos en formato MIDI.}
+		\label{tabla:instr_midi}
+	\end{center}
+\end{table} 
 
-\begin{figure}[H]
-	\centerline{\includegraphics[width=12cm]{instr_midi.png}}
-	\caption{Instrumentos en formato MIDI}
-	\label{fig:instr_midi}
-\end{figure}
+Los instrumentos de percusión no usan este evento, en lugar de eso usan el canal 10 para transmitir los datos.
+
+\newpage
 
 \section{Algoritmo Krumhansl-Schmuckler}
 
