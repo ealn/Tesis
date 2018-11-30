@@ -152,7 +152,7 @@ Esas puertas actúan sobre las señales que reciben, y de forma similar a los nodo
 %Rf
 
 \begin{figure}[H]
-	\centerline{\includegraphics[width=10cm]{lstm.png}}
+	\centerline{\includegraphics[width=14cm]{lstm.png}}
 	\caption{Redes LSTM}
 	\label{fig:lstm}
 \end{figure}
@@ -183,3 +183,125 @@ El descenso por gradiente es la técnica mas usada para entrenar y optimizar sist
 
 Donde $\eta$ es la tasa de aprendizaje, y $\nabla J(\theta)$ es el gradiente de la función de error $J(\theta)$.
 El descenso por gradiente es mayormente usado para hacer la actualización de los pesos en una red neuronal.
+
+\subsubsection{Descenso por gradiente estocástico (SGD)}
+
+Este método realiza una actualización de parámetros para cada ejemplo de entrenamiento. Generalmente es una técnica mucho más rápida. Realiza una actualización a la vez.
+
+Debido a estas actualizaciones frecuentes, las actualizaciones de parámetros tienen una gran variación y hacen que la función de error fluctúe a diferentes intensidades. Esto es realmente bueno porque nos ayuda a descubrir nuevos y posiblemente mejores mínimos locales, mientras que el Descenso de gradiente estándar solo convergerá al mínimo local.
+
+El problema con la SGD es que, debido a las frecuentes actualizaciones y fluctuaciones, en última instancia, complica la convergencia al mínimo exacto y continuará superando debido a las frecuentes fluctuaciones.
+
+\begin{equation}
+\theta = \theta - \eta\nabla J(\theta;x(i);y(i))
+\label{ec:des_grad_est}
+\end{equation}
+
+Donde ${x(i), y(i)}$ son ejemplos de entrenamiento.
+
+\subsubsection{Momento}
+
+Las oscilaciones de alta varianza en la SGD hacen que sea difícil alcanzar la convergencia, por lo que se inventó una técnica llamada Momentum que acelera la SGD al navegar a lo largo de la dirección relevante y suaviza las oscilaciones en direcciones irrelevantes. En otras palabras, todo lo que hace es agregar una fracción $\gamma$ del vector de actualización del paso anterior al vector de actualización actual.
+
+\begin{equation}
+V(t) = \gamma V(t-1) + \eta\nabla J(\theta)
+\label{ec:momento}
+\end{equation}
+
+Para finalmente actualizar los parámetros por $\theta = \theta - V(t)$. El momento $\gamma$ es usualmente puesto a 0.9 o un valor similar.
+
+\subsubsection{Gradiente acelerado Nesterov}
+
+El problema con el momento es que a medida que alcanzamos los mínimos, es decir, el punto más bajo de la curva, el impulso es bastante alto y no sabe disminuir la velocidad en ese punto debido al alto impulso podría hacer que se pierda por completo los mínimos y continuemos con la búsqueda. 
+
+Gradiente acelerado Nesterov (NAG) es una forma de dar a nuestro término de impulso este tipo de habilidad. Sabemos que usaremos nuestro término $\gamma V(t-1)$ para mover los parámetros $\theta$. El cálculo de $\theta - \gamma V(t-1)$ nos da una aproximación de la siguiente posición de los parámetros. Ahora podemos mirar hacia adelante con eficacia calculando el gradiente pero teniendo en cuenta la posición futura.
+
+\begin{equation}
+V(t) = \gamma V(t-1) + \eta\nabla J(\theta - \gamma V(t-1))
+\label{ec:nesterov}
+\end{equation}
+
+\begin{equation}
+\theta = \theta - V(t)
+\label{ec:nesterov_2}
+\end{equation}
+
+\subsubsection{Adagrad}
+
+Este método permite que la tasa de aprendizaje $\eta$ se adapte en función de los parámetros. Así que hace grandes actualizaciones para parámetros poco frecuentes y pequeñas actualizaciones para parámetros frecuentes. Por esta razón, es adecuado para tratar con datos dispersos.
+
+Adagrad modifica la tasa de aprendizaje general $\eta$ en cada paso de tiempo $t$ para cada parámetro $\theta$ en función de los gradientes pasados que se han calculado para $\theta$.
+
+\begin{equation}
+\theta = \theta - \frac{\eta}{\sqrt{G + \epsilon}} g
+\label{ec:adagrad}
+\end{equation}
+
+\subsubsection{AdaDelta}
+
+Es una extensión de AdaGrad que tiende a eliminar el problema de la tasa de aprendizaje en degradación. En lugar de acumular todos los gradientes cuadrados anteriores, Adadelta limita la ventana de gradientes pasados acumulados a un tamaño fijo $w$.
+
+La suma de los gradientes se define recursivamente como una media decreciente de todos los gradientes cuadrados pasados. El promedio $E[g^{2}]_t$ en el tiempo $t$ depende solo del promedio anterior y del gradiente actual.
+
+\begin{equation}
+E[g^{2}]_t = \gamma E[g^{2}]_{t-1} + (1 - \gamma)g^{2}_t
+\label{ec:adadelta_1}
+\end{equation}
+
+\begin{equation}
+\Delta\theta_t = - \frac{RMS[\Delta\theta]_{t-1}}{RMS[g]_t} g_t
+\label{ec:adadelta_2}
+\end{equation}
+
+\begin{equation}
+\theta_{t+1} = \theta_t + \Delta\theta_t
+\label{ec:adadelta_3}
+\end{equation}
+
+\subsubsection{RMSprop}
+
+RMSprop y Adadelta se han desarrollado de forma independiente casi al mismo tiempo, debido a la necesidad de resolver las tasas de aprendizaje que disminuyen radicalmente en Adagrad. 
+
+RMSprop divide la velocidad de aprendizaje por un promedio decreciente exponencial de gradientes cuadrados.
+
+\begin{equation}
+E[g^{2}]_t = 0.9E[g^{2}]_{t-1} + 0.1g^{2}_t
+\label{ec:rmsprop_1}
+\end{equation}
+
+\begin{equation}
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{E[g^{2}]_t + \epsilon}} g_t
+\label{ec:rmsprop_2}
+\end{equation}
+
+\subsubsection{Adam}
+
+La estimación del momento adaptativo (Adam) es otro método que calcula las tasas de aprendizaje adaptativo para cada parámetro. Además de almacenar un promedio de decaimiento exponencial de gradientes cuadrados pasados como AdaDelta, Adam también mantiene un promedio de decaimiento exponencial de gradientes pasados $\hat{m}_t$, similar al impulso.
+
+$\hat{m}_t$ y $\hat{v}_t$ son valores del primer momento, que es la Media y el segundo momento, que es la varianza no centrada de los gradientes, respectivamente.
+
+\begin{equation}
+\hat{m}_t = \frac{m_t}{1 - \beta^{t}_1}
+\label{ec:adam_1}
+\end{equation}
+
+\begin{equation}
+\hat{v}_t = \frac{v_t}{1 - \beta^{t}_2}
+\label{ec:adam_2}
+\end{equation}
+
+\begin{equation}
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon}\hat{m}_t
+\label{ec:adam_3}
+\end{equation}
+
+\subsubsection{Nadam}
+
+Adam se puede ver como una combinación de RMSprop y momento: RMSprop contribuye con el promedio de decaimiento exponencial de los gradientes cuadrados pasados, mientras que el momento representa el promedio decreciente exponencial de los gradientes pasados.
+
+Nadam (Estimación del momento adaptativo acelerado por Nesterov) por lo tanto, combina a Adán y NAG.
+
+\begin{equation}
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon}(\beta_1\hat{m}_t + \frac{(1 - \beta_1)g_t}{1 - \beta^{t}_1})
+\label{ec:nadam_1}
+\end{equation}
