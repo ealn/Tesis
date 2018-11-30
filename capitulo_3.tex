@@ -23,7 +23,7 @@ Los sonidos tienen diferentes propiedades las cuales se describen a continuación
 	\item \textbf{Altura.-} un sonido puede ser agudo, medio o grave, dependiendo de la altura de su nota.
 	\item \textbf{Duración.-} un sonido debe de tener una duración la cual se expresa en unidades de tiempo.
 	\item \textbf{Intensidad.-} esto se refiere al volumen del sonido, puede ser débil o fuerte.
-	\item \textbf{Timbre.-} se le conoce como timbre o color del sonido a como un sonido con la misma nota suena diferente dependiendo del instrumento usado para su interpretación.  
+	\item \textbf{Timbre.-} se le conoce como timbre o color a un sonido con la misma nota que suena diferente dependiendo del instrumento usado para su interpretación.  
 \end{itemize}
 
 Los silencios a su vez su única propiedad intrínseca es la duración, es decir en un silencio lo único que se mide es la duración del mismo.
@@ -82,7 +82,7 @@ Podemos ver la relación de tonos y semitonos (1/2 tonos) en la siguiente figura:
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{tonos.png}}
-	\caption{Relacion de tonos y semitonos}
+	\caption{Relación de tonos y semitonos}
 	\label{fig:tonos}
 \end{figure}
 
@@ -242,7 +242,7 @@ Para poder completar el tono completo de la fórmula de la escala mayor entre Mi 
 
 La única escala mayor que no posee alteraciones es la escala mayor de Do, de ahí en más todas las demás escalas mayores tendrán al menos una alteración.
 
-Las escalas menores parten de la escala mayor obteniendo su sexta nota y siguiendo las mismas notas de la escala mayor. Estas escalas menores se les conocen como menores relativas, ya que se basan en una escala mayor para su formación.
+Las escalas menores parten de la escala mayor obteniendo su sexta nota y siguiendo las mismas notas de la escala mayor. Estas escalas menores se les conocen como relativas, ya que se basan en una escala mayor para su formación.
 
 Por ejemplo la escala relativa de Do mayor seria La menor y esta escala posee exactamente las mismas notas que la escala mayor solamente que empieza desde la nota de La:
 
@@ -276,7 +276,7 @@ Debido a que las escalas mayores y sus relativas menores poseen las mismas alter
 
 La tonalidad de una canción se basa en la escala base de la canción y esta la podemos averiguar viendo la armadura que posee la canción, aunque como se vio anteriormente las escalas mayores y sus relativas poseen la misma armadura, así que antes de definir la tonalidad en base a la armadura también se debe de hacer un análisis de la interacción de las notas en la canción.
 
-Dentro de las tonalidades tenemos tonalidades mayores y menores, por ejemplo si vemos un pentagrama el cual no posee alteraciones podríamos asumir que la canción esta en Do mayor o en La menor, el siguiente paso sería ver la interacción de las notas en la canción para determinar correctamente la tonalidad.
+Dentro de las tonalidades tenemos mayores y menores, por ejemplo si vemos un pentagrama el cual no posee alteraciones podríamos asumir que la canción esta en Do mayor o en La menor, el siguiente paso sería ver la interacción de las notas en la canción para determinar correctamente la tonalidad.
 
 \subsection{Melodías y Armonías}
 
@@ -300,11 +300,11 @@ Esta es una comparativa para diferenciar entre lo que sería una melodía y una ar
 
 \section{Formato MIDI}
 
-MIDI (Interfaz digital de instrumentos musicales) es un estándar técnico que describe un protocolo, una interfaz digital y conectores para la interoperabilidad entre varios instrumentos musicales electrónicos, software y dispositivos. \cite{Lear_Coli}
+MIDI (Interfaz digital de instrumentos musicales) es un estándar técnico que describe un protocolo, una interfaz digital y conectores para la interoperatividad entre varios instrumentos musicales electrónicos, software y dispositivos. \cite{Lear_Coli}
 
 Los archivos MIDI transmiten datos, no sonidos, y estos datos son almacenados en Tracks. Cada archivo MIDI puede tener 1 o mas Tracks.
 
-Los Tracks poseen mensajes de eventos que especifican información de notas (como tono y velocidad), así como señales de control para parámetros (como volumen, vibrato y señales de reloj). Tambien hay eventos que dan informacion acerca del instrumento, clave musical y tiempo. En la figura \ref{fig:formato_midi} se observa la estructura de un archivo MIDI.
+Los Tracks poseen mensajes de eventos que especifican información de notas (como tono y velocidad), así como señales de control para parámetros (como volumen, vibrato y señales de reloj). También hay eventos que dan información acerca del instrumento, clave musical y tiempo. En la figura \ref{fig:formato_midi} se observa la estructura de un archivo MIDI.
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{formato_midi.png}}
@@ -312,9 +312,9 @@ Los Tracks poseen mensajes de eventos que especifican información de notas (como
 	\label{fig:formato_midi}
 \end{figure}
 
-Los mensajes MIDI estan estructurados en octetos, por lo que solo pueden existir $2^{3}$ tipos de mensajes diferentes. Cuando se transmiten, a cada octeto se le agrega el bit de paridad con la finalidad de detectar errores en la transmición o recepción.
+Los mensajes MIDI están estructurados en octetos, por lo que solo pueden existir $2^{3}$ tipos de mensajes diferentes. Cuando se transmiten, a cada octeto se le agrega el bit de paridad con la finalidad de detectar errores en la transmisión o recepción.
 
-En la tabla \ref{tabla:mensajes_midi} se muestran los diferentes eventos que existen y sus parametros:
+En la tabla \ref{tabla:mensajes_midi} se muestran los diferentes eventos que existen y sus parámetros:
 
 \begin{table}[H]
 	\begin{center}
@@ -336,20 +336,17 @@ En la tabla \ref{tabla:mensajes_midi} se muestran los diferentes eventos que exi
 	\end{center}
 \end{table}
 
-Cada uno de los mensajes se describen a continuación \cite{Lear_Coli}\cite{sergi_audio}:
+Cada uno de los mensajes se describen a continuación:
 
 \begin{itemize}
-	\item \textbf{Note on.-} Este mensaje le indica al dispositivo, que debe iniciar una nota. Indica que una nota debe ser reproducida. Contiene la información de estado (número de canal, especificado por un entero dentro de [0 15] y dos valores de datos: un número de nota MIDI (el tono de la nota, un entero dentro de [0 127]) y una velocidad (que indica cómo la nota es reproducida, un entero dentro de [0 127]). Un ejemplo es ''Note on, 0, 60, 50'' que interpreta como: en el canal 1, comienza a reproducir un C medio con una velocidad de 50.
-	\item \textbf{Note off.-} Indica que una nota termina. En esa situación, la velocidad indica qué tan rápido se libera la nota. Un ejemplo es ''Note off, 0, 60, 20'' que interpreta como: en el canal 1, deja de reproducir un C medio con una velocidad de 20. 
+	\item \textbf{Note on.-} Este mensaje le indica al dispositivo, que debe iniciar una nota. Contiene la información de estado (número de canal, especificado por un entero dentro de [0 15] y dos valores de datos: un número de nota MIDI (el tono de la nota, un entero dentro de [0 127]) y una velocidad (que indica cómo la nota es reproducida, un entero dentro de [0 127]). Un ejemplo es ''Note on, 0, 60, 50'' que interpreta como: en el canal 1, comienza a reproducir un C medio con una velocidad de 50.
+	\item \textbf{Note off.-} Indica que una nota termina. En esa situación, la velocidad indica qué tan rápido se libera la nota. Un ejemplo es ''Note off, 0, 60, 20'' que interpreta como: en el canal 1, deja de reproducir un C medio con una velocidad de 20. \cite{Lear_Coli}
 	\item \textbf{Polyphonic aftertouch.-} Algunos teclados de alta gama son capaces de detectar de forma permanente (decenas de veces por segundo) los cambios en la presión ejercida sobre cada una de sus teclas. En este	caso, siempre que se produzca algún cambio, envían este mensaje.
-	\item \textbf{Control Change.-} Este mensaje engloba 128 posibles mensajes de	control diferentes Todos ellos afectan de alguna forma a la calidad del sonido; existen controles para modificar el volumen, la modulación, la reverberación, etc. 
-	\item \textbf{Program Change.-} Evento para designar los diferentes sonidos disponibles en un sintetizador (instrumentos, efectos sonoros, etc.). 
-	\item \textbf{Channel aftertouch.-} Este mensaje es parecido al Polyphonic aftertouch con la diferencia de que en lugar de enviar un mensaje de presión por cada nota, se envia uno por cada canal.
-	\item \textbf{Pitch wheel.-} la inmensa mayoría de teclados disponen a la izquierda, de
-	dos pequeñas ruedas giratorias. Una de ellas (la que vuelve automáticamente a su posición
-	central), se utiliza para desafinar ligeramente el sonido. Cuando la rueda gira, el teclado envía
-	estos mensajes de forma ?continua? (decenas de veces por segundo).
-	\item \textbf{System Message.-} Estos mensajes se comportan de forma diferente a todos los anteriores, ya que los cuatro bits restantes no indican un número de canal, y por ello, afectan globalmente al comportamiento de los dispositivos que los reciban. Estos cuatro bits restantes, definen de hecho dieciséis mensajes diferentes, que se reparten en tres grupos: los mensajes comunes de sistema, los 	mensajes de sistema de tiempo real y los mensajes de sistema exclusivo. 
+	\item \textbf{Control Change.-} Este mensaje engloba 128 posibles mensajes de	control diferentes Todos ellos afectan de alguna forma a la calidad del sonido; existen controles para modificar el volumen, la modulación, la reverberación, etc. \cite{Lear_Coli}
+	\item \textbf{Program Change.-} Evento para designar los diferentes sonidos disponibles en un sintetizador (instrumentos, efectos sonoros, etc.). \cite{sergi_audio}
+	\item \textbf{Channel aftertouch.-} Este mensaje es parecido al Polyphonic aftertouch con la diferencia de que en lugar de enviar un mensaje de presión por cada nota, se envia uno por cada canal. \cite{sergi_audio}
+	\item \textbf{Pitch wheel.-} la inmensa mayoría de teclados disponen a la izquierda, de dos pequeñas ruedas giratorias. Una de ellas (la que vuelve automáticamente a su posición central), se utiliza para desafinar ligeramente el sonido. Cuando la rueda gira, el teclado envía estos mensajes de forma continua (decenas de veces por segundo). \cite{sergi_audio}
+	\item \textbf{System Message.-} Estos mensajes se comportan de forma diferente a todos los anteriores, ya que los cuatro bits restantes no indican un número de canal, y por ello, afectan globalmente al comportamiento de los dispositivos que los reciban. Estos cuatro bits restantes, definen de hecho dieciséis mensajes diferentes, que se reparten en tres grupos: los mensajes comunes de sistema, los 	mensajes de sistema de tiempo real y los mensajes de sistema exclusivo. \cite{sergi_audio}
 \end{itemize}
 
 En la siguiente tabla \ref{tabla:n_notas_midi} se puede observar los valores de las notas y a que octava pertenecen:
@@ -398,7 +395,7 @@ Un ejemplo de un extracto de un archivo MIDI y su partitura correspondiente es m
 	\label{fig:repres_midi}
 \end{figure}
 
-Dentro del formato MIDI se pueden representar en cada track un instrumento diferente, para realizar esto se utiliza el evento "Program Change", el cual dependiendo de su valor, sera el instrumento a reproducir.
+Dentro del formato MIDI se pueden representar en cada Track un instrumento diferente, para realizar esto se utiliza el evento "Program Change", el cual dependiendo de su valor, sera el instrumento a reproducir.
 
 \begin{table}[H]
 	\begin{center}
@@ -537,7 +534,7 @@ El algoritmo calcula el coeficiente de correlación para todas las posibles tonal
 
 En el caso de la tonalidad de Do Mayor obtenemos un coeficiente de correlación de $R=0.00009$, lo que significa que no hay probabilidad de que esta sea la tonalidad adecuada para la canción.
 
-Si se grafican los puntos de las coordenadas $(x, y)$ para esta tonalidad se vera que los puntos estan demasiados dispersos entre si, por lo tanto no podemos encontrar una linea recta que prediga la posición de nuevos puntos.
+Si se grafican los puntos de las coordenadas $(x, y)$ para esta tonalidad se vera que los puntos están demasiados dispersos entre si, por lo tanto no podemos encontrar una linea recta que prediga la posición de nuevos puntos.
 
 Ahora vamos a analizar que pasa con la tonalidad de Re Mayor.
 

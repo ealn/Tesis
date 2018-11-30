@@ -21,11 +21,11 @@ Este entrenamiento fue realizado usando toda la base de datos preprocesados, los
 
 Esta base de datos fue segmentada en 2 partes, dejando el 75\% de los datos para entrenamiento y el restante 25\% para la validación.
 
-Las redes se entrenaron durante 200 epocas para cada instrumento, es decir, primero se entreno la red para que generara patrones de guitarra y luego se entreno para bajo, por lo tanto se tienen resultados de los 2 procesos.
+Las redes se entrenaron durante 200 épocas para cada instrumento, es decir, primero se entreno la red para que generara patrones de guitarra y luego se entreno para bajo, por lo tanto se tienen resultados de los 2 procesos.
 
 \subsection{Arquitectura 1}
 
-Esta arquitectura posee 3 capas de redes LSTM con capas de Dropout intermedias, asi como tambien unas capas Densas al final y un optimizador RMSProp.
+Esta arquitectura posee 3 capas de redes LSTM con capas de Dropout intermedias, así como también unas capas Densas al final y un optimizador RMSProp.
 
 \subsubsection{Guitarra}
 
@@ -91,7 +91,7 @@ En la Figura \ref{fig:arq1_bass_error} se muestra como fue disminuyendo el error
 
 En la Tabla \ref{tabla:val_error_bass_arq1} se puede observar que el error llego a valores de 2.3281 en la fase de entrenamiento y de 2.8547 en la fase de validación. 
 
-Despues de la epoca 150 parece que el error va a volver a subir tanto en la fase de entrenamiento como en la de validación, sin embargo al pasar las epocas se recupera la tendencia a la baja.
+Después de la época 150 parece que el error va a volver a subir tanto en la fase de entrenamiento como en la de validación, sin embargo al pasar las épocas se recupera la tendencia a la baja.
 
 \begin{table}[H]
 	\begin{center}
@@ -117,7 +117,7 @@ En la Figura \ref{fig:arq1_bass_acc} se muestra como fue aprendiendo la red con 
 
 En la Tabla \ref{tabla:val_acc_bass_arq1} se observa que para la fase de entrenamiento se llego a un valor final de 74.08\% y en la fase de validación a un 52.28\%.
 
-Al igual que la guitarra, el bajo tuvo un excelente aprendizaje con esta arquitectura, a pesar de que tuvo algunas caidas bastante pronunciadas, cerca de la epoca 150.
+Al igual que la guitarra, el bajo tuvo un excelente aprendizaje con esta arquitectura, a pesar de que tuvo algunas caídas bastante pronunciadas, cerca de la época 150.
 
 El valor máximo obtenido es bastante similar al valor máximo para la guitarra con esta misma arquitectura.
 
@@ -198,7 +198,7 @@ En la Figura \ref{fig:arq2_bass_error} se muestra como fue disminuyendo el error
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq2_bass_error.png}}
-	\caption{Grafica de error para bajo en arquitectura 2}
+	\caption{Gráfica de error para bajo en arquitectura 2}
 	\label{fig:arq2_bass_error}
 \end{figure}
 
@@ -223,7 +223,7 @@ La fase de validación no tuvo resultados tan buenos como la fase de entrenamient
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq2_bass_acc.png}}
-	\caption{Grafica de aprendizaje para bajo en arquitectura 2}
+	\caption{Gráfica de aprendizaje para bajo en arquitectura 2}
 	\label{fig:arq2_bass_acc}
 \end{figure}
 
@@ -278,11 +278,11 @@ En la Tabla \ref{tabla:val_error_gui_arq3} se puede observar que la tendencia de
 \end{table}
 
 En la Figura \ref{fig:arq3_guitar_acc} se muestra como fue aprendiendo la red con esta arquitectura para guitarra.
-A pesar de mostrar un comportamiento a la alza, los valores finales de esta grafica no son tan alentadores.
+A pesar de mostrar un comportamiento a la alza, los valores finales de esta gráfica no son tan alentadores.
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=12cm]{arq3_guitar_acc.png}}
-	\caption{Grafica de aprendizaje para guitarra en arquitectura 3}
+	\caption{Gráfica de aprendizaje para guitarra en arquitectura 3}
 	\label{fig:arq3_guitar_acc}
 \end{figure}
 
@@ -343,7 +343,7 @@ En la Tabla \ref{tabla:val_acc_bass_arq3} se observa que para la fase de entrena
 
 El rendimiento de esta red para bajo es menor al rendimiento para guitarra, sin embargo la tasa de aprendizaje es bastante parecida.
 
-Es interesante ver que de la epoca 75 a la 135 la tasa de aprendizaje se mantiene oscilando entre los mismos valores, alcanzando por algunas epocas valores mayores.
+Es interesante ver que de la época 75 a la 135 la tasa de aprendizaje se mantiene oscilando entre los mismos valores, alcanzando por algunas epocas valores mayores.
 
 Los valores obtenidos por esta red no son alentadores por lo que no podemos asegurarnos de que si entrenamos por mas epocas esta red, sea capaz de alcanzar valores superiores al 70\%.
 
@@ -580,11 +580,11 @@ La nueva pieza musical posee la tonalidad de Do Mayor, tal como las secuencias d
 
 La salida que estamos obteniendo con esta red usa principalmente notas de corcheas y negras, lo cual corresponde muy bien con las notas de entrada que esta recibiendo la red.
 
-Si realizamos un análisis de las notas, tenemos, que en la parte de guitarra en nuestro primer compas tenemos un acorde de poder formado por Do y Sol, y a la salida obtenemos tambien un acorde de poder pero conformado por Re y Sol, la siguiente nota de entrada es nuevamente el acorde de Do y Sol, y en este caso obtenemos el mismo acorde de salida.
+Si realizamos un análisis de las notas, tenemos, que en la parte de guitarra en nuestro primer compas tenemos un acorde de poder formado por Do y Sol, y a la salida obtenemos también un acorde de poder pero conformado por Re y Sol, la siguiente nota de entrada es nuevamente el acorde de Do y Sol, y en este caso obtenemos el mismo acorde de salida.
 
 En cuanto a la salida de bajo se puede observar que posee semicorcheas aparte de corcheas y negras, esto puede ser debido a las otras melodías que aprendió la red.
 
-La primer nota de entrada que tenemos en el bajo es Fa y nos genera un Mi, despues en el quinto compas volvemos a introducir un Fa y la salida obtenida resulta ser otro Fa.
+La primer nota de entrada que tenemos en el bajo es Fa y nos genera un Mi, después en el quinto compas volvemos a introducir un Fa y la salida obtenida resulta ser otro Fa.
 
 En base a estos argumentos podemos verificar que esta red esta cumpliendo su cometido de aprender secuencias y generar salidas que tengan sentido con las secuencias de entrada.
 
@@ -617,7 +617,7 @@ Una vez introducidas estas 2 entradas, la salida correspondiente que obtenemos s
 	\label{fig:gen_arq3}
 \end{figure}
 
-La nueva pieza musical generada parece tener la misma tonalidad de Sol Mayor, ya que posee una alteracion en Fa\#, sin embargo en el bajo la tonalidad predominante es Do Mayor.
+La nueva pieza musical generada parece tener la misma tonalidad de Sol Mayor, ya que posee una alteración en Fa\#, sin embargo en el bajo la tonalidad predominante es Do Mayor.
 
 La salida en el caso de la guitarra son puras semicorcheas, mientras que en el bajo son de corcheas y negras. Cabe mencionar que las notas de entrada se componen principalmente de corcheas y negras.
 
@@ -637,7 +637,7 @@ Durante esta etapa se evaluaron 100 canciones creadas usando las diferentes arqu
 
 Cada composición es hecha a partir de una canción base, la cual posee una tonalidad ya establecida y la red debe de ser capaz de crear una nueva composición tomando como base las notas de esta canción, la nueva pieza debería tener la misma tonalidad que la canción base, esto nos indica que nuestra red es capaz de identificar tonalidades y de crear nuevas cosas en base a estas.
 
-La salida de cada instrumento es generado de manera independiente usando el Track correspondiente de la cancion base.
+La salida de cada instrumento es generado de manera independiente usando el Track correspondiente de la canción base.
 
 \subsection{Arquitectura 1}
 
@@ -656,7 +656,7 @@ Para la arquitectura 1 se obtuvieron los siguientes resultados:
 	\label{fig:arq1_bass_val}
 \end{figure}
 
-En las figuras \ref{fig:arq1_guitar_val} y \ref{fig:arq1_bass_val} se puede observar que conforme van pasando las epocas, el numero de canciones creadas que poseen la misma tonalidad que la canción base va en aumento.
+En las figuras \ref{fig:arq1_guitar_val} y \ref{fig:arq1_bass_val} se puede observar que conforme van pasando las épocas, el numero de canciones creadas que poseen la misma tonalidad que la canción base va en aumento.
 
 En la tabla \ref{tabla:val_arq1} vemos que los valores alcanzados por esta arquitectura son de 64.26\% para guitarra y de 65.38\% para bajo, teniendo unos maximos de 64.26\% y 67.50\% respectivamente.
 
@@ -690,7 +690,7 @@ Para la arquitectura 2 se obtuvieron los siguientes resultados:
 	\label{fig:arq2_bass_val}
 \end{figure}
 
-En las figuras \ref{fig:arq2_guitar_val} y \ref{fig:arq2_bass_val} se puede observar que conforme van pasando las epocas, el numero de canciones creadas que poseen la misma tonalidad que la canción base va en aumento, sin embargo el crecimiento en las canciones de bajo es mucho mas lento en comparación a la guitarra.
+En las figuras \ref{fig:arq2_guitar_val} y \ref{fig:arq2_bass_val} se puede observar que conforme van pasando las épocas, el numero de canciones creadas que poseen la misma tonalidad que la canción base va en aumento, sin embargo el crecimiento en las canciones de bajo es mucho mas lento en comparación a la guitarra.
 
 En la tabla \ref{tabla:val_arq2} vemos que los valores alcanzados por esta arquitectura son de 49.81\% para guitarra y de 36.07\% para bajo, teniendo unos maximos de 49.81\% y 37.62\% respectivamente.
 
@@ -724,7 +724,7 @@ Para la arquitectura 3 se obtuvieron los siguientes resultados:
 	\label{fig:arq3_bass_val}
 \end{figure}
 
-En las figuras \ref{fig:arq3_guitar_val} y \ref{fig:arq3_bass_val} se puede observar que conforme van pasando las epocas, el numero de canciones creadas que poseen la misma tonalidad que la canción base va en aumento, sin embargo el porcentaje final es bastante bajo despues de 200 epocas.
+En las figuras \ref{fig:arq3_guitar_val} y \ref{fig:arq3_bass_val} se puede observar que conforme van pasando las épocas, el numero de canciones creadas que poseen la misma tonalidad que la canción base va en aumento, sin embargo el porcentaje final es bastante bajo después de 200 épocas.
 
 En la tabla \ref{tabla:val_arq3} vemos que los valores alcanzados por esta arquitectura son de 10.94\% para guitarra y de 11.85\% para bajo, teniendo unos maximos de 10.94\% y 11.88\% respectivamente.
 
@@ -752,7 +752,7 @@ Podemos realizar una comparativa de estas arquitecturas si se grafican juntas.
 	\label{fig:arqt_guitar_val}
 \end{figure}
 
-En la figura \ref{fig:arqt_guitar_val} observamos que la arquitectura que tuvo mejores resultados fue la arquitectura 1, seguido de la arquitectura 2. El porcentaje de la arquitectura 3 es bastante bajo despues de todas estas epocas.
+En la figura \ref{fig:arqt_guitar_val} observamos que la arquitectura que tuvo mejores resultados fue la arquitectura 1, seguido de la arquitectura 2. El porcentaje de la arquitectura 3 es bastante bajo después de todas estas épocas.
 
 En la tabla \ref{tabla:comp_arqt_val_gui} se observa que los valores alcanzados por cada arquitectura fueron de 64.26\%, 49.81\% y 10.94\% respectivamente.
 

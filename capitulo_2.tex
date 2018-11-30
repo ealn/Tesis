@@ -167,14 +167,14 @@ Los algoritmos de optimización estan en 2 categorías principales:
 
 \begin{itemize}
 	\item  \textbf{Algoritmos de optimización de primer orden: } estos algoritmos minimizan o maximizan una función de pérdida $E(x)$ utilizando sus valores de gradiente con respecto a los parámetros. El algoritmo de optimización de primer orden más utilizado es Descenso por Gradiente. La derivada de primer orden nos dice si la función está disminuyendo o aumentando en un punto en particular.
-	\item  \textbf{Algoritmos de optimización de segundo orden: } estos algoritmos utilizan la derivada de segundo orden, que también se llama Hessian para minimizar o maximizar la función de error $E(x)$. La Hessian es una matriz de derivados parciales de segundo orden. Dado que la segunda derivada es costosa de calcular, el segundo orden no se usa mucho. La derivada de segundo orden nos dice si la primera derivada está aumentando o disminuyendo, lo que sugiere la curvatura de la función.
+	\item  \textbf{Algoritmos de optimización de segundo orden: } estos algoritmos utilizan la derivada de segundo orden, que también se llama Hessiana para minimizar o maximizar la función de error $E(x)$. La Hessiana es una matriz de derivados parciales de segundo orden. Dado que la segunda derivada es costosa de calcular, el segundo orden no se usa mucho. La derivada de segundo orden nos dice si la primera derivada está aumentando o disminuyendo, lo que sugiere la curvatura de la función.
 \end{itemize}
 
 Un gradiente es simplemente un vector que es una generalización multivariable de una derivada $(\frac{dy}{dx})$ en funciones multivariables.
 
 \subsection{Descenso por gradiente}
 
-El descenso por gradiente es la tecnica mas usada para entrenar y optimizar sistemas inteligentes. Es utilizada para realizar la actualizacion de los pesos en modelos de redes neuronales y minimizar la funcion de error $E(x)$, la forma en que actualiza los parametros es utilizando la siguiente ecuacion:
+El descenso por gradiente es la técnica mas usada para entrenar y optimizar sistemas inteligentes. Es utilizada para realizar la actualización de los pesos en modelos de redes neuronales y minimizar la función de error $E(x)$, la forma en que actualiza los parámetros es utilizando la siguiente ecuación:
 
 \begin{equation}
 \theta = \theta - \eta\nabla J(\theta)
