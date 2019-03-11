@@ -5,13 +5,13 @@
 
 En este proyecto se busca que las redes neuronales sean capaces de aprender las diferentes tonalidades de las canciones, y que puedan crear nuevas composiciones que tengan sentido musicalmente hablando, tomando como base una canción de entrada en cierta tonalidad. 
 
-Esto sera de gran ayuda para un músico ya que podrá introducir sus propias canciones y en base a las notas de sus canciones la red sera capaz de generar música completamente nueva en la misma tonalidad de la canción de entrada. Estas canciones en definitiva no son composiciones finales, el músico podrá identificar las frases que sean de su agrado y continuar con la composición.
+Esto será de gran ayuda para un músico ya que podrá introducir sus propias canciones y en base a las notas de sus canciones, la red será capaz de generar música completamente nueva en la misma tonalidad de la canción de entrada. Estas canciones en definitiva no son composiciones finales, el músico podrá identificar las frases que sean de su agrado y continuar con la composición.
 
 \section{Datos}
 
-La base de datos de archivos MIDI que se utilizo en este proyecto se llama ''Clean MIDI subset'' la cual se uso en la tesis doctoral ''Learning-Based Methods for Comparing Sequences, with Applications to Audio-to-MIDI Alignment and Matching'' \cite{Lear_Coli}. Esta base de datos contiene más de 17,000 canciones en formato MIDI, estas en su mayoría del género Pop y Rock, por lo que la red utilizada en este proyecto fue entrenada para asimilar este tipo de estilos.
+La base de datos de archivos MIDI que se utilizó en este proyecto se llama ''Clean MIDI subset'' la cual se usó en la tesis doctoral ''Learning-Based Methods for Comparing Sequences, with Applications to Audio-to-MIDI Alignment and Matching'' \cite{Lear_Coli}. Esta base de datos contiene más de 17,000 canciones en formato MIDI del género Rock y Pop, por lo que la red utilizada en este proyecto fue entrenada para asimilar este tipo de estilos.
 
-Para el procesamiento de los archivos MIDI se utilizo una librería de software libre llamada Music21, la cual nos permite de una manera fácil trabajar con estos archivos, sin embargo se realizo una adaptación para que funcionara correctamente con diferentes sonidos de guitarra y bajo eléctrico. Esta librería es compatible con Python3 por lo que nuestro programa esta hecho en este lenguaje de programación.
+Para el procesamiento de los archivos MIDI se utilizó una librería de software libre llamada Music21, la cual nos permite de una manera fácil trabajar con estos archivos, sin embargo se realizó una adaptación para que funcionara correctamente con diferentes sonidos de guitarra y bajo eléctrico. Esta librería es compatible con Python3 por lo que nuestro programa está hecho en este lenguaje de programación.
 
 Los archivos MIDI de esta base de datos poseen varios Tracks, cada uno con un instrumento diferente, de los cuales en este proyecto solamente se tomaran en cuenta los Tracks de guitarra y bajo eléctrico, los demás Tracks serán ignorados.
 
@@ -19,9 +19,9 @@ Cada canción tiene una duración promedio de 3 minutos, por lo que la cantidad de
 
 \section{Arquitectura de la aplicación}
 
-Este proyecto posee varios módulos, cada uno funciona independientemente de los otros, sin embargo existen interconexiones entre ellos para el paso de información, esto nos permite tener una buena modulación del código y realizar cambios en un modulo sin afectar a los otros.
+Este proyecto posee varios módulos, cada uno funciona independientemente de los otros, sin embargo existen interconexiones entre ellos para el paso de información, esto nos permite tener una buena modulación del código y realizar cambios en un módulo sin afectar a los otros.
 
-Estos modulos se pueden observar en la siguiente figura:
+Estos módulos se pueden observar en la siguiente figura:
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=14cm]{arq_app.png}}
@@ -50,11 +50,11 @@ Mientras que los elementos pasivos son:
 	\item Canciones generadas.
 \end{itemize}
 
-A continuación se describirán cada modulo del sistema.
+A continuación se describirán cada módulo del sistema.
 
 \subsection{UI}
 
-Este modulo es una pequeña interfaz de usuario de consola basada en menus, la cual nos permite accesar a los otros módulos del sistema.
+Este módulo es una pequeña interfaz de usuario de consola basada en menus, la cual nos permite accesar a los otros módulos del sistema.
 
 El menú principal contiene el acceso a los siguientes módulos:
 
@@ -65,19 +65,19 @@ El menú principal contiene el acceso a los siguientes módulos:
 	\item Analizador.
 \end{enumerate}
 
-Como se puede observar en la figura \ref{fig:arq_app} hay algunos módulos que para poderse ejecutar es necesario correr otro modulo primero, con el fin de obtener la información necesaria para este modulo. El único modulo que no tiene condicionantes es el de Preprocesamiento, por lo tanto es el primer modulo que se debería de ejecutar en el programa.
+Como se puede observar en la figura \ref{fig:arq_app} hay algunos módulos que para poderse ejecutar es necesario correr otro módulo primero, con el fin de obtener la información necesaria para este módulo. El único módulo que no tiene condicionantes es el de Preprocesamiento, por lo tanto es el primer módulo que se debería de ejecutar en el programa.
 
 \subsection{Preprocesamiento}
 
-En este modulo se realiza el preprocesamiento de la base de datos, esto es con el fin de extraer únicamente los Tracks de guitarra y bajo de los archivos MIDI.
+En este módulo se realiza el preprocesamiento de la base de datos, esto es con el fin de extraer únicamente los Tracks de guitarra y bajo de los archivos MIDI.
 
-Como se menciono anteriormente esta base de datos tiene archivos de música pop y rock, sin embargo, no todos los archivos son validos para ser procesados por este programa, debido a que algunos no contienen información completa en sus Tracks para su correcto procesamiento usando la librería Music21.
+Como se mencionó anteriormente esta base de datos tiene archivos de música pop y rock, sin embargo, no todos los archivos son válidos para ser procesados por este programa, debido a que algunos no contienen información completa en sus Tracks para su correcto procesamiento usando la librería Music21.
 
-La librería Music21 esta enfocada principalmente para hacer reconocimiento de pianos y sus derivados, por lo tanto se tuvo que realizar un reacondicionamiento de esta librería para el correcto funcionamiento con los instrumentos de guitarra y bajo. 
+La librería Music21 está enfocada principalmente para hacer reconocimiento de pianos y sus derivados, por lo tanto se tuvo que realizar un reacondicionamiento de esta librería para el correcto funcionamiento con los instrumentos de guitarra y bajo. 
 
-El modo en que se puede reconocer si un track es de guitarra o de bajo es en base a un evento llamado ''Program Change'', este evento no lo poseen todos los Tracks MIDI por lo que en ocasiones es complicado determinar cual es el instrumento que se esta ejecutando, en estos casos el sintetizador MIDI es el encargado de asignarle un instrumento por defecto, el cual generalmente es el piano.
+El modo en que se puede reconocer si un track es de guitarra o de bajo es en base a un evento llamado ''Program Change'', este evento no lo poseen todos los Tracks MIDI por lo que en ocasiones es complicado determinar cuál es el instrumento que se está ejecutando, en estos casos el sintetizador MIDI es el encargado de asignarle un instrumento por defecto, el cual generalmente es el piano.
 
-Estos eventos de ''Program Change'' están agrupados en familias, de esta manera es mas fácil su identificación, como se ah mencionado a nosotros unicamente nos interesa la familia de guitarra y bajo, por lo tanto los únicos "Program Change" que estaremos buscando son:
+Estos eventos de ''Program Change'' están agrupados en familias, de esta manera es más fácil su identificación, a nosotros únicamente nos interesa la familia de guitarra y bajo, por lo tanto los únicos "Program Change" que estaremos buscando son:
 
 \begin{table}[H]
 	\begin{center}
@@ -95,17 +95,17 @@ Estos eventos de ''Program Change'' están agrupados en familias, de esta manera 
 
 Este elemento de ''Program Change'' no es una propiedad inherente de los Tracks, por lo que hay que hacer una búsqueda en todos los eventos de cada Track.
 
-Normalmente encontraremos varios Tracks que contengan sonidos de guitarra o bajo en un archivo MIDI y esto se debe que para tocar por ejemplo una guitarra con distorsión se utiliza un Track, y para un sonido limpio se utiliza otro Track. También existen casos en los cuales aun y cuando se trate del mismo sonido las notas están exparsidas en varios Tracks, esto depende de como fue que se creo el archivo MIDI.
+Normalmente encontraremos varios Tracks que contengan sonidos de guitarra o bajo en un archivo MIDI y esto se debe que para tocar por ejemplo una guitarra con distorsión se utiliza un Track, y para un sonido limpio se utiliza otro Track. También existen casos en los cuales aun y cuando se trate del mismo sonido las notas están esparcidas en varios Tracks, esto depende de cómo fue que se creó el archivo MIDI.
 
-Es por estas circunstancias la importancia de tener este modulo, ya que no solamente se encarga de separar los Tracks de guitarra y bajo en archivos separados, sino que también valida la integridad de los archivos MIDI y descarta los Tracks que tienen muchos silencios y muy pocas notas activas.
+Es por estas circunstancias la importancia de tener este módulo, ya que no solamente se encarga de separar los Tracks de guitarra y bajo en archivos separados, sino que también valida la integridad de los archivos MIDI y descarta los Tracks que tienen muchos silencios y muy pocas notas activas.
 
-Para tener un procesamiento mas rápido a la hora del proceso de entrenamiento o generación musical, se realiza la exportación de las notas y silencios a un archivo de manera serializada, de esta manera nos evitamos estar procesando los archivos MIDI y solamente deserializamos el archivo exportado.
+Para tener un procesamiento más rápido a la hora del proceso de entrenamiento o generación musical, se realiza la exportación de las notas y silencios a un archivo de manera serializada, de esta manera nos evitamos estar procesando los archivos MIDI y solamente deserializamos el archivo exportado.
 
-Como se observa en la figura \ref{fig:arq_app} la salida de este modulo seran los archivos preprocesados los cuales son necesarios para realizar la parte de entrenamiento.
+Como se observa en la figura \ref{fig:arq_app} la salida de este módulo serán los archivos preprocesados los cuales son necesarios para realizar la parte de entrenamiento.
 
 \subsection{Red neuronal}
 
-En este proyecto se están utilizando 3 tipos de arquitecturas diferentes para validar cual de las 3 arroja mejores resultados:
+En este proyecto se están utilizando 3 tipos de arquitecturas diferentes para validar cuál de las 3 arroja mejores resultados:
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=10cm]{arq_redes.png}}
@@ -113,9 +113,9 @@ En este proyecto se están utilizando 3 tipos de arquitecturas diferentes para va
 	\label{fig:arq_redes}
 \end{figure}
 
-Como se puede observar las 3 redes poseen 3 capas de LSTM sin embargo en las 2 primeras se están usando unas capas de Dropout intermedias, estas capas realizan la función de poner en 0 aleatoriamente algunas entradas para prevenir el sobre entrenamiento, sin embargo en la ultima arquitectura, se eliminaron estas capas para verificar el comportamiento que podría tener una red así.
+Como se puede observar las 3 redes poseen 3 capas de LSTM sin embargo en las 2 primeras se están usando unas capas de Dropout intermedias, estas capas realizan la función de poner en 0 aleatoriamente algunas entradas para prevenir el sobre entrenamiento, sin embargo en la última arquitectura, se eliminaron estas capas para verificar el comportamiento que podría tener una red así.
 
-Otro de los aspectos a verificar es el mejor optimizador, en este caso se esta usando un optimizador RMSProp en la primera y tercera arquitectura. Este optimizador funciona calculando dividiendo la tasa de aprendizaje por un promedio decreciente exponencial de gradientes cuadrados:
+Otro de los aspectos a verificar es el mejor optimizador, en este caso se está usando un optimizador RMSProp en la primera y tercera arquitectura. Este optimizador funciona calculando dividiendo la tasa de aprendizaje por un promedio decreciente exponencial de gradientes cuadrados:
 
 \begin{equation}
 E[g^{2}]_t = 0.9E[g^{2}]_{t-1} + 0.1g^{2}_t
@@ -134,7 +134,7 @@ En la figura \ref{fig:arq_redes} se observa que la primera y segunda red son prá
 \label{ec:nadam}
 \end{equation}
 
-Las ultimas capas de las redes son densas las cuales interconectan todas las neuronas de una capa con otra, esto nos permite mejorar la tasa de aprendizaje. 
+Las últimas capas de las redes son densas las cuales interconectan todas las neuronas de una capa con otra, esto nos permite mejorar la tasa de aprendizaje. 
 
 Finalmente la capa de activación es por medio de una función softmax o función exponencial normalizada, la cual es una generalización de la función logística:
 
@@ -145,7 +145,7 @@ Finalmente la capa de activación es por medio de una función softmax o función e
 
 \subsection{Entrenamiento}
 
-En este modulo se realiza toda la parte del entrenamiento. Es necesario seleccionar el tipo de arquitectura que se usara para el entrenamiento, asi como también el instrumento a entrenar, es importante mencionar que cada instrumento es entrenado por separado.
+En este módulo se realiza toda la parte del entrenamiento. Es necesario seleccionar el tipo de arquitectura que se usara para el entrenamiento, así como también el instrumento a entrenar, es importante mencionar que cada instrumento es entrenado por separado.
 
 Se toman los datos preprocesados (archivos exportados con las notas) los cuales son deserializados para obtener un arreglo únicamente con las notas y silencios, con este arreglo se empiezan a generar secuencias de 100 notas y silencios. Estas secuencias son insertadas en forma de matriz a una función de mapeo, la cual les asignara un valor único a cada nota, esto es debido que la red neuronal solamente reconoce números. Finalmente esta matriz es normalizada para poder ser procesada por la red LSTM.
 
@@ -157,11 +157,11 @@ En la siguiente figura podemos observar como es el flujo de entrenamiento:
 	\label{fig:flujo_ent}
 \end{figure}
 
-En este proyecto las diferentes arquitecturas fueron entrenadas con 200 épocas para cada instrumento, obteniendo buenos resultados de salida. Es posible entrenar usando mas épocas sin embargo el poder de procesamiento nos limita un poco a esto, ya que para poder entrenar un instrumento lleva aproximadamente 2 semanas y media por cada red. Se esta usando un servidor de Amazon con tarjetas NVIDIA para realizar todo el proceso de entrenamiento y aun así el tiempo de entrenamiento es bastante considerable.
+En este proyecto las diferentes arquitecturas fueron entrenadas con 200 épocas para cada instrumento, obteniendo buenos resultados de salida. Es posible entrenar usando más épocas sin embargo el poder de procesamiento nos limita un poco a esto, ya que para poder entrenar un instrumento lleva aproximadamente 2 semanas y media por cada red. Se está usando un servidor de Amazon con tarjetas NVIDIA para realizar todo el proceso de entrenamiento y aun así el tiempo de entrenamiento es bastante considerable.
 
-En cada época se verifica si la red esta teniendo una mejora en su aprendizaje, si es así se guarda un archivo con todos los pesos de las neuronas, con esto nos aseguramos de siempre guardar los mejores valores de pesos.
+En cada época se verifica si la red está teniendo una mejora en su aprendizaje, si es así se guarda un archivo con todos los pesos de las neuronas, con esto nos aseguramos de siempre guardar los mejores valores de pesos.
 
-Además de este archivo de pesos, también se guarda un histórico con los valores de aprendizaje y de disminución del error, para poder graficarlo después y ver como fue evolucionando nuestra red.
+Además de este archivo de pesos, también se guarda un histórico con los valores de aprendizaje y de disminución del error, para poder graficarlo después y ver cómo fue evolucionando nuestra red.
 
 De todo el conjunto de entrenamiento se usa un 75\% para la fase de entrenamiento y el otro 25\% para la fase de validación, de esta manera tenemos un gran conjunto de validación. 
 
@@ -169,15 +169,15 @@ Los datos son introducidos a la red en forma de lotes, cada uno de tamaño 64 y l
 
 \subsection{Generación}
 
-Este es el modulo encargado de la generación de nuevas canciones en base a una canción de entrada, y una red entrenada para guitarra y bajo.
+Este es el módulo encargado de la generación de nuevas canciones en base a una canción de entrada, y una red entrenada para guitarra y bajo.
 
 El usuario puede elegir con cual arquitectura realizar la generación musical, sin embargo, es importante mencionar que si no se tiene entrenada la arquitectura tanto para guitarra como para bajo no podrá ser usada.
 
-La forma en que funciona este modulo es tomando una cancion de la base de datos preprocesados (archivos exportados con las notas), este archivo es deserializado para obtener un arreglo de notas y silencios, con el cual se generaran secuencias de 100 notas y silencios, tal como en el caso del modulo de entrenamiento son puestas en una matriz para posteriormente pasarlas por una función de mapeo.
+La forma en que funciona este módulo es tomando una canción como base, la cual puede ser de la base de datos preprocesados, o una composición propia del usuario, se extraerán los datos de esta canción para obtener un arreglo de notas y silencios, con el cual se generaran secuencias de 100 notas y silencios, tal como en el caso del módulo de entrenamiento son puestas en una matriz para posteriormente pasarlas por una función de mapeo.
 
-Las secuencias son insertadas a la red una por una y usando la funcionalidad de predicción de la red, se obtiene una secuencia de salida con las ponderaciones de la proximidad a la siguiente nota. Esta secuencia se analiza y se toma el numero mayor para descubrir cual es la siguiente nota generada. Este proceso se repite hasta tener el numero de notas deseadas por el usuario.
+Las secuencias son insertadas a la red una por una y usando la funcionalidad de predicción de la red, se obtiene una secuencia de salida con las ponderaciones de la proximidad a la siguiente nota. Esta secuencia se analiza y se toma el número mayor para descubrir cuál es la siguiente nota generada. Este proceso se repite hasta tener el número de notas deseadas por el usuario.
 
-En esta figura se puede visualizar mas fácil este procedimiento:
+En esta figura se puede visualizar más fácil este procedimiento:
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=16cm]{generacion.png}}
@@ -185,17 +185,17 @@ En esta figura se puede visualizar mas fácil este procedimiento:
 	\label{fig:flujo_gen}
 \end{figure}
 
-El modulo generara la salida de guitarra y la de bajo, para posteriormente juntarlas en una sola canción y el usuario podrá elegir si desea que la salida posea los mismos instrumentos de la canción base.
+El módulo generara la salida de guitarra o de bajo según sea el caso, para posteriormente crear un archivo en formato MIDI que contendrá estas notas.
 
 La canción de salida deberá tener la misma tonalidad de la canción base, esto no siempre se puede cumplir ya que la red no tiene un 100\% de eficacia, sin embargo, los resultados obtenidos en este proyecto fueron bastante alentadores llegando a un máximo de 75\% aproximadamente. 
 
-Las canciones son guardadas con un numero genérico seguido de una numeración, esto es para poder generar muchas canciones sin preocuparnos de que se puedan sobreescribir canciones anteriormente creadas.
+Las canciones son guardadas con un número genérico seguido de una numeración, esto es para poder generar muchas canciones sin preocuparnos de que se puedan sobrescribir canciones anteriormente creadas.
 
 \subsection{Analizador}
 
-Finalmente el modulo de analizador como su nombre lo dice es el encargado de analizar las canciones generadas por el programa. Si no se tienen canciones generadas por el programa este modulo no podrá ser usado.
+Finalmente el módulo de analizador como su nombre lo dice es el encargado de analizar las canciones generadas por el programa. Si no se tienen canciones generadas por el programa este módulo no podrá ser usado.
 
-Este modulo contiene 3 utilerias:
+Este módulo contiene 3 utilerias:
 
 \begin{itemize} [noitemsep]
 	\item Visor.
@@ -203,15 +203,15 @@ Este modulo contiene 3 utilerias:
 	\item Analizador.
 \end{itemize}
 
-El visor nos permite visualizar una cancion en forma de tablatura en el programa que tengamos configurado por defecto en Music21, esto nos permite analizar las alturas y los intervalos entre las notas, así como también visualizar como se entrelazan la parte de guitarra con el bajo en la canción generada.
+El visor nos permite visualizar una canción en forma de tablatura en el programa que tengamos configurado por defecto en Music21, esto nos permite analizar las alturas y los intervalos entre las notas, así como también visualizar las secuencias generadas de guitarra y bajo.
 
 Es posible realizar modificaciones a las canciones creadas usando el visor, y verificar como se escucha con estas modificaciones. En este caso se tiene configurado MuseScore con Music21, el cual es un programa gratis para crear, reproducir e imprimir partituras.
 
-El reproductor permite reproducir las canciones generadas en el reproductor por defecto instalado en Windows. Es importante mencionar que cada reproductor tiene su propio sonido a la hora de reproducir los archivos MIDI.
+El reproductor por defecto instalado en Windows nos permite reproducir las canciones generadas. Es importante mencionar que cada reproductor tiene su propio sonido a la hora de reproducir los archivos MIDI.
 
-El analizador utiliza el algoritmo de Krumhansl-Schmuckler para realizar el calculo de la tonalidad de la canción generada. Este algoritmo retorna un arreglo con las posibles tonalidades de la canción, siendo el primer elemento la tonalidad con mayor probabilidad.
+El analizador utiliza el algoritmo de Krumhansl-Schmuckler para realizar el cálculo de la tonalidad de la canción generada. Este algoritmo retorna un arreglo con las posibles tonalidades de la canción, siendo el primer elemento la tonalidad con mayor probabilidad.
 
-Para el calculo de la tonalidad se toma en cuenta las notas de las escalas para las diferentes tonalidades. Como se vio en el capitulo de Teoría musical, cada tonalidad tiene sus propias alteraciones, sin embargo existen tonalidades relativas, las cuales poseen exactamente las mismas alteraciones, por lo que en ocasiones este algoritmo determina que la tonalidad de la canción es una tonalidad relativa, en este caso tomamos como un calculo correcto, ya que para determinar mas a fondo si es una tonalidad relativa o no, es necesario analizar las notas dominantes de las canciones, así como las funciones tonales.
+Para el cálculo de la tonalidad se toma en cuenta las notas de las escalas para las diferentes tonalidades. Como se vio en el capítulo de Teoría musical, cada tonalidad tiene sus propias alteraciones, sin embargo existen tonalidades relativas, las cuales poseen exactamente las mismas alteraciones, por lo que en ocasiones este algoritmo determina que la tonalidad de la canción es una tonalidad relativa, en este caso tomamos como un cálculo correcto, ya que para determinar más a fondo si es una tonalidad relativa o no, es necesario analizar las notas dominantes de las canciones, así como las funciones tonales.
 
-Una vez obtenida la tonalidad con este algoritmo, se compara contra la tonalidad con la que fue creada esta canción, si son iguales, lo catalogamos como un caso exitoso, de esta manera podemos verificar si nuestra red en realidad esta aprendiendo a crear canciones con diferentes tonalidades.
+Una vez obtenida la tonalidad con este algoritmo, se compara contra la tonalidad con la que fue creada esta canción, si son iguales, lo catalogamos como un caso exitoso, de esta manera podemos verificar si nuestra red en realidad está aprendiendo a crear canciones con diferentes tonalidades.
 
