@@ -71,16 +71,15 @@ Las redes neuronales artificiales han ido evolucionando con el paso del tiempo, 
 
 \section{Aprendizaje de las redes neuronales}
 
-%TODO: Rf
 El procedimiento utilizado para llevar a cabo el proceso de aprendizaje en una red neuronal se denomina entrenamiento.
 
 El problema de aprendizaje en las redes neuronales se formula en términos de la minimización de la función de error (o pérdida) asociada.
 
 Normalmente, esta función está compuesta por dos términos, uno que evalúa cómo se ajusta la salida de la red neuronal al conjunto de datos de que disponemos, y que se denomina término de error, y otro que se denomina término de regularización, y que se utiliza para evitar el sobreaprendizaje por medio del control de la complejidad efectiva de la red neuronal.
 
-Por supuesto, el valor de la función de error depende por completo de los parámetros de la red neuronal: los pesos sinápticos entre neuronas, y los bias asociados a ellas, que, como suele ser ya habitual, se pueden agrupar adecuadamente en un único vector de peso de la dimensión adecuada, que denotaremos por $w$. En este sentido, podemos escribir $f(w)$ para indicar que el valor del error que comete la red neuronal depende de los pesos asociados a la misma. Con esta formalización, nuestro objetivo es encontrar el valor $w^{*}$ para el que se obtiene un mínimo global de la función $f$, convirtiendo el problema de aprendizaje en un problema de optimización.
+Por supuesto, el valor de la función de error depende por completo de los parámetros de la red neuronal: los pesos sinápticos entre neuronas, y los bias asociados a ellas, que, como suele ser ya habitual, se pueden agrupar adecuadamente en un único vector de pesos de la dimensión adecuada, que denotaremos por $w$. En este sentido, podemos escribir $f(w)$ para indicar que el valor del error que comete la red neuronal depende de los pesos asociados a la misma. Con esta formalización, nuestro objetivo es encontrar el valor $w^{*}$ para el que se obtiene un mínimo global de la función $f$, convirtiendo el problema de aprendizaje en un problema de optimización.
 
-En general, la función de error es una función no lineal, por lo que no disponemos de algoritmos sencillos y exactos para encontrar sus mínimos. En consecuencia, tendremos que hacer uso de una búsqueda a través del espacio de parámetros que, idealmente, se aproxime de forma iterada a a un (error) mínimo de la red para los parámetros adecuados.
+En general, la función de error es una función no lineal, por lo que no disponemos de algoritmos sencillos y exactos para encontrar sus mínimos. En consecuencia, tendremos que hacer uso de una búsqueda a través del espacio de parámetros que, idealmente, se aproxime de forma iterada a un (error) mínimo de la red para los parámetros adecuados.
 
 De esta forma, se comienza con una red neuronal con algún vector inicial de parámetros (a menudo elegido al azar), a continuación se genera un nuevo vector de parámetros, esperando que con ellos la función de error se reduzca (aunque dependiendo del método elegido, no es obligatorio, y temporalmente se puede admitir un empeoramiento del error siempre y cuando conduzca a una disminución posterior más acusada). Este proceso se repite, normalmente, hasta haber reducido el error bajo un umbral tolerable, o cuando se satisfaga una condición específica de parada.
 
@@ -98,8 +97,6 @@ Donde el parámetro $v$ se denomina tasa de entrenamiento, que puede fijarse a pr
 Aunque es muy sencillo, este algoritmo tiene el gran inconveniente de que, para funciones de error con estructuras con valles largos y estrechos, requiere muchas iteraciones. Se debe a que, aunque la dirección elegida es en la que la función de error disminuye más rápidamente, esto no significa que necesariamente produzca la convergencia más rápida.
 
 Por ello, es el algoritmo recomendado cuando tenemos redes neuronales muy grandes, con muchos miles de parámetros, ya que sólo almacena el vector gradiente (de tamaño n).
-%http://www.cs.us.es/~fsancho/?e=165
-%Rf
 
 \section{Deep Learning}
 
@@ -113,7 +110,6 @@ Dentro de las redes de Deep Learning se tienen 2 tipos muy usados en la actualid
 
 \section{Redes neuronales recurrentes}
 
-%TODO: Rf
 La idea detrás de las RNN es hacer uso de la información secuencial. En una red neuronal tradicional suponemos que todas las entradas (y salidas) son independientes entre sí. Pero para muchas tareas eso es una muy mala idea. Si quieres predecir la siguiente palabra en una oración, es mejor que conozcas qué palabras vienen antes. Las RNN se llaman recurrentes porque realizan la misma tarea para cada elemento de una secuencia, y la salida depende de los cálculos previos. Otra forma de pensar acerca de las RNN es que tienen una "memoria" que captura información sobre lo que se ha calculado hasta ahora. En teoría, los RNN pueden hacer uso de la información en secuencias arbitrariamente largas, pero en la práctica se limitan a mirar hacia atrás solo unos pocos pasos.
 
 La decisión de una red recurrente alcanzada en el paso de tiempo t-1 afecta la decisión que alcanzará un momento más tarde en el paso de tiempo t (Figura \ref{fig:red_rec}). Entonces, las redes recurrentes tienen dos fuentes de entrada, el presente y el pasado reciente, que se combinan para determinar cómo responden a los datos nuevos, de forma similar a como lo hacemos en la vida.
@@ -145,11 +141,9 @@ A mediados de los años 90, los investigadores alemanes Sepp Hochreiter y Juergen
 
 Los LSTM ayudan a preservar el error que se puede volver a propagar a través del tiempo y las capas. Al mantener un error más constante, permiten que las redes recurrentes continúen aprendiendo durante muchos pasos de tiempo (más de 1000), abriendo así un canal para vincular causas y efectos de forma remota. Este es uno de los desafíos centrales para el aprendizaje automático y la IA, ya que los algoritmos se enfrentan con frecuencia a entornos en los que las señales de recompensa son dispersas y diferidas, como la vida misma.
 
-Los LSTM contienen información fuera del flujo normal de la red recurrente en una celda cerrada. La información puede almacenarse, escribirse o leerse desde una celda, al igual que los datos en la memoria de una computadora. La célula toma decisiones sobre qué almacenar y cuándo permitir las lecturas, escrituras y borraduras, a través de puertas que se abren y cierran. Sin embargo, a diferencia del almacenamiento digital en computadoras, estas puertas son análogas, implementadas con la multiplicación de elementos por sigmoides, que están todas en el rango de 0-1. Siendo Analogica tiene la ventaja sobre digital de ser diferenciable y, por lo tanto, adecuado para la propagación inversa.
+Los LSTM contienen información fuera del flujo normal de la red recurrente en una celda cerrada. La información puede almacenarse, escribirse o leerse desde una celda, al igual que los datos en la memoria de una computadora. La célula toma decisiones sobre qué almacenar y cuándo permitir las lecturas, escrituras y borraduras, a través de puertas que se abren y cierran. Sin embargo, a diferencia del almacenamiento digital en computadoras, estas puertas son análogas, implementadas con la multiplicación de elementos por sigmoides, que están todas en el rango de 0-1. Siendo analógica tiene la ventaja sobre digital de ser diferenciable y, por lo tanto, adecuado para la propagación inversa.
 
 Esas puertas actúan sobre las señales que reciben, y de forma similar a los nodos de la red neuronal, bloquean o transmiten información en función de su fuerza e importación, que filtran con sus propios conjuntos de ponderaciones. Esos pesos, como los pesos que modulan los estados de entrada y ocultos, se ajustan a través del proceso de aprendizaje de redes recurrentes. Es decir, las células aprenden cuándo permiten que los datos entren, salgan o se eliminen a través del proceso iterativo de hacer conjeturas, volver a propagar el error y ajustar los pesos mediante el descenso del gradiente.
-% https://skymind.ai/wiki/lstm
-%Rf
 
 \begin{figure}[H]
 	\centerline{\includegraphics[width=14cm]{lstm.png}}
@@ -159,11 +153,9 @@ Esas puertas actúan sobre las señales que reciben, y de forma similar a los nodo
 
 \section{Optimizadores}
 
-% https://towardsdatascience.com/types-of-optimization-algorithms-used-in-neural-networks-and-ways-to-optimize-gradient-95ae5d39529f
-
 Los algoritmos de optimización nos ayudan a minimizar (o maximizar) una función de objetivo $E(x)$, que es simplemente una función matemática que depende de los parámetros internos de aprendizaje del modelo que se utilizan para calcular los valores objetivo $(Y)$ a partir de Conjunto de predictores $(X)$ utilizados en el modelo. 
 
-Los algoritmos de optimización estan en 2 categorías principales:
+Los algoritmos de optimización están en 2 categorías principales:
 
 \begin{itemize}
 	\item  \textbf{Algoritmos de optimización de primer orden: } estos algoritmos minimizan o maximizan una función de pérdida $E(x)$ utilizando sus valores de gradiente con respecto a los parámetros. El algoritmo de optimización de primer orden más utilizado es Descenso por Gradiente. La derivada de primer orden nos dice si la función está disminuyendo o aumentando en un punto en particular.
@@ -174,7 +166,7 @@ Un gradiente es simplemente un vector que es una generalización multivariable de
 
 \subsection{Descenso por gradiente}
 
-El descenso por gradiente es la técnica mas usada para entrenar y optimizar sistemas inteligentes. Es utilizada para realizar la actualización de los pesos en modelos de redes neuronales y minimizar la función de error $E(x)$, la forma en que actualiza los parámetros es utilizando la siguiente ecuación:
+El descenso por gradiente es la técnica más usada para entrenar y optimizar sistemas inteligentes. Es utilizada para realizar la actualización de los pesos en modelos de redes neuronales y minimizar la función de error $E(x)$, la forma en que actualiza los parámetros es utilizando la siguiente ecuación:
 
 \begin{equation}
 \theta = \theta - \eta\nabla J(\theta)

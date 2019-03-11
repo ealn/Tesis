@@ -51,11 +51,11 @@ Poner graficas e imagenes
 
 Por que se va a usar este tipo de redes en el proyecto
 
-*Poner graficas e imagenes
+Poner graficas e imagenes
 
 *************** LSTM
 
-*poner graficas e imagenes
+poner graficas e imagenes
 
 *************** Composicion Musical
 
@@ -67,13 +67,14 @@ Poner libros de donde se esta sacando la informacion
 
 *************** Formato MIDI
 
-*Dedicarle un poquito mas de paginas, head first Java
+Dedicarle un poquito mas de paginas, head first Java
 
 *************** Bibliografia
 
 *Poner mas datos de cada referencia
 
-
+################### Poner ligas a audios de muestra, en la parte de resultados.
+##############      En antecedentes historicos cambiar los abstracts por un parrafo con mis palabras
 
 
 
